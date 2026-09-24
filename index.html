@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#151719">
+<title>Gustavo J. Gutiérrez · Tarjeta digital</title>
+<style>
+:root {
+  --ink:#151719; --muted:#6f767d; --line:#d9dde1; --red:#d3181f; --white:#fff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  min-height:100vh; display:grid; place-items:center; padding:22px;
+  background:linear-gradient(135deg,#101214,#23272b);
+  font-family:Arial,Helvetica,sans-serif; color:var(--ink)
+}
+.card{
+  width:min(760px,100%); overflow:hidden; border-radius:28px;
+  background:#f7f8f9; box-shadow:0 26px 80px rgba(0,0,0,.32)
+}
+.hero{
+  padding:34px 34px 28px; position:relative;
+  background:
+    radial-gradient(circle at 85% 10%, rgba(211,24,31,.14), transparent 32%),
+    linear-gradient(135deg,#fff 0 69%,#eef0f2 69% 100%);
+}
+.hero:after{
+  content:""; position:absolute; left:0; bottom:0; width:100%; height:8px;
+  background:linear-gradient(90deg,#151719 0 34%,#7c8389 34% 50%,#d3181f 50% 62%,#151719 62%);
+}
+.top{display:flex;gap:24px;align-items:center}
+.photo{
+  width:120px;height:120px;border-radius:50%;
+  border:7px solid #fff;outline:4px solid var(--red);
+  background:linear-gradient(145deg,#d9dde1,#8d969e);
+  display:grid;place-items:center;flex:0 0 auto;
+  box-shadow:0 10px 26px rgba(0,0,0,.13)
+}
+.photo span{font-size:40px;color:white}
+h1{margin:0 0 12px;font-size:clamp(29px,5vw,46px);line-height:.98;font-weight:800;letter-spacing:-1.5px}
+h1 .red{color:var(--red)}
+.role{margin:0 0 7px;font-size:17px;line-height:1.35;font-weight:700}
+.secondary{margin:0;font-size:13px;line-height:1.4;color:var(--muted)}
+.grid{padding:24px 28px 12px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.action{
+  min-height:60px;border:1px solid var(--line);background:#fff;border-radius:16px;
+  text-decoration:none;color:var(--ink);padding:13px 16px;
+  display:flex;align-items:center;gap:12px;box-shadow:0 3px 10px rgba(0,0,0,.04)
+}
+.ico{width:34px;height:34px;border-radius:50%;background:var(--red);color:white;display:grid;place-items:center;font-weight:800;flex:0 0 auto}
+.label{display:block;font-size:11px;color:var(--muted);margin-bottom:2px}
+.value{font-size:14px;font-weight:700;overflow-wrap:anywhere}
+.primary{background:var(--ink);color:#fff;border-color:var(--ink);justify-content:center;font-weight:800}
+.cv{background:var(--red);color:#fff;border-color:var(--red);justify-content:center;font-weight:800}
+.footer{padding:10px 28px 24px;text-align:center;font-size:11px;color:#7d848a}
+@media(max-width:620px){
+  body{padding:0;background:#fff}
+  .card{min-height:100vh;border-radius:0;box-shadow:none}
+  .hero{padding:28px 22px 24px}
+  .top{align-items:flex-start;gap:17px}
+  .photo{width:86px;height:86px;border-width:5px;outline-width:3px}
+  .photo span{font-size:30px}
+  h1{font-size:29px;letter-spacing:-1px}
+  .role{font-size:14px}
+  .secondary{font-size:12px}
+  .grid{grid-template-columns:1fr;padding:20px 18px 10px}
+}
+</style>
+</head>
+<body>
+<main class="card">
+  <section class="hero">
+    <div class="top">
+      <div class="photo" title="Espacio reservado para foto"><span>👤</span></div>
+      <div>
+        <h1>GUSTAVO J. <span class="red">GUTIÉRREZ</span></h1>
+        <p class="role">Coordinación Operativa · Supervisión · Gestión de Proyectos · Capacitación Técnica</p>
+        <p class="secondary">Instructor · Rescatista · Administrativo · Buzo Profesional de Rescate y Salvamento</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <a class="action" href="https://wa.me/5492995803175" target="_blank" rel="noopener">
+      <span class="ico">☎</span><span><span class="label">Celular / WhatsApp</span><span class="value">+54 9 299-5803175</span></span>
+    </a>
+
+    <a class="action" href="mailto:gustavojgutierrez@gmail.com">
+      <span class="ico">✉</span><span><span class="label">Email</span><span class="value">gustavojgutierrez@gmail.com</span></span>
+    </a>
+
+    <a class="action" href="https://www.google.com/maps/search/?api=1&query=Neuqu%C3%A9n%20Capital%2C%20Argentina" target="_blank" rel="noopener">
+      <span class="ico">⌖</span><span><span class="label">Ubicación</span><span class="value">Neuquén Capital · Patagonia Argentina</span></span>
+    </a>
+
+    <a class="action" href="https://www.linkedin.com/in/gustavo-j-gutierrez/" target="_blank" rel="noopener">
+      <span class="ico">in</span><span><span class="label">LinkedIn</span><span class="value">Ver perfil profesional</span></span>
+    </a>
+
+    <a class="action primary" href="gustavo-gutierrez.vcf" download>
+      <span class="ico">＋</span><span>Guardar contacto</span>
+    </a>
+
+    <a class="action cv" href="CV_Gustavo_Gutierrez.pdf" download>
+      <span class="ico">CV</span><span>Descargar CV</span>
+    </a>
+  </section>
+
+  <div class="footer">Tarjeta digital profesional · Gustavo J. Gutiérrez</div>
+</main>
+</body>
+</html>
