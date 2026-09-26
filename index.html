@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111315">
+<meta name="description" content="Tarjeta digital profesional de Gustavo J. Gutiérrez">
+<title>Gustavo J. Gutiérrez · Tarjeta digital</title>
+<style>
+:root{
+  --ink:#111315;
+  --ink2:#1d2024;
+  --red:#b31217;
+  --red2:#e02027;
+  --muted:#737b84;
+  --line:#dfe3e7;
+  --paper:#f7f8f9;
+  --white:#ffffff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 12% 8%,rgba(179,18,23,.18),transparent 28%),
+    linear-gradient(145deg,#0e1012,#24282d);
+  color:var(--ink);
+  font-family:Inter,Segoe UI,Arial,Helvetica,sans-serif;
+  display:grid;
+  place-items:center;
+  padding:24px;
+}
+.wrap{
+  width:min(760px,100%);
+  border-radius:28px;
+  overflow:hidden;
+  background:var(--paper);
+  box-shadow:0 28px 85px rgba(0,0,0,.38);
+  border:1px solid rgba(255,255,255,.12);
+}
+.hero{
+  position:relative;
+  padding:34px 34px 29px;
+  background:
+    linear-gradient(rgba(255,255,255,.90),rgba(255,255,255,.93)),
+    radial-gradient(circle at 83% 10%,rgba(179,18,23,.18),transparent 31%);
+  overflow:hidden;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:-15% -8% 0 42%;
+  opacity:.22;
+  background:
+    repeating-radial-gradient(ellipse at 55% 55%,
+      transparent 0 11px,
+      #7f8891 12px 13px,
+      transparent 14px 22px);
+  transform:rotate(-8deg) scale(1.18,.8);
+  pointer-events:none;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;height:7px;
+  background:linear-gradient(90deg,var(--ink) 0 33%,#858c93 33% 52%,var(--red) 52% 64%,var(--ink) 64%);
+}
+.identity{position:relative;z-index:1}
+.name{
+  margin:0;
+  line-height:.94;
+  font-weight:900;
+  letter-spacing:-1.4px;
+  font-size:clamp(34px,7vw,56px);
+}
+.name .surname{display:block;color:var(--red);margin-top:5px}
+.accent{
+  width:92px;height:5px;background:var(--red);
+  margin:20px 0 15px;border-radius:4px;
+  position:relative;
+}
+.accent::after{
+  content:"";position:absolute;left:105px;top:1px;
+  width:180px;height:2px;background:#aeb4ba;border-radius:2px;
+}
+.role{
+  margin:0 0 7px;
+  font-size:clamp(16px,2.8vw,21px);
+  line-height:1.35;
+  font-weight:800;
+}
+.secondary{
+  margin:0;
+  font-size:clamp(13px,2.2vw,16px);
+  line-height:1.45;
+  color:var(--muted);
+  font-weight:500;
+}
+.actions{
+  padding:24px 28px 14px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.action{
+  min-height:66px;
+  border:1px solid var(--line);
+  background:var(--white);
+  color:var(--ink);
+  text-decoration:none;
+  border-radius:16px;
+  padding:13px 15px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  box-shadow:0 3px 14px rgba(0,0,0,.045);
+  transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;
+}
+.action:active{transform:scale(.99)}
+.action:hover{
+  transform:translateY(-1px);
+  box-shadow:0 7px 20px rgba(0,0,0,.08);
+  border-color:#ccd1d6;
+}
+.ico{
+  width:38px;height:38px;border-radius:11px;
+  flex:0 0 auto;
+  display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--red2),#8f0b10);
+  color:white;font-weight:900;font-size:15px;
+}
+.meta{min-width:0}
+.label{display:block;font-size:11px;color:var(--muted);margin-bottom:3px}
+.value{display:block;font-size:14px;font-weight:800;line-height:1.25;overflow-wrap:anywhere}
+.primary{
+  background:linear-gradient(145deg,#17191c,#0f1012);
+  color:white;border-color:#17191c;justify-content:center;font-weight:900;
+}
+.primary .ico{background:#fff;color:var(--ink)}
+.cv{
+  background:linear-gradient(145deg,#d11a20,#9c0d12);
+  color:white;border-color:#ba1218;justify-content:center;font-weight:900;
+}
+.cv .ico{background:#fff;color:var(--red)}
+.footer{
+  padding:9px 28px 24px;
+  text-align:center;
+  font-size:11px;color:#848b92;
+}
+.small{
+  margin-top:4px;font-size:10px;color:#9aa0a6;font-weight:500;
+}
+@media(max-width:620px){
+  body{padding:0;background:#fff}
+  .wrap{border-radius:0;min-height:100vh;box-shadow:none;border:0}
+  .hero{padding:28px 22px 25px}
+  .actions{grid-template-columns:1fr;padding:20px 18px 12px}
+  .accent::after{width:120px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <div class="identity">
+      <h1 class="name">GUSTAVO J.<span class="surname">GUTIÉRREZ</span></h1>
+      <div class="accent" aria-hidden="true"></div>
+      <p class="role">Coordinación Operativa · Supervisión · Gestión de Proyectos · Capacitación Técnica</p>
+      <p class="secondary">Instructor · Rescatista · Administrativo · Buzo Profesional de Rescate y Salvamento</p>
+    </div>
+  </header>
+
+  <section class="actions" aria-label="Datos de contacto y accesos">
+    <a class="action" href="https://wa.me/5492995803175" target="_blank" rel="noopener">
+      <span class="ico">☎</span>
+      <span class="meta"><span class="label">Celular / WhatsApp</span><span class="value">+54 9 299-5803175</span></span>
+    </a>
+
+    <a class="action" href="mailto:gustavojgutierrez@gmail.com">
+      <span class="ico">✉</span>
+      <span class="meta"><span class="label">Email</span><span class="value">gustavojgutierrez@gmail.com</span></span>
+    </a>
+
+    <a class="action" href="https://www.google.com/maps/search/?api=1&query=Neuqu%C3%A9n%20Capital%2C%20Argentina" target="_blank" rel="noopener">
+      <span class="ico">⌖</span>
+      <span class="meta"><span class="label">Ubicación</span><span class="value">Neuquén Capital · Patagonia Argentina</span></span>
+    </a>
+
+    <a class="action" href="https://www.linkedin.com/in/gustavo-j-gutierrez/" target="_blank" rel="noopener">
+      <span class="ico">in</span>
+      <span class="meta"><span class="label">LinkedIn</span><span class="value">Ver perfil profesional</span></span>
+    </a>
+
+    <a class="action primary" href="gustavo-gutierrez.vcf" download>
+      <span class="ico">＋</span><span>Guardar contacto</span>
+    </a>
+
+    <a class="action cv" href="CV_Gustavo_Gutierrez.pdf" target="_blank" rel="noopener">
+      <span class="ico">CV</span><span>Ver / Descargar CV</span>
+    </a>
+  </section>
+
+  <footer class="footer">
+    Tarjeta digital profesional · Gustavo J. Gutiérrez
+    <div class="small">Neuquén Capital · Patagonia Argentina</div>
+  </footer>
+</main>
+</body>
+</html>
