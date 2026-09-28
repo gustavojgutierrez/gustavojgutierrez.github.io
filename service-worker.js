@@ -1,4 +1,4 @@
-const CACHE = "gustavo-tarjeta-pwa-v3";
+const CACHE = "gustavo-tarjeta-pwa-v4";
 const CORE = [
   "./",
   "./index.html",

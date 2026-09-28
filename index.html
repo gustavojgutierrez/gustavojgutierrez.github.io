@@ -255,211 +255,204 @@ body{
   .surname{font-size:33px;font-weight:800;letter-spacing:-.4px}
 }
 
-/* ===== PANEL PERSONAL: solo visible cuando la PWA está instalada ===== */
 .owner-shell{display:none}
 .owner-image-modal{display:none}
 
-@media (display-mode: standalone){
-  body{
-    padding:0;
-    overflow:hidden;
-    background:
-      radial-gradient(circle at 12% 0%, rgba(179,19,24,.18), transparent 28%),
-      linear-gradient(160deg,#101214,#1d2125);
-  }
-  body > .card{display:none !important}
-
-  .owner-shell{
-    width:100%;
-    height:100dvh;
-    padding:max(16px,env(safe-area-inset-top)) 14px max(14px,env(safe-area-inset-bottom));
-    display:grid;
-    grid-template-rows:auto 1fr auto;
-    gap:14px;
-    color:#fff;
-  }
-  .owner-head{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    min-height:62px;
-  }
-  .owner-avatar{
-    width:54px;height:54px;border-radius:16px;
-    object-fit:cover;
-    border:2px solid rgba(255,255,255,.12);
-    box-shadow:0 0 0 2px rgba(179,19,24,.45);
-  }
-  .owner-title{
-    min-width:0;
-  }
-  .owner-title strong{
-    display:block;
-    font-size:18px;
-    line-height:1.1;
-    letter-spacing:-.2px;
-  }
-  .owner-title span{
-    display:block;
-    margin-top:4px;
-    color:#aeb6bf;
-    font-size:11px;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-  }
-
-  .owner-grid{
-    min-height:0;
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    grid-template-rows:repeat(2,minmax(0,1fr));
-    gap:10px;
-  }
-  .owner-action{
-    border:1px solid rgba(255,255,255,.10);
-    border-radius:18px;
-    background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.035));
-    color:#fff;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    gap:8px;
-    text-align:center;
-    padding:10px 6px;
-    text-decoration:none;
-    font-family:inherit;
-    cursor:pointer;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
-  }
-  .owner-action:active{transform:scale(.985)}
-  .owner-ico{
-    width:42px;height:42px;border-radius:13px;
-    display:grid;place-items:center;
-    background:#f4f5f6;
-    color:#161a1e;
-    font-weight:900;
-    font-size:14px;
-    box-shadow:0 5px 16px rgba(0,0,0,.18);
-  }
-  .owner-action.primary .owner-ico{
-    background:linear-gradient(145deg,#d31a20,#a80f14);
-    color:#fff;
-  }
-  .owner-action b{
-    font-size:11px;
-    line-height:1.15;
-    font-weight:800;
-  }
-  .owner-foot{
-    text-align:center;
-    color:#7f8993;
-    font-size:9px;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    padding-bottom:2px;
-  }
-
-  .owner-image-modal{
-    position:fixed;
-    inset:0;
-    z-index:20000;
-    background:#050607;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:max(10px,env(safe-area-inset-top)) 10px max(10px,env(safe-area-inset-bottom));
-  }
-  .owner-image-modal.open{display:flex}
-  .owner-image-modal img{
-    max-width:100%;
-    max-height:100%;
-    object-fit:contain;
-    display:block;
-  }
-  .owner-close{
-    position:fixed;
-    top:max(10px,env(safe-area-inset-top));
-    right:12px;
-    width:42px;height:42px;
-    border-radius:14px;
-    border:1px solid rgba(255,255,255,.18);
-    background:rgba(10,12,14,.82);
-    color:#fff;
-    font-size:22px;
-    line-height:1;
-    display:grid;place-items:center;
-    z-index:20001;
-  }
-
-  /* Al pedir "Vista pública" desde la PWA, mostramos la tarjeta normal */
-  body.owner-public-preview{
-    overflow:auto;
-    background:#fff;
-  }
-  body.owner-public-preview > .card{
-    display:block !important;
-  }
-  body.owner-public-preview .owner-shell{
-    display:none !important;
-  }
-  body.owner-public-preview::after{
-    content:"Volver al panel";
-    position:fixed;
-    z-index:25000;
-    right:12px;
-    bottom:max(12px,env(safe-area-inset-bottom));
-    background:#15191d;
-    color:#fff;
-    border:1px solid rgba(255,255,255,.18);
-    border-radius:999px;
-    padding:11px 15px;
-    font:700 12px/1 'Inter','Segoe UI',Arial,sans-serif;
-    box-shadow:0 8px 28px rgba(0,0,0,.24);
-  }
+body.owner-mode{
+  min-height:100dvh;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(179,19,24,.20), transparent 30%),
+    radial-gradient(circle at 95% 100%, rgba(179,19,24,.10), transparent 28%),
+    linear-gradient(160deg,#0d0f11,#171b1f 55%,#101214);
 }
+body.owner-mode > .card{display:none !important}
+
+body.owner-mode .owner-shell{
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  gap:12px;
+  width:100%;
+  height:100dvh;
+  box-sizing:border-box;
+  padding:max(14px,env(safe-area-inset-top)) 14px max(12px,env(safe-area-inset-bottom));
+  color:#fff;
+}
+
+.owner-head{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  min-height:58px;
+}
+.owner-avatar{
+  width:50px;
+  height:50px;
+  border-radius:15px;
+  object-fit:cover;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 0 0 2px rgba(179,19,24,.45);
+}
+.owner-title strong{
+  display:block;
+  font-size:17px;
+  line-height:1.1;
+  font-weight:800;
+}
+.owner-title span{
+  display:block;
+  margin-top:4px;
+  color:#9ca6b0;
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.owner-grid{
+  min-height:0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+.owner-action{
+  appearance:none;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:9px 7px;
+  font-family:inherit;
+  cursor:pointer;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 8px 24px rgba(0,0,0,.13);
+}
+.owner-action.primary{
+  border-color:rgba(190,27,35,.32);
+  background:linear-gradient(145deg,rgba(179,19,24,.17),rgba(255,255,255,.025));
+}
+.owner-action:active{transform:scale(.985)}
+.owner-ico{
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  background:#f3f4f5;
+  color:#14181c;
+  box-shadow:0 6px 18px rgba(0,0,0,.22);
+}
+.owner-action.primary .owner-ico{
+  background:linear-gradient(145deg,#d31a20,#a80f14);
+  color:#fff;
+}
+.owner-ico svg{
+  width:23px;
+  height:23px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.9;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.owner-action b{
+  font-size:11px;
+  line-height:1.14;
+  font-weight:800;
+  text-align:center;
+}
+.owner-foot{
+  text-align:center;
+  color:#707b85;
+  font-size:8.5px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.owner-image-modal{
+  position:fixed;
+  inset:0;
+  z-index:30000;
+  background:#050607;
+  align-items:center;
+  justify-content:center;
+}
+.owner-image-modal.open{display:flex}
+.owner-image-modal img{
+  display:block;
+  max-width:100vw;
+  max-height:100dvh;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+.owner-close{
+  position:fixed;
+  z-index:30001;
+  top:max(10px,env(safe-area-inset-top));
+  right:10px;
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(10,12,14,.82);
+  color:#fff;
+  font-size:23px;
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+}
+
+body.public-no-cv .btn.cv{display:none !important}
+body.public-no-cv .actions{grid-template-columns:1fr !important}
 
 </style>
 </head>
 <body>
 
-<section class="owner-shell" id="ownerShell" aria-label="Panel personal de tarjeta profesional">
+<section class="owner-shell" aria-label="Panel personal de networking">
   <div class="owner-head">
     <img class="owner-avatar" src="icon-192.png" alt="">
     <div class="owner-title">
       <strong>Gustavo J. Gutiérrez</strong>
-      <span>Panel personal · Tarjeta profesional</span>
+      <span>Panel personal · Networking</span>
     </div>
   </div>
 
   <div class="owner-grid">
-    <button class="owner-action primary" type="button" id="ownerShareLink">
-      <span class="owner-ico">↗</span>
+    <button class="owner-action primary" type="button" id="shareCardSimple">
+      <span class="owner-ico"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-3.9M8.7 13.3l6.6 3.9"/></svg></span>
       <b>Compartir<br>tarjeta</b>
     </button>
 
-    <button class="owner-action primary" type="button" id="ownerShareJpg">
-      <span class="owner-ico">JPG</span>
+    <button class="owner-action primary" type="button" id="shareCardFull">
+      <span class="owner-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="10" r="2"/><path d="M5.5 16c.8-2 4.2-2 5 0M14 9h4M14 13h4"/></svg></span>
+      <b>Compartir tarjeta<br>completa</b>
+    </button>
+
+    <button class="owner-action" type="button" id="shareJpg">
+      <span class="owner-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m5 17 4.5-4.5 3 3 2-2 4.5 3.5"/></svg></span>
       <b>Compartir<br>JPG</b>
     </button>
 
-    <button class="owner-action" type="button" id="ownerShowJpg">
-      <span class="owner-ico">▣</span>
-      <b>Mostrar<br>JPG</b>
+    <button class="owner-action" type="button" id="showJpg">
+      <span class="owner-ico"><svg viewBox="0 0 24 24"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+      <b>Mostrar JPG<br>para escanear</b>
     </button>
 
-    <button class="owner-action" type="button" id="ownerPublicView">
-      <span class="owner-ico">◎</span>
-      <b>Vista<br>pública</b>
-    </button>
-
-    <button class="owner-action" type="button" id="ownerShareCv">
-      <span class="owner-ico">PDF</span>
+    <button class="owner-action" type="button" id="shareCv">
+      <span class="owner-ico"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v5h5M9.5 13h5M9.5 16h5"/></svg></span>
       <b>Compartir<br>CV</b>
     </button>
 
-    <button class="owner-action" type="button" id="ownerCopyLink">
-      <span class="owner-ico">⧉</span>
+    <button class="owner-action" type="button" id="copyPublicLink">
+      <span class="owner-ico"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="11" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg></span>
       <b>Copiar<br>enlace</b>
     </button>
   </div>
@@ -544,12 +537,48 @@ if ("serviceWorker" in navigator) {
 
 <script>
 (() => {
-  const CARD_URL = "https://gustavojgutierrez.github.io/";
+  const BASE_URL = "https://gustavojgutierrez.github.io/";
+  const SIMPLE_URL = BASE_URL + "?vista=contacto";
+  const FULL_URL = BASE_URL + "?vista=completa";
   const JPG_URL = "./tarjeta-jpg.jpg";
   const CV_URL = "./CV_Gustavo_Gutierrez.pdf";
 
+  const params = new URLSearchParams(location.search);
+  const publicView = params.get("vista");
   const isStandalone = window.matchMedia("(display-mode: standalone)").matches ||
                        window.navigator.standalone === true;
+
+  if (isStandalone && !publicView) document.body.classList.add("owner-mode");
+  if (publicView === "contacto") document.body.classList.add("public-no-cv");
+
+  async function copyText(text, message){
+    try{
+      await navigator.clipboard.writeText(text);
+      alert(message);
+    }catch(e){
+      const ta=document.createElement("textarea");
+      ta.value=text;
+      ta.style.position="fixed";
+      ta.style.opacity="0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      ta.remove();
+      alert(message);
+    }
+  }
+
+  async function shareUrl(url, title, text){
+    if(navigator.share){
+      try{
+        await navigator.share({title, text, url});
+        return;
+      }catch(e){
+        if(e && e.name === "AbortError") return;
+      }
+    }
+    await copyText(url, "Enlace copiado");
+  }
 
   async function shareFile(url, filename, mime, title, text){
     try{
@@ -564,44 +593,17 @@ if ("serviceWorker" in navigator) {
     return false;
   }
 
-  async function shareLink(){
-    if(navigator.share){
-      try{
-        await navigator.share({
-          title:"Gustavo J. Gutiérrez · Tarjeta profesional",
-          text:"Tarjeta profesional de Gustavo J. Gutiérrez",
-          url:CARD_URL
-        });
-        return;
-      }catch(e){
-        if(e && e.name === "AbortError") return;
-      }
-    }
-    await copyLink();
-  }
+  document.getElementById("shareCardSimple")?.addEventListener("click", () => {
+    shareUrl(SIMPLE_URL, "Gustavo J. Gutiérrez · Tarjeta profesional",
+             "Contacto profesional de Gustavo J. Gutiérrez");
+  });
 
-  async function copyLink(){
-    try{
-      await navigator.clipboard.writeText(CARD_URL);
-      alert("Enlace copiado");
-    }catch(e){
-      const ta=document.createElement("textarea");
-      ta.value=CARD_URL;
-      ta.style.position="fixed";
-      ta.style.opacity="0";
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand("copy");
-      ta.remove();
-      alert("Enlace copiado");
-    }
-  }
+  document.getElementById("shareCardFull")?.addEventListener("click", () => {
+    shareUrl(FULL_URL, "Gustavo J. Gutiérrez · Tarjeta profesional completa",
+             "Tarjeta profesional de Gustavo J. Gutiérrez con CV");
+  });
 
-  const modal = document.getElementById("ownerImageModal");
-
-  document.getElementById("ownerShareLink")?.addEventListener("click", shareLink);
-
-  document.getElementById("ownerShareJpg")?.addEventListener("click", async () => {
+  document.getElementById("shareJpg")?.addEventListener("click", async () => {
     const ok = await shareFile(
       JPG_URL,
       "Tarjeta_Profesional_Gustavo_Gutierrez.jpg",
@@ -609,12 +611,12 @@ if ("serviceWorker" in navigator) {
       "Tarjeta profesional · Gustavo J. Gutiérrez",
       "Tarjeta profesional con QR"
     );
-    if(!ok){
-      window.open(JPG_URL, "_blank");
-    }
+    if(!ok) window.open(JPG_URL, "_blank");
   });
 
-  document.getElementById("ownerShowJpg")?.addEventListener("click", () => {
+  const modal = document.getElementById("ownerImageModal");
+
+  document.getElementById("showJpg")?.addEventListener("click", () => {
     modal?.classList.add("open");
     modal?.setAttribute("aria-hidden","false");
   });
@@ -624,46 +626,27 @@ if ("serviceWorker" in navigator) {
     modal?.setAttribute("aria-hidden","true");
   });
 
-  modal?.addEventListener("click", (e) => {
+  modal?.addEventListener("click", e => {
     if(e.target === modal){
       modal.classList.remove("open");
       modal.setAttribute("aria-hidden","true");
     }
   });
 
-  document.getElementById("ownerShareCv")?.addEventListener("click", async () => {
+  document.getElementById("shareCv")?.addEventListener("click", async () => {
     const ok = await shareFile(
       CV_URL,
       "CV_Gustavo_Gutierrez.pdf",
       "application/pdf",
       "CV · Gustavo J. Gutiérrez",
-      "Currículum Vitae"
+      "Currículum Vitae de Gustavo J. Gutiérrez"
     );
-    if(!ok){
-      window.open(CV_URL, "_blank");
-    }
+    if(!ok) window.open(CV_URL, "_blank");
   });
 
-  document.getElementById("ownerCopyLink")?.addEventListener("click", copyLink);
-
-  document.getElementById("ownerPublicView")?.addEventListener("click", () => {
-    document.body.classList.add("owner-public-preview");
+  document.getElementById("copyPublicLink")?.addEventListener("click", () => {
+    copyText(FULL_URL, "Enlace de la tarjeta copiado");
   });
-
-  // Toque sobre la píldora flotante "Volver al panel"
-  document.addEventListener("click", (e) => {
-    if(!document.body.classList.contains("owner-public-preview")) return;
-    const vw = window.innerWidth, vh = window.innerHeight;
-    if(e.clientX > vw - 180 && e.clientY > vh - 90){
-      document.body.classList.remove("owner-public-preview");
-      window.scrollTo(0,0);
-    }
-  });
-
-  // La vista pública en navegador queda intacta.
-  if(!isStandalone){
-    document.querySelector(".owner-shell")?.setAttribute("aria-hidden","true");
-  }
 })();
 </script>
 
