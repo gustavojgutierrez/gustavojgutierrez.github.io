@@ -254,6 +254,116 @@ body{
   .kicker{font-size:27px;font-weight:800;letter-spacing:-.4px}
   .surname{font-size:33px;font-weight:800;letter-spacing:-.4px}
 }
+
+.share-actions{
+  padding:0 26px 12px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+button.btn{
+  border:0;
+  cursor:pointer;
+  font-family:inherit;
+}
+.btn.share{
+  background:linear-gradient(145deg,#d31a20,#a80f14);
+  color:#fff;
+}
+.btn.qr{
+  background:#fff;
+  color:var(--ink);
+  border:1px solid var(--line);
+}
+.btn.qr .mini{color:var(--red)}
+.qr-modal{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  place-items:center;
+  padding:22px;
+  background:rgba(8,10,12,.88);
+  backdrop-filter:blur(8px);
+}
+.qr-modal.open{display:grid}
+.qr-panel{
+  width:min(430px,100%);
+  background:#fff;
+  border-radius:24px;
+  padding:22px;
+  text-align:center;
+  box-shadow:0 28px 90px rgba(0,0,0,.48);
+}
+.qr-panel h2{
+  margin:0 0 7px;
+  font-size:20px;
+  color:var(--ink);
+}
+.qr-panel p{
+  margin:0 0 17px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+}
+.qr-image{
+  display:block;
+  width:min(300px,78vw);
+  aspect-ratio:1/1;
+  margin:0 auto 18px;
+  object-fit:contain;
+  background:#fff;
+  border:12px solid #fff;
+  border-radius:18px;
+  box-shadow:0 8px 28px rgba(0,0,0,.12);
+}
+.qr-tools{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.qr-tools button{
+  min-height:48px;
+  border-radius:13px;
+  font-family:inherit;
+  font-weight:800;
+  cursor:pointer;
+}
+.copy-link{
+  border:0;
+  background:var(--red);
+  color:#fff;
+}
+.close-qr{
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--ink);
+}
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:28px;
+  z-index:10000;
+  transform:translate(-50%,18px);
+  opacity:0;
+  pointer-events:none;
+  background:#111417;
+  color:#fff;
+  padding:11px 16px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+  box-shadow:0 8px 28px rgba(0,0,0,.28);
+  transition:.22s ease;
+}
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+@media(max-width:900px){
+  .share-actions{grid-template-columns:1fr;padding-left:16px;padding-right:16px}
+}
+
 </style>
 </head>
 <body>
@@ -306,6 +416,16 @@ body{
     </a>
   </section>
 
+
+  <section class="share-actions" aria-label="Compartir tarjeta profesional">
+    <button class="btn share" type="button" id="shareCard">
+      <span class="mini">↗</span><span>Compartir tarjeta</span>
+    </button>
+    <button class="btn qr" type="button" id="showQr">
+      <span class="mini">QR</span><span>Mostrar QR</span>
+    </button>
+  </section>
+
   <section class="actions">
     <a class="btn save" href="gustavo-gutierrez.vcf" download>
       <span class="mini">＋</span><span>Guardar contacto</span>
@@ -319,6 +439,20 @@ body{
     Gustavo J. Gutiérrez · Neuquén Capital · Patagonia Argentina
   </footer>
 </main>
+
+<div class="qr-modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+  <div class="qr-panel">
+    <h2 id="qrTitle">Tarjeta profesional</h2>
+    <p>Escaneá este QR para abrir mi tarjeta digital.</p>
+    <img class="qr-image" src="qr-tarjeta.png" alt="QR de la tarjeta profesional de Gustavo J. Gutiérrez">
+    <div class="qr-tools">
+      <button class="copy-link" type="button" id="copyLink">Copiar enlace</button>
+      <button class="close-qr" type="button" id="closeQr">Cerrar</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite">Enlace copiado</div>
+
 <script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -326,5 +460,68 @@ if ("serviceWorker" in navigator) {
   });
 }
 </script>
+
+<script>
+const CARD_URL = "https://gustavojgutierrez.github.io/";
+const shareCard = document.getElementById("shareCard");
+const showQr = document.getElementById("showQr");
+const qrModal = document.getElementById("qrModal");
+const closeQr = document.getElementById("closeQr");
+const copyLink = document.getElementById("copyLink");
+const toast = document.getElementById("toast");
+
+function showToast(message){
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(() => toast.classList.remove("show"), 1800);
+}
+
+async function copyCardLink(){
+  try{
+    await navigator.clipboard.writeText(CARD_URL);
+    showToast("Enlace copiado");
+  }catch(err){
+    const ta = document.createElement("textarea");
+    ta.value = CARD_URL;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    ta.remove();
+    showToast("Enlace copiado");
+  }
+}
+
+shareCard.addEventListener("click", async () => {
+  const data = {
+    title: "Gustavo J. Gutiérrez · Tarjeta profesional",
+    text: "Tarjeta profesional de Gustavo J. Gutiérrez",
+    url: CARD_URL
+  };
+
+  if(navigator.share){
+    try{
+      await navigator.share(data);
+    }catch(err){
+      if(err && err.name !== "AbortError") await copyCardLink();
+    }
+  }else{
+    await copyCardLink();
+  }
+});
+
+showQr.addEventListener("click", () => qrModal.classList.add("open"));
+closeQr.addEventListener("click", () => qrModal.classList.remove("open"));
+copyLink.addEventListener("click", copyCardLink);
+qrModal.addEventListener("click", (e) => {
+  if(e.target === qrModal) qrModal.classList.remove("open");
+});
+document.addEventListener("keydown", (e) => {
+  if(e.key === "Escape") qrModal.classList.remove("open");
+});
+</script>
+
 </body>
 </html>

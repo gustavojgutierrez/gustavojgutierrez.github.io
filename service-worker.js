@@ -1,4 +1,4 @@
-const CACHE = "gustavo-tarjeta-pwa-v1";
+const CACHE = "gustavo-tarjeta-pwa-v2";
 const CORE = [
   "./",
   "./index.html",
@@ -6,6 +6,7 @@ const CORE = [
   "./icon-192.png",
   "./icon-512.png",
   "./apple-touch-icon.png",
+  "./qr-tarjeta.png",
   "./gustavo-gutierrez.vcf",
   "./CV_Gustavo_Gutierrez.pdf"
 ];
