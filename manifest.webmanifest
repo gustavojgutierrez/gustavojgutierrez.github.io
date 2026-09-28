@@ -1,0 +1,37 @@
+{
+  "name": "Gustavo J. Gutiérrez · Tarjeta Profesional",
+  "short_name": "Gustavo Gutiérrez",
+  "description": "Tarjeta profesional digital de Gustavo J. Gutiérrez",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#14171a",
+  "theme_color": "#14171a",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ver CV",
+      "short_name": "CV",
+      "url": "CV_Gustavo_Gutierrez.pdf"
+    },
+    {
+      "name": "LinkedIn",
+      "short_name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/gustavo-j-gutierrez/"
+    }
+  ]
+}
