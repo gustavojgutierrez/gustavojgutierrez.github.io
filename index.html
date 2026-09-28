@@ -255,118 +255,223 @@ body{
   .surname{font-size:33px;font-weight:800;letter-spacing:-.4px}
 }
 
-.share-actions{
-  padding:0 26px 12px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-button.btn{
-  border:0;
-  cursor:pointer;
-  font-family:inherit;
-}
-.btn.share{
-  background:linear-gradient(145deg,#d31a20,#a80f14);
-  color:#fff;
-}
-.btn.qr{
-  background:#fff;
-  color:var(--ink);
-  border:1px solid var(--line);
-}
-.btn.qr .mini{color:var(--red)}
-.qr-modal{
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  display:none;
-  place-items:center;
-  padding:22px;
-  background:rgba(8,10,12,.88);
-  backdrop-filter:blur(8px);
-}
-.qr-modal.open{display:grid}
-.qr-panel{
-  width:min(430px,100%);
-  background:#fff;
-  border-radius:24px;
-  padding:22px;
-  text-align:center;
-  box-shadow:0 28px 90px rgba(0,0,0,.48);
-}
-.qr-panel h2{
-  margin:0 0 7px;
-  font-size:20px;
-  color:var(--ink);
-}
-.qr-panel p{
-  margin:0 0 17px;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.45;
-}
-.qr-image{
-  display:block;
-  width:min(300px,78vw);
-  aspect-ratio:1/1;
-  margin:0 auto 18px;
-  object-fit:contain;
-  background:#fff;
-  border:12px solid #fff;
-  border-radius:18px;
-  box-shadow:0 8px 28px rgba(0,0,0,.12);
-}
-.qr-tools{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-.qr-tools button{
-  min-height:48px;
-  border-radius:13px;
-  font-family:inherit;
-  font-weight:800;
-  cursor:pointer;
-}
-.copy-link{
-  border:0;
-  background:var(--red);
-  color:#fff;
-}
-.close-qr{
-  border:1px solid var(--line);
-  background:#fff;
-  color:var(--ink);
-}
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:28px;
-  z-index:10000;
-  transform:translate(-50%,18px);
-  opacity:0;
-  pointer-events:none;
-  background:#111417;
-  color:#fff;
-  padding:11px 16px;
-  border-radius:999px;
-  font-size:13px;
-  font-weight:700;
-  box-shadow:0 8px 28px rgba(0,0,0,.28);
-  transition:.22s ease;
-}
-.toast.show{
-  opacity:1;
-  transform:translate(-50%,0);
-}
-@media(max-width:900px){
-  .share-actions{grid-template-columns:1fr;padding-left:16px;padding-right:16px}
+/* ===== PANEL PERSONAL: solo visible cuando la PWA está instalada ===== */
+.owner-shell{display:none}
+.owner-image-modal{display:none}
+
+@media (display-mode: standalone){
+  body{
+    padding:0;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 12% 0%, rgba(179,19,24,.18), transparent 28%),
+      linear-gradient(160deg,#101214,#1d2125);
+  }
+  body > .card{display:none !important}
+
+  .owner-shell{
+    width:100%;
+    height:100dvh;
+    padding:max(16px,env(safe-area-inset-top)) 14px max(14px,env(safe-area-inset-bottom));
+    display:grid;
+    grid-template-rows:auto 1fr auto;
+    gap:14px;
+    color:#fff;
+  }
+  .owner-head{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-height:62px;
+  }
+  .owner-avatar{
+    width:54px;height:54px;border-radius:16px;
+    object-fit:cover;
+    border:2px solid rgba(255,255,255,.12);
+    box-shadow:0 0 0 2px rgba(179,19,24,.45);
+  }
+  .owner-title{
+    min-width:0;
+  }
+  .owner-title strong{
+    display:block;
+    font-size:18px;
+    line-height:1.1;
+    letter-spacing:-.2px;
+  }
+  .owner-title span{
+    display:block;
+    margin-top:4px;
+    color:#aeb6bf;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+
+  .owner-grid{
+    min-height:0;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-template-rows:repeat(2,minmax(0,1fr));
+    gap:10px;
+  }
+  .owner-action{
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:18px;
+    background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.035));
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    text-align:center;
+    padding:10px 6px;
+    text-decoration:none;
+    font-family:inherit;
+    cursor:pointer;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  }
+  .owner-action:active{transform:scale(.985)}
+  .owner-ico{
+    width:42px;height:42px;border-radius:13px;
+    display:grid;place-items:center;
+    background:#f4f5f6;
+    color:#161a1e;
+    font-weight:900;
+    font-size:14px;
+    box-shadow:0 5px 16px rgba(0,0,0,.18);
+  }
+  .owner-action.primary .owner-ico{
+    background:linear-gradient(145deg,#d31a20,#a80f14);
+    color:#fff;
+  }
+  .owner-action b{
+    font-size:11px;
+    line-height:1.15;
+    font-weight:800;
+  }
+  .owner-foot{
+    text-align:center;
+    color:#7f8993;
+    font-size:9px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    padding-bottom:2px;
+  }
+
+  .owner-image-modal{
+    position:fixed;
+    inset:0;
+    z-index:20000;
+    background:#050607;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:max(10px,env(safe-area-inset-top)) 10px max(10px,env(safe-area-inset-bottom));
+  }
+  .owner-image-modal.open{display:flex}
+  .owner-image-modal img{
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
+    display:block;
+  }
+  .owner-close{
+    position:fixed;
+    top:max(10px,env(safe-area-inset-top));
+    right:12px;
+    width:42px;height:42px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.18);
+    background:rgba(10,12,14,.82);
+    color:#fff;
+    font-size:22px;
+    line-height:1;
+    display:grid;place-items:center;
+    z-index:20001;
+  }
+
+  /* Al pedir "Vista pública" desde la PWA, mostramos la tarjeta normal */
+  body.owner-public-preview{
+    overflow:auto;
+    background:#fff;
+  }
+  body.owner-public-preview > .card{
+    display:block !important;
+  }
+  body.owner-public-preview .owner-shell{
+    display:none !important;
+  }
+  body.owner-public-preview::after{
+    content:"Volver al panel";
+    position:fixed;
+    z-index:25000;
+    right:12px;
+    bottom:max(12px,env(safe-area-inset-bottom));
+    background:#15191d;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;
+    padding:11px 15px;
+    font:700 12px/1 'Inter','Segoe UI',Arial,sans-serif;
+    box-shadow:0 8px 28px rgba(0,0,0,.24);
+  }
 }
 
 </style>
 </head>
 <body>
+
+<section class="owner-shell" id="ownerShell" aria-label="Panel personal de tarjeta profesional">
+  <div class="owner-head">
+    <img class="owner-avatar" src="icon-192.png" alt="">
+    <div class="owner-title">
+      <strong>Gustavo J. Gutiérrez</strong>
+      <span>Panel personal · Tarjeta profesional</span>
+    </div>
+  </div>
+
+  <div class="owner-grid">
+    <button class="owner-action primary" type="button" id="ownerShareLink">
+      <span class="owner-ico">↗</span>
+      <b>Compartir<br>tarjeta</b>
+    </button>
+
+    <button class="owner-action primary" type="button" id="ownerShareJpg">
+      <span class="owner-ico">JPG</span>
+      <b>Compartir<br>JPG</b>
+    </button>
+
+    <button class="owner-action" type="button" id="ownerShowJpg">
+      <span class="owner-ico">▣</span>
+      <b>Mostrar<br>JPG</b>
+    </button>
+
+    <button class="owner-action" type="button" id="ownerPublicView">
+      <span class="owner-ico">◎</span>
+      <b>Vista<br>pública</b>
+    </button>
+
+    <button class="owner-action" type="button" id="ownerShareCv">
+      <span class="owner-ico">PDF</span>
+      <b>Compartir<br>CV</b>
+    </button>
+
+    <button class="owner-action" type="button" id="ownerCopyLink">
+      <span class="owner-ico">⧉</span>
+      <b>Copiar<br>enlace</b>
+    </button>
+  </div>
+
+  <div class="owner-foot">gustavojgutierrez.github.io</div>
+</section>
+
+<div class="owner-image-modal" id="ownerImageModal" aria-hidden="true">
+  <button class="owner-close" type="button" id="ownerCloseImage" aria-label="Cerrar">×</button>
+  <img src="tarjeta-jpg.jpg" alt="Tarjeta profesional JPG con QR">
+</div>
+
 <main class="card">
   <header class="hero">
     <div class="identity">
@@ -416,16 +521,6 @@ button.btn{
     </a>
   </section>
 
-
-  <section class="share-actions" aria-label="Compartir tarjeta profesional">
-    <button class="btn share" type="button" id="shareCard">
-      <span class="mini">↗</span><span>Compartir tarjeta</span>
-    </button>
-    <button class="btn qr" type="button" id="showQr">
-      <span class="mini">QR</span><span>Mostrar QR</span>
-    </button>
-  </section>
-
   <section class="actions">
     <a class="btn save" href="gustavo-gutierrez.vcf" download>
       <span class="mini">＋</span><span>Guardar contacto</span>
@@ -439,20 +534,6 @@ button.btn{
     Gustavo J. Gutiérrez · Neuquén Capital · Patagonia Argentina
   </footer>
 </main>
-
-<div class="qr-modal" id="qrModal" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
-  <div class="qr-panel">
-    <h2 id="qrTitle">Tarjeta profesional</h2>
-    <p>Escaneá este QR para abrir mi tarjeta digital.</p>
-    <img class="qr-image" src="qr-tarjeta.png" alt="QR de la tarjeta profesional de Gustavo J. Gutiérrez">
-    <div class="qr-tools">
-      <button class="copy-link" type="button" id="copyLink">Copiar enlace</button>
-      <button class="close-qr" type="button" id="closeQr">Cerrar</button>
-    </div>
-  </div>
-</div>
-<div class="toast" id="toast" role="status" aria-live="polite">Enlace copiado</div>
-
 <script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
@@ -462,65 +543,128 @@ if ("serviceWorker" in navigator) {
 </script>
 
 <script>
-const CARD_URL = "https://gustavojgutierrez.github.io/";
-const shareCard = document.getElementById("shareCard");
-const showQr = document.getElementById("showQr");
-const qrModal = document.getElementById("qrModal");
-const closeQr = document.getElementById("closeQr");
-const copyLink = document.getElementById("copyLink");
-const toast = document.getElementById("toast");
+(() => {
+  const CARD_URL = "https://gustavojgutierrez.github.io/";
+  const JPG_URL = "./tarjeta-jpg.jpg";
+  const CV_URL = "./CV_Gustavo_Gutierrez.pdf";
 
-function showToast(message){
-  toast.textContent = message;
-  toast.classList.add("show");
-  clearTimeout(window.__toastTimer);
-  window.__toastTimer = setTimeout(() => toast.classList.remove("show"), 1800);
-}
+  const isStandalone = window.matchMedia("(display-mode: standalone)").matches ||
+                       window.navigator.standalone === true;
 
-async function copyCardLink(){
-  try{
-    await navigator.clipboard.writeText(CARD_URL);
-    showToast("Enlace copiado");
-  }catch(err){
-    const ta = document.createElement("textarea");
-    ta.value = CARD_URL;
-    ta.style.position = "fixed";
-    ta.style.opacity = "0";
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand("copy");
-    ta.remove();
-    showToast("Enlace copiado");
-  }
-}
-
-shareCard.addEventListener("click", async () => {
-  const data = {
-    title: "Gustavo J. Gutiérrez · Tarjeta profesional",
-    text: "Tarjeta profesional de Gustavo J. Gutiérrez",
-    url: CARD_URL
-  };
-
-  if(navigator.share){
+  async function shareFile(url, filename, mime, title, text){
     try{
-      await navigator.share(data);
-    }catch(err){
-      if(err && err.name !== "AbortError") await copyCardLink();
-    }
-  }else{
-    await copyCardLink();
+      const res = await fetch(url, {cache:"no-store"});
+      const blob = await res.blob();
+      const file = new File([blob], filename, {type:mime});
+      if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
+        await navigator.share({title, text, files:[file]});
+        return true;
+      }
+    }catch(e){}
+    return false;
   }
-});
 
-showQr.addEventListener("click", () => qrModal.classList.add("open"));
-closeQr.addEventListener("click", () => qrModal.classList.remove("open"));
-copyLink.addEventListener("click", copyCardLink);
-qrModal.addEventListener("click", (e) => {
-  if(e.target === qrModal) qrModal.classList.remove("open");
-});
-document.addEventListener("keydown", (e) => {
-  if(e.key === "Escape") qrModal.classList.remove("open");
-});
+  async function shareLink(){
+    if(navigator.share){
+      try{
+        await navigator.share({
+          title:"Gustavo J. Gutiérrez · Tarjeta profesional",
+          text:"Tarjeta profesional de Gustavo J. Gutiérrez",
+          url:CARD_URL
+        });
+        return;
+      }catch(e){
+        if(e && e.name === "AbortError") return;
+      }
+    }
+    await copyLink();
+  }
+
+  async function copyLink(){
+    try{
+      await navigator.clipboard.writeText(CARD_URL);
+      alert("Enlace copiado");
+    }catch(e){
+      const ta=document.createElement("textarea");
+      ta.value=CARD_URL;
+      ta.style.position="fixed";
+      ta.style.opacity="0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      ta.remove();
+      alert("Enlace copiado");
+    }
+  }
+
+  const modal = document.getElementById("ownerImageModal");
+
+  document.getElementById("ownerShareLink")?.addEventListener("click", shareLink);
+
+  document.getElementById("ownerShareJpg")?.addEventListener("click", async () => {
+    const ok = await shareFile(
+      JPG_URL,
+      "Tarjeta_Profesional_Gustavo_Gutierrez.jpg",
+      "image/jpeg",
+      "Tarjeta profesional · Gustavo J. Gutiérrez",
+      "Tarjeta profesional con QR"
+    );
+    if(!ok){
+      window.open(JPG_URL, "_blank");
+    }
+  });
+
+  document.getElementById("ownerShowJpg")?.addEventListener("click", () => {
+    modal?.classList.add("open");
+    modal?.setAttribute("aria-hidden","false");
+  });
+
+  document.getElementById("ownerCloseImage")?.addEventListener("click", () => {
+    modal?.classList.remove("open");
+    modal?.setAttribute("aria-hidden","true");
+  });
+
+  modal?.addEventListener("click", (e) => {
+    if(e.target === modal){
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden","true");
+    }
+  });
+
+  document.getElementById("ownerShareCv")?.addEventListener("click", async () => {
+    const ok = await shareFile(
+      CV_URL,
+      "CV_Gustavo_Gutierrez.pdf",
+      "application/pdf",
+      "CV · Gustavo J. Gutiérrez",
+      "Currículum Vitae"
+    );
+    if(!ok){
+      window.open(CV_URL, "_blank");
+    }
+  });
+
+  document.getElementById("ownerCopyLink")?.addEventListener("click", copyLink);
+
+  document.getElementById("ownerPublicView")?.addEventListener("click", () => {
+    document.body.classList.add("owner-public-preview");
+  });
+
+  // Toque sobre la píldora flotante "Volver al panel"
+  document.addEventListener("click", (e) => {
+    if(!document.body.classList.contains("owner-public-preview")) return;
+    const vw = window.innerWidth, vh = window.innerHeight;
+    if(e.clientX > vw - 180 && e.clientY > vh - 90){
+      document.body.classList.remove("owner-public-preview");
+      window.scrollTo(0,0);
+    }
+  });
+
+  // La vista pública en navegador queda intacta.
+  if(!isStandalone){
+    document.querySelector(".owner-shell")?.setAttribute("aria-hidden","true");
+  }
+})();
 </script>
 
 </body>
