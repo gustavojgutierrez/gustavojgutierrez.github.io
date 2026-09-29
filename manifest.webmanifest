@@ -1,13 +1,13 @@
 {
-  "name": "Gustavo J. Gutiérrez · Panel Profesional B7.9",
-  "short_name": "Gustavo B7.9",
-  "description": "Panel privado de networking profesional · B7.9",
+  "name": "Gustavo J. Gutiérrez · Tarjeta Profesional",
+  "short_name": "Gustavo Gutiérrez",
+  "description": "Tarjeta profesional digital de Gustavo J. Gutiérrez",
   "id": "./",
-  "start_url": "./?app=B7.9e",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#050708",
-  "theme_color": "#050708",
+  "background_color": "#050607",
+  "theme_color": "#050607",
   "icons": [
     {
       "src": "icon-192.png",
@@ -26,7 +26,7 @@
     {
       "name": "Ver CV",
       "short_name": "CV",
-      "url": "CV_Gustavo_Gutierrez.pdf"
+      "url": "Gustavo_Gutierrez_CV_General.pdf"
     },
     {
       "name": "LinkedIn",
