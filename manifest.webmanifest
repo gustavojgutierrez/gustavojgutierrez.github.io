@@ -1,13 +1,13 @@
 {
   "name": "Gustavo J. Gutiérrez · Panel Profesional",
   "short_name": "Gustavo Gutiérrez",
-  "description": "Panel privado para compartir tarjeta profesional, JPG y CV por perfil.",
+  "description": "Panel privado de networking profesional.",
   "id": "./",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#090c0f",
-  "theme_color": "#090c0f",
+  "background_color": "#07090b",
+  "theme_color": "#07090b",
   "icons": [
     {
       "src": "icon-192.png",
