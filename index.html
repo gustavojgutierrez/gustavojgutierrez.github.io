@@ -20,6 +20,8 @@
 <meta property="og:url" content="https://gustavojgutierrez.github.io/">
 <meta property="og:image" content="https://gustavojgutierrez.github.io/tarjeta-jpg.jpg">
 <meta property="og:image:alt" content="Tarjeta profesional digital de Gustavo J. Gutiérrez">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="2340">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -267,246 +269,415 @@ body{
 
 
 
+
 /* =========================================================
-   PANEL PRIVADO · PRO B7.8
-   Visual aprobado en HD. Sin estirar ni deformar.
+   PANEL PRIVADO · PRO B7.12 · NATIVE UI
+   Sin JPG de fondo, sin contain/cover, sin duplicar fondos.
+   Todo el panel escala como interfaz HTML/CSS dentro del S23.
    ========================================================= */
+.b712-shell,.b712-modal,.b712-cv-modal{display:none}
 
-.b78-shell,.b78-modal,.b78-cv-modal{display:none}
-
-body.b78-owner{
+body.b712-owner{
   margin:0!important;
   padding:0!important;
+  width:100%;
   min-height:100dvh;
   overflow:hidden!important;
-  background:#050607!important;
+  background:#05070a!important;
 }
-body.b78-owner>main.card{display:none!important}
+body.b712-owner>main.card{display:none!important}
 
-body.b78-owner .b78-shell{
+body.b712-owner .b712-shell{
   position:fixed;
   inset:0;
   z-index:20000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:grid;
+  grid-template-rows:72px minmax(0,1.35fr) minmax(0,1fr) 28px minmax(0,1.02fr) 64px 24px;
+  gap:clamp(9px,1.25dvh,14px);
+  padding:max(10px,env(safe-area-inset-top)) clamp(18px,5vw,24px) max(7px,env(safe-area-inset-bottom));
   overflow:hidden;
-  background:#050607;
-}
-
-/* B7.9 EJECUTADA: misma gráfica, sin deformar ni recortar los márgenes laterales.
-   El pequeño sobrante vertical se integra con fondo gráfico real (sin blur). */
-.b78-stage{
-  position:relative;
-  width:100vw;
-  height:100dvh;
-  overflow:hidden;
+  color:#f6f7f8;
+  font-family:'Inter','Segoe UI',Arial,sans-serif;
   background:
-    radial-gradient(circle at 10% 0%,rgba(200,12,20,.17),transparent 22%),
-    radial-gradient(circle at 92% 100%,rgba(200,12,20,.12),transparent 24%),
-    linear-gradient(160deg,#06080a 0%,#0b1014 52%,#050708 100%);
+    radial-gradient(circle at 8% 4%,rgba(221,22,29,.17),transparent 24%),
+    radial-gradient(circle at 93% 86%,rgba(221,22,29,.11),transparent 20%),
+    linear-gradient(155deg,#05070a 0%,#0e1317 52%,#05070a 100%);
+  isolation:isolate;
 }
-.b78-stage::before{
+body.b712-owner .b712-shell::before{
   content:"";
   position:absolute;
   inset:0;
-  opacity:.20;
-  pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='620' height='440' viewBox='0 0 620 440'%3E%3Cg fill='none' stroke='%23bfc7ce' stroke-width='1'%3E%3Cpath d='M-40 72C54 18 120 138 225 80s172-8 254 30 126-1 186-38'/%3E%3Cpath d='M-30 100C66 48 132 160 237 106s169-6 249 32 121 2 181-34'/%3E%3Cpath d='M-18 130C77 80 145 186 251 134s164-3 243 34 116 4 175-30'/%3E%3Cpath d='M-5 162C90 114 158 214 266 164s160 0 237 35 111 5 169-27'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat:repeat-y;
-  background-size:115% auto;
+  z-index:-2;
+  opacity:.19;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='720' height='520' viewBox='0 0 720 520'%3E%3Cg fill='none' stroke='%23d3d9de' stroke-width='1'%3E%3Cpath d='M-40 72C78 8 150 144 278 79s205-4 302 39 151-5 205-48'/%3E%3Cpath d='M-30 103C88 42 160 174 288 109s201-1 298 42 146-2 200-44'/%3E%3Cpath d='M-15 137C101 79 173 203 301 142s196 3 292 44 141 1 194-39'/%3E%3Cpath d='M4 174C118 119 190 233 317 176s191 7 286 47 136 5 188-33'/%3E%3Cpath d='M28 215C139 162 211 266 338 211s185 10 279 50 130 10 181-27'/%3E%3Cpath d='M56 258C165 208 237 300 363 248s180 13 272 52 124 15 174-21'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:120% auto;
   background-position:center top;
+  background-repeat:repeat-y;
 }
-.b78-art{
-  position:absolute;
-  left:0;
-  top:50%;
-  width:100%;
-  aspect-ratio:941/1672;
-  transform:translateY(-50%);
-}
-.b78-ui{
+body.b712-owner .b712-shell::after{
+  content:"";
   position:absolute;
   inset:0;
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  display:block;
-  user-select:none;
-  -webkit-user-drag:none;
+  z-index:-1;
+  pointer-events:none;
+  background:
+    linear-gradient(130deg,transparent 0 7%,rgba(234,25,32,.55) 7.10%,transparent 7.35%),
+    linear-gradient(318deg,transparent 0 8%,rgba(234,25,32,.40) 8.08%,transparent 8.34%);
+  opacity:.75;
+}
+
+/* Shared card styling */
+.b712-panel-card{
+  position:relative;
+  min-width:0;
+  min-height:0;
+  border:1px solid rgba(230,235,239,.56);
+  border-radius:18px;
+  overflow:hidden;
+  color:#fff;
+  background:linear-gradient(145deg,rgba(23,29,34,.97),rgba(7,10,12,.98));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 8px 22px rgba(0,0,0,.18);
+}
+.b712-panel-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.17;
+  background:repeating-radial-gradient(ellipse at 86% 13%,transparent 0 10px,rgba(201,208,214,.22) 11px,transparent 12px 21px);
+}
+.b712-panel-card::after{
+  content:"";
+  position:absolute;
+  right:-20%;bottom:-30%;width:78%;height:58%;
+  transform:rotate(-22deg);
+  border-top:1px solid rgba(229,24,31,.60);
+  background:linear-gradient(180deg,rgba(225,24,31,.07),transparent);
   pointer-events:none;
 }
-.b79-version{display:none!important;}
-
-.b78-hit{
-  position:absolute;
-  z-index:3;
+.b712-panel-card.red{
+  border-color:rgba(255,42,49,.92);
+  background:linear-gradient(145deg,rgba(166,8,14,.98),rgba(62,4,8,.99));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.055),0 0 22px rgba(226,18,26,.18),0 8px 22px rgba(0,0,0,.18);
+}
+button.b712-panel-card{
   appearance:none;
-  border:0;
-  padding:0;
-  margin:0;
-  background:transparent;
+  font-family:inherit;
   cursor:pointer;
-  border-radius:5%;
+  text-align:left;
+  padding:0;
   -webkit-tap-highlight-color:transparent;
 }
-.b78-hit:active{
-  background:rgba(255,255,255,.035);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
-}
+button.b712-panel-card:active{transform:scale(.988)}
 
-/* Hotspots exactos sobre la gráfica B7.8 */
-#b78ShareCard{left:5.2%;top:16.3%;width:43.1%;height:19.9%}
-#b78ShareFull{left:50.3%;top:16.3%;width:43.1%;height:19.9%}
-
-#b78ShareJpg{left:5.2%;top:37.7%;width:43.1%;height:15.8%}
-#b78ShowJpg{left:50.3%;top:37.7%;width:43.1%;height:15.8%}
-
-#b78CvGeneral{left:5.2%;top:58.8%;width:43.1%;height:9.5%}
-#b78CvCoord{left:50.3%;top:58.8%;width:43.1%;height:9.5%}
-#b78CvAdmin{left:5.2%;top:69.5%;width:43.1%;height:9.7%}
-#b78CvSalud{left:50.3%;top:69.5%;width:43.1%;height:9.7%}
-
-#b78CopyLink{left:5.2%;top:81.1%;width:88.2%;height:7.3%}
-
-/* JPG a pantalla completa */
-.b78-modal{
-  position:fixed;
-  inset:0;
-  z-index:50000;
-  background:#030405;
-  align-items:center;
-  justify-content:center;
-}
-.b78-modal.open{display:flex}
-.b78-modal img{
-  max-width:100vw;
-  max-height:100dvh;
-  width:auto;
-  height:auto;
-  object-fit:contain;
-}
-.b78-close{
-  position:fixed;
-  z-index:50001;
-  top:max(10px,env(safe-area-inset-top));
-  right:10px;
-  width:42px;
-  height:42px;
-  border-radius:13px;
-  border:1px solid rgba(255,255,255,.18);
-  background:rgba(7,9,11,.85);
-  color:#fff;
-  display:grid;
-  place-items:center;
-  font-size:23px;
-}
-
-/* Selector de CV para "Tarjeta completa + CV" */
-.b78-cv-modal{
-  position:fixed;
-  inset:0;
-  z-index:51000;
-  background:rgba(0,0,0,.78);
-  backdrop-filter:blur(8px);
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-.b78-cv-modal.open{display:flex}
-.b78-cv-box{
-  width:min(390px,94vw);
-  border-radius:24px;
-  border:1px solid rgba(255,255,255,.14);
-  background:
-    radial-gradient(circle at 20% 0%,rgba(215,22,29,.16),transparent 30%),
-    linear-gradient(160deg,#151a1f,#080b0e);
-  box-shadow:0 24px 70px rgba(0,0,0,.55);
-  overflow:hidden;
-}
-.b78-cv-head{
-  padding:18px 18px 14px;
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-.b78-cv-head strong{
-  display:block;
-  color:#fff;
-  font-size:18px;
-}
-.b78-cv-head span{
-  display:block;
-  margin-top:4px;
-  color:#9ca7b1;
-  font-size:12px;
-}
-.b78-cv-options{
-  padding:12px;
-  display:grid;
-  gap:9px;
-}
-.b78-cv-option{
-  min-height:58px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,.10);
-  background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
-  color:#fff;
+/* Header */
+.b712-header{
+  position:relative;
   display:flex;
   align-items:center;
-  gap:12px;
-  padding:10px 12px;
-  font:700 13px/1.2 Inter,"Segoe UI",Arial,sans-serif;
-  text-align:left;
+  justify-content:space-between;
+  gap:10px;
+  padding:7px 10px;
+  border:1px solid rgba(219,225,230,.38);
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(18,23,27,.98),rgba(6,9,11,.98));
+  box-shadow:0 8px 25px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.04);
 }
-.b78-cv-option .ico{
-  width:38px;
-  height:38px;
-  flex:0 0 38px;
-  border-radius:11px;
-  display:grid;
-  place-items:center;
-  background:linear-gradient(145deg,#2a3035,#0b0e10);
-  border:1px solid rgba(255,255,255,.15);
-  color:#e01a21;
-  font-weight:900;
+.b712-header::after{
+  content:"";
+  position:absolute;
+  left:132px;
+  bottom:0;
+  width:44px;
+  height:3px;
+  border-radius:2px;
+  background:#e01c23;
+  box-shadow:0 0 10px rgba(224,28,35,.62);
 }
-.b78-cv-option small{
+.b712-id{display:flex;align-items:center;gap:10px;min-width:0}
+.b712-photo{
+  width:56px;height:56px;flex:0 0 56px;
+  border-radius:15px;
+  object-fit:cover;
+  object-position:50% 39%;
+  border:1px solid #ee2028;
+  box-shadow:0 0 0 2px rgba(238,32,40,.17),0 0 17px rgba(232,24,32,.20);
+}
+.b712-name{min-width:0}
+.b712-name strong{
   display:block;
-  margin-top:3px;
-  color:#8e99a3;
-  font-weight:500;
+  font-size:clamp(16px,4.3vw,20px);
+  line-height:1.04;
+  font-weight:800;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
-.b78-cv-cancel{
-  width:100%;
-  min-height:48px;
-  border:0;
-  border-top:1px solid rgba(255,255,255,.08);
-  background:#090c0f;
-  color:#aeb7bf;
-  font:700 12px Inter,"Segoe UI",Arial,sans-serif;
+.b712-name span{
+  display:block;
+  margin-top:4px;
+  color:#aeb8c2;
+  font-size:clamp(8px,2.4vw,11px);
+  line-height:1.05;
+}
+.b712-headright{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.b712-badge{
+  min-width:92px;
+  padding:8px 11px;
+  border-radius:999px;
+  border:1px solid #ed2027;
+  background:linear-gradient(145deg,rgba(95,9,14,.82),rgba(8,10,12,.97));
+  color:#fff;
+  text-align:center;
+  font-size:clamp(9px,2.7vw,12px);
+  font-weight:800;
+  letter-spacing:.03em;
+  box-shadow:inset 0 0 12px rgba(235,25,32,.10),0 0 16px rgba(235,25,32,.18);
+}
+.b712-dots{font-size:22px;line-height:1;color:#e5e8ea;letter-spacing:2px;transform:rotate(90deg)}
+
+/* Grids */
+.b712-grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;min-height:0}
+
+/* Main pair */
+.b712-main{
+  padding:13px 12px 12px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-start;
+}
+.b712-main-icon{
+  position:relative;z-index:2;
+  width:clamp(58px,17vw,72px);
+  height:clamp(58px,17vw,72px);
+  border-radius:15px;
+  display:grid;place-items:center;
+  color:#fff;
+  background:linear-gradient(145deg,#30363b,#090c0e);
+  border:1px solid rgba(255,255,255,.27);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 18px rgba(224,24,31,.24);
+}
+.b712-main-icon svg{width:65%;height:65%;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.b712-main-icon .chip{
+  position:absolute;right:-8px;bottom:-7px;min-width:27px;height:23px;padding:0 5px;border-radius:7px;
+  display:grid;place-items:center;background:#df1b22;color:#fff;font-size:8px;font-weight:900;
+}
+.b712-main-copy{position:relative;z-index:2}
+.b712-main-copy b{display:block;font-size:clamp(17px,5vw,22px);line-height:1.05;font-weight:800;letter-spacing:-.02em}
+.b712-main-copy span{display:block;margin-top:4px;color:#aeb8c2;font-size:clamp(11px,3.4vw,15px)}
+.b712-arrow{
+  position:absolute;z-index:3;right:12px;bottom:12px;width:34px;height:34px;border-radius:50%;
+  display:grid;place-items:center;border:1px solid #e51d24;background:rgba(7,9,11,.58);color:#fff;font-size:24px;
+  box-shadow:0 0 10px rgba(229,29,36,.20);
 }
 
-/* Tarjeta pública */
+/* JPG row */
+.b712-small{
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-start;
+}
+.b712-small-icon{
+  position:relative;z-index:2;
+  width:clamp(50px,15vw,62px);height:clamp(50px,15vw,62px);
+  border-radius:14px;display:grid;place-items:center;color:#fff;
+  background:linear-gradient(145deg,#2c3237,#0a0d0f);border:1px solid rgba(255,255,255,.23);
+  box-shadow:0 0 15px rgba(224,22,29,.18);
+}
+.b712-small-icon svg{width:64%;height:64%;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.b712-small-icon .chip{position:absolute;right:-8px;bottom:-5px;min-width:34px;height:23px;padding:0 6px;border-radius:7px;display:grid;place-items:center;background:#e01b22;color:#fff;font-size:9px;font-weight:900}
+.b712-small-copy{position:relative;z-index:2}
+.b712-small-copy b{display:block;font-size:clamp(15px,4.7vw,20px);line-height:1.05;font-weight:800}
+
+/* CV divider */
+.b712-section{display:flex;align-items:center;gap:10px;color:#b6c0ca;font-size:clamp(9px,2.7vw,11px);font-weight:800;letter-spacing:.18em;text-transform:uppercase;min-width:0}
+.b712-section .mark{width:4px;height:18px;border-radius:2px;background:#e51e25;box-shadow:0 0 8px rgba(229,30,37,.52)}
+.b712-section::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,rgba(205,212,217,.67),transparent)}
+
+/* CV grid */
+.b712-cv{
+  padding:8px 9px;
+  display:grid;
+  grid-template-columns:48px 1fr 30px;
+  gap:9px;
+  align-items:center;
+}
+.b712-file{
+  position:relative;z-index:2;
+  width:46px;height:52px;border-radius:10px;display:grid;place-items:center;color:#fff;
+  background:linear-gradient(145deg,#2f353a,#090c0e);border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 0 12px rgba(224,24,31,.17);
+}
+.b712-file::after{content:"";position:absolute;right:-1px;top:-1px;width:12px;height:12px;background:linear-gradient(225deg,transparent 48%,rgba(255,255,255,.85) 50% 58%,transparent 60%)}
+.b712-file svg{width:25px;height:25px;fill:none;stroke:#e41c23;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.b712-cv-copy{position:relative;z-index:2;min-width:0}
+.b712-cv-copy strong{display:block;font-size:clamp(13px,3.9vw,16px);line-height:1.02;font-weight:800}
+.b712-cv-copy span{display:block;margin-top:4px;color:#c0c8d0;font-size:clamp(9px,2.8vw,12px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.b712-mini-arrow{position:relative;z-index:2;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;border:1px solid #e51d24;color:#fff;font-size:19px;background:rgba(7,9,11,.58)}
+
+/* Copy link */
+.b712-copy{
+  padding:0 13px;
+  display:grid;
+  grid-template-columns:48px 1fr 32px;
+  gap:12px;
+  align-items:center;
+}
+.b712-copy-icon{position:relative;z-index:2;width:46px;height:46px;display:grid;place-items:center;color:#fff}
+.b712-copy-icon svg{width:40px;height:40px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px rgba(229,26,33,.55))}
+.b712-copy b{position:relative;z-index:2;font-size:clamp(15px,4.6vw,19px);font-weight:800}
+
+/* Footer */
+.b712-footer{display:flex;align-items:end;justify-content:center;gap:7px;color:#7e8a95;font-size:clamp(7px,2.1vw,9px);letter-spacing:.16em;text-transform:uppercase;padding-bottom:1px}
+.b712-footer .dot{width:4px;height:4px;border-radius:50%;background:#e31c23;margin-bottom:2px}
+
+/* Modals */
+.b712-modal{position:fixed;inset:0;z-index:50000;background:#030405;align-items:center;justify-content:center}
+.b712-modal.open{display:flex}
+.b712-modal img{max-width:100vw;max-height:100dvh;width:auto;height:auto;object-fit:contain}
+.b712-close{position:fixed;z-index:50001;top:max(10px,env(safe-area-inset-top));right:10px;width:42px;height:42px;border-radius:13px;border:1px solid rgba(255,255,255,.18);background:rgba(7,9,11,.85);color:#fff;display:grid;place-items:center;font-size:23px}
+
+.b712-cv-modal{position:fixed;inset:0;z-index:51000;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px}
+.b712-cv-modal.open{display:flex}
+.b712-cv-box{width:min(390px,94vw);border-radius:24px;border:1px solid rgba(255,255,255,.14);background:radial-gradient(circle at 20% 0%,rgba(215,22,29,.16),transparent 30%),linear-gradient(160deg,#151a1f,#080b0e);box-shadow:0 24px 70px rgba(0,0,0,.55);overflow:hidden}
+.b712-cv-head{padding:18px 18px 14px;border-bottom:1px solid rgba(255,255,255,.08)}
+.b712-cv-head strong{display:block;color:#fff;font-size:18px}
+.b712-cv-head span{display:block;margin-top:4px;color:#9ca7b1;font-size:12px}
+.b712-cv-options{padding:12px;display:grid;gap:9px}
+.b712-cv-option{min-height:58px;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));color:#fff;display:flex;align-items:center;gap:12px;padding:10px 12px;font:700 13px/1.2 Inter,'Segoe UI',Arial,sans-serif;text-align:left}
+.b712-cv-option .ico{width:38px;height:38px;flex:0 0 38px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(145deg,#2a3035,#0b0e10);border:1px solid rgba(255,255,255,.15);color:#e01a21;font-weight:900}
+.b712-cv-option small{display:block;margin-top:3px;color:#8e99a3;font-weight:500}
+.b712-cv-cancel{width:100%;min-height:48px;border:0;border-top:1px solid rgba(255,255,255,.08);background:#090c0f;color:#aeb7bf;font:700 12px Inter,'Segoe UI',Arial,sans-serif}
+
 body.public-no-cv .btn.cv{display:none!important}
 body.public-no-cv .actions{grid-template-columns:1fr!important}
 
-.b711-shell,.b711-modal,.b711-cv-modal{display:none}body.b711-owner{margin:0!important;padding:0!important;min-height:100dvh;overflow:hidden!important;background:#050607!important}body.b711-owner>main.card{display:none!important}body.b711-owner .b711-shell{position:fixed;inset:0;z-index:20000;display:block;overflow:hidden;background:#050607}.b711-stage{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}.b711-ui{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;pointer-events:none}.b711-hit{position:absolute;z-index:3;border:0;background:transparent;border-radius:5%}.b711-hit:active{background:rgba(255,255,255,.03)}
-#b711ShareCard{left:7.997%;top:17.098%;width:40.347%;height:17.281%}
-#b711ShareFull{left:50.452%;top:17.098%;width:40.448%;height:17.281%}
-#b711ShareJpg{left:7.997%;top:37.794%;width:40.347%;height:13.504%}
-#b711ShowJpg{left:50.452%;top:37.794%;width:40.448%;height:13.504%}
-#b711CvGeneral{left:7.997%;top:58.231%;width:40.347%;height:8.227%}
-#b711CvCoord{left:50.452%;top:58.231%;width:40.448%;height:8.227%}
-#b711CvAdmin{left:7.997%;top:68.734%;width:40.347%;height:8.537%}
-#b711CvSalud{left:50.452%;top:68.734%;width:40.448%;height:8.537%}
-#b711CopyLink{left:7.997%;top:80.583%;width:82.902%;height:6.416%}
-.b711-modal{position:fixed;inset:0;z-index:50000;background:#030405;align-items:center;justify-content:center}.b711-modal.open{display:flex}.b711-modal img{max-width:100vw;max-height:100dvh;object-fit:contain}.b711-close{position:fixed;top:10px;right:10px;width:42px;height:42px;border-radius:13px;border:1px solid #444;background:#111;color:#fff;font-size:23px}.b711-cv-modal{position:fixed;inset:0;z-index:51000;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px}.b711-cv-modal.open{display:flex}.b711-cv-box{width:min(390px,94vw);border-radius:24px;border:1px solid rgba(255,255,255,.14);background:linear-gradient(160deg,#151a1f,#080b0e);overflow:hidden}.b711-cv-head{padding:18px;border-bottom:1px solid rgba(255,255,255,.08)}.b711-cv-head strong{display:block;color:#fff;font-size:18px}.b711-cv-head span{display:block;margin-top:4px;color:#9ca7b1;font-size:12px}.b711-cv-options{padding:12px;display:grid;gap:9px}.b711-cv-option{min-height:58px;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:#11161b;color:#fff;display:flex;align-items:center;gap:12px;padding:10px 12px;font:700 13px Inter,"Segoe UI",Arial,sans-serif;text-align:left}.b711-cv-option .ico{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:#222;color:#e01a21}.b711-cv-option small{display:block;color:#8e99a3;font-weight:500}.b711-cv-cancel{width:100%;min-height:48px;border:0;border-top:1px solid rgba(255,255,255,.08);background:#090c0f;color:#aeb7bf}body.public-no-cv .btn.cv{display:none!important}body.public-no-cv .actions{grid-template-columns:1fr!important}
+@media(max-height:700px){
+  body.b712-owner .b712-shell{
+    grid-template-rows:64px minmax(0,1.28fr) minmax(0,.94fr) 25px minmax(0,.97fr) 58px 20px;
+    gap:8px;
+    padding-top:max(7px,env(safe-area-inset-top));
+    padding-bottom:max(5px,env(safe-area-inset-bottom));
+  }
+  .b712-photo{width:50px;height:50px;flex-basis:50px}
+  .b712-header{padding:5px 8px}
+  .b712-main{padding:9px}
+  .b712-cv{padding:6px 7px;grid-template-columns:43px 1fr 27px}
+  .b712-file{width:41px;height:46px}
+}
+
 </style>
 </head>
 <body>
 
 
 
-<section class="b711-shell"><div class="b711-stage"><img class="b711-ui" src="panel-ui-approved.png?v=b711" alt="Panel"><button class="b711-hit" id="b711ShareCard"></button><button class="b711-hit" id="b711ShareFull"></button><button class="b711-hit" id="b711ShareJpg"></button><button class="b711-hit" id="b711ShowJpg"></button><button class="b711-hit" id="b711CvGeneral"></button><button class="b711-hit" id="b711CvCoord"></button><button class="b711-hit" id="b711CvAdmin"></button><button class="b711-hit" id="b711CvSalud"></button><button class="b711-hit" id="b711CopyLink"></button></div></section><div class="b711-modal" id="b711Modal"><button class="b711-close" id="b711Close">×</button><img src="tarjeta-jpg.jpg"></div><div class="b711-cv-modal" id="b711CvModal"><div class="b711-cv-box"><div class="b711-cv-head"><strong>Tarjeta completa + CV</strong><span>Elegí qué CV querés incluir.</span></div><div class="b711-cv-options"><button class="b711-cv-option" data-cv711="general"><span class="ico">CV</span><span>General<small>Perfil multipropósito</small></span></button><button class="b711-cv-option" data-cv711="coordinacion"><span class="ico">⚙</span><span>Coordinación Operativa<small>Operaciones · supervisión</small></span></button><button class="b711-cv-option" data-cv711="administracion"><span class="ico">▥</span><span>Administración<small>Gestión · control documental</small></span></button><button class="b711-cv-option" data-cv711="salud"><span class="ico">✚</span><span>Clínicas / Salud<small>Administración sanitaria</small></span></button></div><button class="b711-cv-cancel" id="b711CvCancel">Cancelar</button></div></div><main class="card">
+
+<section class="b712-shell" id="b712Shell" aria-label="Panel privado de networking">
+  <header class="b712-header">
+    <div class="b712-id">
+      <img class="b712-photo" src="portrait-original.jpg" alt="">
+      <div class="b712-name">
+        <strong>Gustavo J. Gutiérrez</strong>
+        <span>Panel privado de networking</span>
+      </div>
+    </div>
+    <div class="b712-headright">
+      <div class="b712-badge">PRO · B7.12</div>
+      <span class="b712-dots">•••</span>
+    </div>
+  </header>
+
+  <div class="b712-grid2">
+    <button class="b712-panel-card b712-main red" id="b712ShareCard" type="button">
+      <span class="b712-main-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="15" height="14" rx="2"/><circle cx="8" cy="10" r="2"/><path d="M5.4 16c.8-2.4 4.4-2.4 5.2 0M13.5 9h2.5M13.5 12h2.5"/></svg>
+      </span>
+      <span class="b712-main-copy"><b>Compartir<br>tarjeta</b></span>
+      <span class="b712-arrow">›</span>
+    </button>
+
+    <button class="b712-panel-card b712-main" id="b712ShareFull" type="button">
+      <span class="b712-main-icon">
+        <svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5M9 12h6M9 15h6"/></svg>
+        <span class="chip">CV</span>
+      </span>
+      <span class="b712-main-copy"><b>Tarjeta completa</b><span>+ CV</span></span>
+      <span class="b712-arrow">›</span>
+    </button>
+  </div>
+
+  <div class="b712-grid2">
+    <button class="b712-panel-card b712-small" id="b712ShareJpg" type="button">
+      <span class="b712-small-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m5 17 4.3-4.4 3.2 3.1 2-2 4.5 3.3"/></svg>
+        <span class="chip">JPG</span>
+      </span>
+      <span class="b712-small-copy"><b>Compartir<br>JPG</b></span>
+      <span class="b712-arrow">›</span>
+    </button>
+
+    <button class="b712-panel-card b712-small" id="b712ShowJpg" type="button">
+      <span class="b712-small-icon">
+        <svg viewBox="0 0 24 24"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.6"/></svg>
+      </span>
+      <span class="b712-small-copy"><b>Mostrar<br>JPG</b></span>
+      <span class="b712-arrow">›</span>
+    </button>
+  </div>
+
+  <div class="b712-section"><span class="mark"></span><span>Currículum Vitae</span></div>
+
+  <div class="b712-grid2">
+    <button class="b712-panel-card b712-cv" id="b712CvGeneral" type="button">
+      <span class="b712-file"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6.5 19c.8-4 10.2-4 11 0"/></svg></span>
+      <span class="b712-cv-copy"><strong>CV</strong><span>General</span></span><span class="b712-mini-arrow">›</span>
+    </button>
+    <button class="b712-panel-card b712-cv" id="b712CvCoord" type="button">
+      <span class="b712-file"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg></span>
+      <span class="b712-cv-copy"><strong>CV</strong><span>Coordinación</span></span><span class="b712-mini-arrow">›</span>
+    </button>
+    <button class="b712-panel-card b712-cv" id="b712CvAdmin" type="button">
+      <span class="b712-file"><svg viewBox="0 0 24 24"><path d="M5 20V10M10 20V5M15 20v-7M20 20V8"/></svg></span>
+      <span class="b712-cv-copy"><strong>CV</strong><span>Administración</span></span><span class="b712-mini-arrow">›</span>
+    </button>
+    <button class="b712-panel-card b712-cv" id="b712CvSalud" type="button">
+      <span class="b712-file"><svg viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg></span>
+      <span class="b712-cv-copy"><strong>CV</strong><span>Clínicas / Salud</span></span><span class="b712-mini-arrow">›</span>
+    </button>
+  </div>
+
+  <button class="b712-panel-card b712-copy" id="b712CopyLink" type="button">
+    <span class="b712-copy-icon"><svg viewBox="0 0 24 24"><path d="M9.5 14.5 7 17a4 4 0 0 1-5.7-5.7l4-4A4 4 0 0 1 11 7"/><path d="m14.5 9.5 2.5-2.5a4 4 0 1 1 5.7 5.7l-4 4A4 4 0 0 1 13 17"/><path d="m8 16 8-8"/></svg></span>
+    <b>Copiar enlace</b><span class="b712-mini-arrow">›</span>
+  </button>
+
+  <footer class="b712-footer"><span>GJG</span><span class="dot"></span><span>Professional Networking Toolkit</span></footer>
+</section>
+
+<div class="b712-modal" id="b712Modal" aria-hidden="true">
+  <button class="b712-close" id="b712Close" type="button">×</button>
+  <img src="tarjeta-jpg.jpg" alt="Tarjeta profesional JPG con QR">
+</div>
+
+<div class="b712-cv-modal" id="b712CvModal" aria-hidden="true">
+  <div class="b712-cv-box">
+    <div class="b712-cv-head"><strong>Tarjeta completa + CV</strong><span>Elegí qué CV querés incluir.</span></div>
+    <div class="b712-cv-options">
+      <button class="b712-cv-option" type="button" data-cv712="general"><span class="ico">CV</span><span>General<small>Perfil multipropósito</small></span></button>
+      <button class="b712-cv-option" type="button" data-cv712="coordinacion"><span class="ico">⚙</span><span>Coordinación Operativa<small>Operaciones · supervisión</small></span></button>
+      <button class="b712-cv-option" type="button" data-cv712="administracion"><span class="ico">▥</span><span>Administración<small>Gestión · control documental</small></span></button>
+      <button class="b712-cv-option" type="button" data-cv712="salud"><span class="ico">✚</span><span>Clínicas / Salud<small>Administración sanitaria</small></span></button>
+    </div>
+    <button class="b712-cv-cancel" id="b712CvCancel" type="button">Cancelar</button>
+  </div>
+</div>
+
+<main class="card">
   <header class="hero">
     <div class="identity">
       <div class="photo-wrap">
@@ -571,82 +742,47 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
 
 
 
+
+
+
+
+
 <script>
-(() => {
+(()=>{
   const BASE="https://gustavojgutierrez.github.io/";
   const SIMPLE=BASE+"?vista=contacto";
-
-  const CV_MAP={
-    general:{
-      file:"./Gustavo_Gutierrez_CV_General.pdf",
-      public:"Gustavo_Gutierrez_CV_General.pdf",
-      title:"CV General"
-    },
-    coordinacion:{
-      file:"./Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",
-      public:"Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",
-      title:"CV Coordinación Operativa"
-    },
-    administracion:{
-      file:"./Gustavo_Gutierrez_CV_Administracion.pdf",
-      public:"Gustavo_Gutierrez_CV_Administracion.pdf",
-      title:"CV Administración"
-    },
-    salud:{
-      file:"./Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",
-      public:"Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",
-      title:"CV Clínicas / Salud"
-    }
+  const JPG="./tarjeta-jpg.jpg";
+  const CV={
+    general:{file:"./Gustavo_Gutierrez_CV_General.pdf",public:"Gustavo_Gutierrez_CV_General.pdf",title:"CV General"},
+    coordinacion:{file:"./Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",public:"Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",title:"CV Coordinación Operativa"},
+    administracion:{file:"./Gustavo_Gutierrez_CV_Administracion.pdf",public:"Gustavo_Gutierrez_CV_Administracion.pdf",title:"CV Administración"},
+    salud:{file:"./Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",public:"Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",title:"CV Clínicas / Salud"}
   };
 
-  const JPG="./tarjeta-jpg.jpg";
-  const params=new URLSearchParams(location.search);
-  const vista=params.get("vista");
-  const cvKey=params.get("cv");
-  const standalone=
-    window.matchMedia("(display-mode: standalone)").matches ||
-    window.navigator.standalone===true;
+  const p=new URLSearchParams(location.search);
+  const vista=p.get("vista");
+  const cvKey=p.get("cv");
+  const standalone=matchMedia("(display-mode: standalone)").matches || navigator.standalone===true;
 
-  if(standalone && !vista){
-    document.body.classList.add("b78-owner");
-  }
-
-  if(vista==="contacto"){
-    document.body.classList.add("public-no-cv");
-  }
+  if(standalone && !vista) document.body.classList.add("b712-owner");
+  if(vista==="contacto") document.body.classList.add("public-no-cv");
 
   const publicCvButton=document.querySelector(".btn.cv");
   if(vista==="completa" && publicCvButton){
-    const chosen=CV_MAP[cvKey] || CV_MAP.general;
+    const chosen=CV[cvKey]||CV.general;
     publicCvButton.href=chosen.public;
     publicCvButton.style.display="flex";
   }
 
   async function copyText(text,msg){
-    try{
-      await navigator.clipboard.writeText(text);
-      alert(msg);
-    }catch(e){
-      const t=document.createElement("textarea");
-      t.value=text;
-      t.style.position="fixed";
-      t.style.opacity="0";
-      document.body.appendChild(t);
-      t.select();
-      document.execCommand("copy");
-      t.remove();
-      alert(msg);
-    }
+    try{await navigator.clipboard.writeText(text);alert(msg)}
+    catch(e){const t=document.createElement("textarea");t.value=text;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();alert(msg)}
   }
 
   async function shareUrl(url,title,text){
     if(navigator.share){
-      try{
-        await navigator.share({title,text,url});
-        return;
-      }catch(e){
-        if(e && e.name==="AbortError") return;
-      }
+      try{await navigator.share({title,text,url});return}
+      catch(e){if(e&&e.name==="AbortError")return}
     }
     await copyText(url,"Enlace copiado");
   }
@@ -654,126 +790,51 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
   async function shareFile(url,filename,mime,title,text){
     try{
       const r=await fetch(url,{cache:"no-store"});
-      if(!r.ok) throw new Error("fetch");
       const blob=await r.blob();
       const file=new File([blob],filename,{type:mime});
-      if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
-        await navigator.share({title,text,files:[file]});
-        return;
+      if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
+        await navigator.share({title,text,files:[file]});return;
       }
     }catch(e){}
     window.open(url,"_blank");
   }
 
-  document.getElementById("b78ShareCard")?.addEventListener("click",()=>shareUrl(
-    SIMPLE,
-    "Gustavo J. Gutiérrez · Tarjeta profesional",
-    "Gustavo J. Gutiérrez — Tarjeta profesional digital"
+  document.getElementById("b712ShareCard")?.addEventListener("click",()=>shareUrl(
+    SIMPLE,"Gustavo J. Gutiérrez · Tarjeta profesional","Gustavo J. Gutiérrez — Tarjeta profesional digital"
   ));
 
-  const cvModal=document.getElementById("b78CvModal");
+  const selector=document.getElementById("b712CvModal");
+  document.getElementById("b712ShareFull")?.addEventListener("click",()=>{selector.classList.add("open");selector.setAttribute("aria-hidden","false")});
+  document.getElementById("b712CvCancel")?.addEventListener("click",()=>{selector.classList.remove("open");selector.setAttribute("aria-hidden","true")});
+  selector?.addEventListener("click",e=>{if(e.target===selector){selector.classList.remove("open");selector.setAttribute("aria-hidden","true")}});
 
-  document.getElementById("b78ShareFull")?.addEventListener("click",()=>{
-    cvModal?.classList.add("open");
-    cvModal?.setAttribute("aria-hidden","false");
-  });
+  document.querySelectorAll("[data-cv712]").forEach(btn=>btn.addEventListener("click",()=>{
+    const key=btn.dataset.cv712;
+    const chosen=CV[key]||CV.general;
+    const url=BASE+"?vista=completa&cv="+encodeURIComponent(key);
+    selector.classList.remove("open");
+    selector.setAttribute("aria-hidden","true");
+    shareUrl(url,"Gustavo J. Gutiérrez · Tarjeta profesional completa","Gustavo J. Gutiérrez — Tarjeta profesional + "+chosen.title);
+  }));
 
-  document.getElementById("b78CvCancel")?.addEventListener("click",()=>{
-    cvModal?.classList.remove("open");
-    cvModal?.setAttribute("aria-hidden","true");
-  });
-
-  cvModal?.addEventListener("click",e=>{
-    if(e.target===cvModal){
-      cvModal.classList.remove("open");
-      cvModal.setAttribute("aria-hidden","true");
-    }
-  });
-
-  document.querySelectorAll("[data-cv]").forEach(btn=>{
-    btn.addEventListener("click",()=>{
-      const key=btn.dataset.cv;
-      const chosen=CV_MAP[key] || CV_MAP.general;
-      const url=BASE+"?vista=completa&cv="+encodeURIComponent(key);
-      cvModal.classList.remove("open");
-      cvModal.setAttribute("aria-hidden","true");
-      shareUrl(
-        url,
-        "Gustavo J. Gutiérrez · Tarjeta profesional completa",
-        "Gustavo J. Gutiérrez — Tarjeta profesional + "+chosen.title
-      );
-    });
-  });
-
-  document.getElementById("b78ShareJpg")?.addEventListener("click",()=>shareFile(
-    JPG,
-    "Tarjeta_Profesional_Gustavo_Gutierrez.jpg",
-    "image/jpeg",
-    "Tarjeta profesional · Gustavo J. Gutiérrez",
-    "Tarjeta profesional con QR"
+  document.getElementById("b712ShareJpg")?.addEventListener("click",()=>shareFile(
+    JPG,"Tarjeta_Profesional_Gustavo_Gutierrez.jpg","image/jpeg","Tarjeta profesional · Gustavo J. Gutiérrez","Tarjeta profesional con QR"
   ));
 
-  const modal=document.getElementById("b78Modal");
+  const modal=document.getElementById("b712Modal");
+  document.getElementById("b712ShowJpg")?.addEventListener("click",()=>{modal.classList.add("open");modal.setAttribute("aria-hidden","false")});
+  document.getElementById("b712Close")?.addEventListener("click",()=>{modal.classList.remove("open");modal.setAttribute("aria-hidden","true")});
+  modal?.addEventListener("click",e=>{if(e.target===modal){modal.classList.remove("open");modal.setAttribute("aria-hidden","true")}});
 
-  document.getElementById("b78ShowJpg")?.addEventListener("click",()=>{
-    modal?.classList.add("open");
-    modal?.setAttribute("aria-hidden","false");
-  });
-
-  document.getElementById("b78Close")?.addEventListener("click",()=>{
-    modal?.classList.remove("open");
-    modal?.setAttribute("aria-hidden","true");
-  });
-
-  modal?.addEventListener("click",e=>{
-    if(e.target===modal){
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden","true");
-    }
-  });
-
-  document.getElementById("b78CvGeneral")?.addEventListener("click",()=>shareFile(
-    CV_MAP.general.file,
-    "Gustavo_Gutierrez_CV_General.pdf",
-    "application/pdf",
-    "CV General · Gustavo J. Gutiérrez",
-    "Currículum Vitae general de Gustavo J. Gutiérrez"
-  ));
-
-  document.getElementById("b78CvCoord")?.addEventListener("click",()=>shareFile(
-    CV_MAP.coordinacion.file,
-    "Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",
-    "application/pdf",
-    "CV Coordinación Operativa · Gustavo J. Gutiérrez",
-    "Currículum Vitae · Coordinación Operativa"
-  ));
-
-  document.getElementById("b78CvAdmin")?.addEventListener("click",()=>shareFile(
-    CV_MAP.administracion.file,
-    "Gustavo_Gutierrez_CV_Administracion.pdf",
-    "application/pdf",
-    "CV Administración · Gustavo J. Gutiérrez",
-    "Currículum Vitae · Administración"
-  ));
-
-  document.getElementById("b78CvSalud")?.addEventListener("click",()=>shareFile(
-    CV_MAP.salud.file,
-    "Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",
-    "application/pdf",
-    "CV Clínicas y Salud · Gustavo J. Gutiérrez",
-    "Currículum Vitae · Clínicas y Salud"
-  ));
-
-  document.getElementById("b78CopyLink")?.addEventListener("click",()=>copyText(
-    BASE,
-    "Enlace de la tarjeta copiado"
-  ));
+  document.getElementById("b712CvGeneral")?.addEventListener("click",()=>shareFile(CV.general.file,"Gustavo_Gutierrez_CV_General.pdf","application/pdf","CV General · Gustavo J. Gutiérrez","Currículum Vitae general"));
+  document.getElementById("b712CvCoord")?.addEventListener("click",()=>shareFile(CV.coordinacion.file,"Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf","application/pdf","CV Coordinación Operativa · Gustavo J. Gutiérrez","Currículum Vitae · Coordinación Operativa"));
+  document.getElementById("b712CvAdmin")?.addEventListener("click",()=>shareFile(CV.administracion.file,"Gustavo_Gutierrez_CV_Administracion.pdf","application/pdf","CV Administración · Gustavo J. Gutiérrez","Currículum Vitae · Administración"));
+  document.getElementById("b712CvSalud")?.addEventListener("click",()=>shareFile(CV.salud.file,"Gustavo_Gutierrez_CV_Clinicas_Salud.pdf","application/pdf","CV Clínicas y Salud · Gustavo J. Gutiérrez","Currículum Vitae · Clínicas y Salud"));
+  document.getElementById("b712CopyLink")?.addEventListener("click",()=>copyText(BASE,"Enlace de la tarjeta copiado"));
 })();
 </script>
 
-
-
-<script>(()=>{const BASE="https://gustavojgutierrez.github.io/",SIMPLE=BASE+"?vista=contacto",CV={general:{file:"./Gustavo_Gutierrez_CV_General.pdf",public:"Gustavo_Gutierrez_CV_General.pdf",title:"CV General"},coordinacion:{file:"./Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",public:"Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",title:"CV Coordinación Operativa"},administracion:{file:"./Gustavo_Gutierrez_CV_Administracion.pdf",public:"Gustavo_Gutierrez_CV_Administracion.pdf",title:"CV Administración"},salud:{file:"./Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",public:"Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",title:"CV Clínicas / Salud"}};const p=new URLSearchParams(location.search),vista=p.get("vista"),cvKey=p.get("cv"),standalone=matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;if(standalone&&!vista)document.body.classList.add("b711-owner");if(vista==="contacto")document.body.classList.add("public-no-cv");const cvBtn=document.querySelector(".btn.cv");if(vista==="completa"&&cvBtn){const c=CV[cvKey]||CV.general;cvBtn.href=c.public;cvBtn.style.display="flex"}async function copy(t,m){try{await navigator.clipboard.writeText(t);alert(m)}catch(e){}}async function shareUrl(url,title,text){if(navigator.share){try{await navigator.share({title,text,url});return}catch(e){if(e?.name==="AbortError")return}}await copy(url,"Enlace copiado")}async function shareFile(url,name,type,title,text){try{const r=await fetch(url,{cache:"no-store"}),b=await r.blob(),f=new File([b],name,{type});if(navigator.share&&navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({title,text,files:[f]});return}}catch(e){}window.open(url,"_blank")}document.getElementById("b711ShareCard")?.addEventListener("click",()=>shareUrl(SIMPLE,"Gustavo J. Gutiérrez · Tarjeta profesional","Gustavo J. Gutiérrez — Tarjeta profesional digital"));const sel=document.getElementById("b711CvModal");document.getElementById("b711ShareFull")?.addEventListener("click",()=>sel.classList.add("open"));document.getElementById("b711CvCancel")?.addEventListener("click",()=>sel.classList.remove("open"));document.querySelectorAll("[data-cv711]").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.cv711,c=CV[k]||CV.general,u=BASE+"?vista=completa&cv="+encodeURIComponent(k);sel.classList.remove("open");shareUrl(u,"Gustavo J. Gutiérrez · Tarjeta profesional completa","Gustavo J. Gutiérrez — Tarjeta profesional + "+c.title)}));document.getElementById("b711ShareJpg")?.addEventListener("click",()=>shareFile("./tarjeta-jpg.jpg","Tarjeta_Profesional_Gustavo_Gutierrez.jpg","image/jpeg","Tarjeta profesional · Gustavo J. Gutiérrez","Tarjeta profesional con QR"));const modal=document.getElementById("b711Modal");document.getElementById("b711ShowJpg")?.addEventListener("click",()=>modal.classList.add("open"));document.getElementById("b711Close")?.addEventListener("click",()=>modal.classList.remove("open"));document.getElementById("b711CvGeneral")?.addEventListener("click",()=>shareFile(CV.general.file,"Gustavo_Gutierrez_CV_General.pdf","application/pdf","CV General · Gustavo J. Gutiérrez","CV General"));document.getElementById("b711CvCoord")?.addEventListener("click",()=>shareFile(CV.coordinacion.file,"Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf","application/pdf","CV Coordinación Operativa · Gustavo J. Gutiérrez","CV Coordinación"));document.getElementById("b711CvAdmin")?.addEventListener("click",()=>shareFile(CV.administracion.file,"Gustavo_Gutierrez_CV_Administracion.pdf","application/pdf","CV Administración · Gustavo J. Gutiérrez","CV Administración"));document.getElementById("b711CvSalud")?.addEventListener("click",()=>shareFile(CV.salud.file,"Gustavo_Gutierrez_CV_Clinicas_Salud.pdf","application/pdf","CV Clínicas y Salud · Gustavo J. Gutiérrez","CV Clínicas / Salud"));document.getElementById("b711CopyLink")?.addEventListener("click",()=>copy(BASE,"Enlace copiado"));})();</script><script>
+<script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./service-worker.js").then(reg => reg.update());
