@@ -1,4 +1,4 @@
-const CACHE="gustavo-panel-pro-b7-3";
+const CACHE="gustavo-panel-pro-b7-4";
 const ASSETS=[
   "./manifest.webmanifest",
   "./icon-192.png",
@@ -15,9 +15,7 @@ const ASSETS=[
 
 self.addEventListener("install",e=>{
   e.waitUntil(
-    caches.open(CACHE)
-      .then(c=>c.addAll(ASSETS))
-      .then(()=>self.skipWaiting())
+    caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())
   );
 });
 

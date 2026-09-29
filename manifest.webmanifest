@@ -1,9 +1,9 @@
 {
-  "name": "Gustavo J. Gutiérrez · Panel Profesional B7.3",
-  "short_name": "Gustavo B7.3",
-  "description": "Panel privado de networking profesional · prueba B7.3",
+  "name": "Gustavo J. Gutiérrez · Panel Profesional B7.4",
+  "short_name": "Gustavo B7.4",
+  "description": "Panel privado de networking profesional · B7.4",
   "id": "./",
-  "start_url": "./?app=B7.3",
+  "start_url": "./?app=B7.4",
   "scope": "./",
   "display": "standalone",
   "background_color": "#000000",
