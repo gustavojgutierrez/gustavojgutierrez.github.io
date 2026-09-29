@@ -3,11 +3,11 @@
   "short_name": "Gustavo B7.9",
   "description": "Panel privado de networking profesional · B7.9",
   "id": "./",
-  "start_url": "./?app=B7.9",
+  "start_url": "./?app=B7.9e",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#050607",
-  "theme_color": "#050607",
+  "background_color": "#050708",
+  "theme_color": "#050708",
   "icons": [
     {
       "src": "icon-192.png",
