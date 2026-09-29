@@ -255,213 +255,507 @@ body{
   .surname{font-size:33px;font-weight:800;letter-spacing:-.4px}
 }
 
-.owner-shell{display:none}
-.owner-image-modal{display:none}
 
-body.owner-mode{
-  min-height:100dvh;
+/* ========== PANEL PRO V6 · CV MULTIPERFIL · SOLO PWA ========== */
+.pro-panel{display:none}
+.pro-jpg-modal{display:none}
+
+body.pro-owner{
   margin:0;
   padding:0;
+  min-height:100dvh;
   overflow:hidden;
-  background:
-    radial-gradient(circle at 15% 0%, rgba(179,19,24,.20), transparent 30%),
-    radial-gradient(circle at 95% 100%, rgba(179,19,24,.10), transparent 28%),
-    linear-gradient(160deg,#0d0f11,#171b1f 55%,#101214);
+  background:#080b0e;
 }
-body.owner-mode > .card{display:none !important}
+body.pro-owner > .card{display:none !important}
 
-body.owner-mode .owner-shell{
-  display:grid;
-  grid-template-rows:auto 1fr auto;
-  gap:12px;
+body.pro-owner .pro-panel{
+  position:relative;
   width:100%;
   height:100dvh;
-  box-sizing:border-box;
-  padding:max(14px,env(safe-area-inset-top)) 14px max(12px,env(safe-area-inset-bottom));
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  gap:11px;
+  padding:max(14px,env(safe-area-inset-top)) 13px max(10px,env(safe-area-inset-bottom));
   color:#fff;
+  overflow:hidden;
+  isolation:isolate;
 }
+body.pro-owner .pro-panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-3;
+  background:
+    radial-gradient(circle at 13% 5%,rgba(179,19,24,.18),transparent 25%),
+    radial-gradient(circle at 91% 82%,rgba(179,19,24,.08),transparent 25%),
+    linear-gradient(160deg,#090c0f 0%,#14191e 53%,#0a0d10 100%);
+}
+body.pro-owner .pro-panel::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  opacity:.17;
+  background-image:
+    linear-gradient(115deg,transparent 0 54%,rgba(179,19,24,.23) 54.15%,transparent 54.35%),
+    linear-gradient(28deg,transparent 0 72%,rgba(173,182,190,.14) 72.1%,transparent 72.25%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='720' height='520' viewBox='0 0 720 520'%3E%3Cg fill='none' stroke='%23d0d5da' stroke-width='1'%3E%3Cpath d='M-30 85C100 10 160 155 285 82s207 8 300 45 145-20 195-56'/%3E%3Cpath d='M-20 116C108 45 172 184 295 112s204 8 296 47 140-17 190-53'/%3E%3Cpath d='M-5 150C122 78 185 210 307 142s199 7 289 47 136-14 184-49'/%3E%3Cpath d='M8 187C134 119 198 238 321 174s195 4 283 45 130-9 176-45'/%3E%3Cpath d='M28 225C150 160 216 267 338 207s190 1 276 43 124-5 168-41'/%3E%3Cpath d='M55 266C175 204 239 296 360 240s184-2 268 40 117 1 158-35'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat:no-repeat,no-repeat,no-repeat;
+  background-size:100% 100%,100% 100%,cover;
+  background-position:center,center,center top;
+}
+.pro-tech-lines{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:.42;
+}
+.pro-tech-lines::before,
+.pro-tech-lines::after{
+  content:"";
+  position:absolute;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(196,205,212,.38),rgba(179,19,24,.60),transparent);
+}
+.pro-tech-lines::before{left:4%;right:23%;top:19%}
+.pro-tech-lines::after{left:31%;right:5%;bottom:10%}
 
-.owner-head{
+.pro-top{
   display:flex;
   align-items:center;
-  gap:11px;
-  min-height:58px;
+  justify-content:space-between;
+  gap:10px;
+  min-height:55px;
 }
-.owner-avatar{
-  width:50px;
-  height:50px;
-  border-radius:15px;
-  object-fit:cover;
-  border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 0 0 2px rgba(179,19,24,.45);
+.pro-id{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
 }
-.owner-title strong{
+.pro-avatar{
+  width:48px;height:48px;border-radius:15px;object-fit:cover;
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:0 0 0 2px rgba(179,19,24,.48),0 9px 28px rgba(0,0,0,.26);
+}
+.pro-name{min-width:0}
+.pro-name strong{
   display:block;
-  font-size:17px;
-  line-height:1.1;
+  font-size:16px;
+  line-height:1.05;
   font-weight:800;
+  letter-spacing:-.2px;
 }
-.owner-title span{
+.pro-name span{
   display:block;
   margin-top:4px;
-  color:#9ca6b0;
-  font-size:9px;
-  letter-spacing:.12em;
+  color:#8e99a4;
+  font-size:8px;
+  letter-spacing:.15em;
   text-transform:uppercase;
 }
+.pro-badge{
+  flex:0 0 auto;
+  border:1px solid rgba(211,27,33,.45);
+  border-radius:14px;
+  padding:7px 9px;
+  color:#eef1f3;
+  background:linear-gradient(145deg,rgba(179,19,24,.17),rgba(10,12,14,.72));
+  font-size:7.5px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  box-shadow:0 0 20px rgba(179,19,24,.10);
+}
 
-.owner-grid{
+.pro-actions{
   min-height:0;
   display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  grid-template-rows:repeat(3,minmax(0,1fr));
-  gap:10px;
+  grid-template-rows:1.28fr .78fr .78fr .58fr;
+  gap:9px;
 }
-.owner-action{
+.pro-primary,
+.pro-row-two{
+  min-height:0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+}
+.pro-cv-row{
+  min-height:0;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.pro-card{
+  position:relative;
+  overflow:hidden;
   appearance:none;
   border:1px solid rgba(255,255,255,.09);
   border-radius:18px;
-  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025));
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.068),rgba(255,255,255,.022)),
+    #11161a;
   color:#fff;
+  font-family:inherit;
+  cursor:pointer;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.05),
+    0 10px 24px rgba(0,0,0,.14);
+}
+.pro-card::after{
+  content:"";
+  position:absolute;
+  inset:auto -16% -36% 44%;
+  height:64%;
+  border-top:1px solid rgba(179,19,24,.38);
+  transform:rotate(-15deg);
+  background:linear-gradient(90deg,transparent,rgba(179,19,24,.035));
+  pointer-events:none;
+}
+.pro-card.red{
+  background:
+    linear-gradient(145deg,rgba(214,26,33,.93),rgba(120,9,14,.96) 72%,rgba(60,8,12,.97)),
+    #8e0d12;
+  border-color:rgba(255,255,255,.08);
+}
+.pro-card.red::after{
+  border-color:rgba(255,255,255,.22);
+  background:linear-gradient(90deg,transparent,rgba(0,0,0,.11));
+}
+.pro-card:active{transform:scale(.986)}
+
+.pro-main-card{
+  padding:13px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:space-between;
+  text-align:left;
+}
+.pro-main-icon{
+  position:relative;
+  width:54px;height:54px;border-radius:15px;
+  display:grid;place-items:center;
+  color:#161b1f;
+  background:linear-gradient(145deg,#f5f6f7,#bfc5cb);
+  box-shadow:0 8px 20px rgba(0,0,0,.24);
+}
+.pro-main-card.red .pro-main-icon{
+  color:#fff;
+  background:linear-gradient(145deg,#20262b,#07090a);
+  box-shadow:0 0 0 1px rgba(255,255,255,.18),0 0 18px rgba(255,255,255,.08);
+}
+.pro-main-icon svg,
+.pro-icon svg,
+.pro-cv-icon svg{
+  width:27px;height:27px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.85;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.pro-main-badge{
+  position:absolute;
+  right:-7px;
+  bottom:-7px;
+  width:26px;height:26px;border-radius:50%;
+  display:grid;place-items:center;
+  color:#fff;
+  background:linear-gradient(145deg,#dc2026,#860c11);
+  border:2px solid #171b1f;
+  box-shadow:0 3px 10px rgba(0,0,0,.35);
+}
+.pro-main-badge svg{width:13px;height:13px}
+.pro-main-copy b{
+  display:block;
+  font-size:13px;
+  line-height:1.1;
+  letter-spacing:-.1px;
+}
+.pro-main-copy span{
+  display:block;
+  margin-top:4px;
+  color:#aab3bc;
+  font-size:8.4px;
+}
+.pro-main-card.red .pro-main-copy span{color:rgba(255,255,255,.72)}
+
+.pro-small-card{
+  padding:10px 11px;
+  display:grid;
+  grid-template-columns:46px 1fr 15px;
+  gap:10px;
+  align-items:center;
+  text-align:left;
+}
+.pro-icon{
+  position:relative;
+  width:44px;height:44px;border-radius:13px;
+  display:grid;place-items:center;
+  color:#151a1e;
+  background:linear-gradient(145deg,#f5f6f7,#c1c7cc);
+  box-shadow:0 7px 17px rgba(0,0,0,.22);
+}
+.pro-icon.red{
+  color:#fff;
+  background:linear-gradient(145deg,#d51b21,#8c0c11);
+}
+.pro-small-card b{
+  font-size:10.3px;
+  line-height:1.15;
+  font-weight:800;
+}
+.pro-arrow{
+  color:#e8ecef;
+  font-size:18px;
+  opacity:.9;
+}
+
+.pro-cv-general{
+  padding:10px 11px;
+  display:grid;
+  grid-template-columns:46px 1fr 15px;
+  gap:10px;
+  align-items:center;
+}
+.pro-cv-general b{
+  display:block;
+  font-size:10.5px;
+  line-height:1.15;
+}
+.pro-cv-general span.sub{
+  display:block;
+  margin-top:3px;
+  color:#8f9aa4;
+  font-size:7.8px;
+}
+.pro-cv-general .pro-icon{
+  color:#fff;
+  background:linear-gradient(145deg,#d51b21,#8c0c11);
+}
+
+.pro-cv-mini{
+  padding:7px 5px 6px;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:8px;
-  padding:9px 7px;
-  font-family:inherit;
-  cursor:pointer;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 8px 24px rgba(0,0,0,.13);
+  gap:5px;
+  text-align:center;
 }
-.owner-action.primary{
-  border-color:rgba(190,27,35,.32);
-  background:linear-gradient(145deg,rgba(179,19,24,.17),rgba(255,255,255,.025));
-}
-.owner-action:active{transform:scale(.985)}
-.owner-ico{
-  width:44px;
-  height:44px;
-  border-radius:14px;
-  display:grid;
-  place-items:center;
-  background:#f3f4f5;
-  color:#14181c;
-  box-shadow:0 6px 18px rgba(0,0,0,.22);
-}
-.owner-action.primary .owner-ico{
-  background:linear-gradient(145deg,#d31a20,#a80f14);
+.pro-cv-icon{
+  width:34px;height:34px;border-radius:11px;
+  display:grid;place-items:center;
   color:#fff;
+  background:linear-gradient(145deg,#2a3036,#111518);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
 }
-.owner-ico svg{
-  width:23px;
-  height:23px;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.9;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-.owner-action b{
-  font-size:11px;
-  line-height:1.14;
+.pro-cv-mini:nth-child(1) .pro-cv-icon{box-shadow:inset 0 -2px 0 #b31318}
+.pro-cv-mini:nth-child(2) .pro-cv-icon{box-shadow:inset 0 -2px 0 #8f99a2}
+.pro-cv-mini:nth-child(3) .pro-cv-icon{box-shadow:inset 0 -2px 0 #b31318}
+.pro-cv-mini b{
+  font-size:7.5px;
+  line-height:1.08;
   font-weight:800;
-  text-align:center;
+  color:#e8ecef;
 }
-.owner-foot{
-  text-align:center;
-  color:#707b85;
-  font-size:8.5px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
+.pro-cv-mini small{
+  display:block;
+  color:#76818b;
+  font-size:6.6px;
+  line-height:1.05;
 }
 
-.owner-image-modal{
-  position:fixed;
-  inset:0;
-  z-index:30000;
-  background:#050607;
+.pro-footer{
+  display:flex;
   align-items:center;
   justify-content:center;
+  gap:7px;
+  min-height:12px;
+  color:#606c76;
+  font-size:7px;
+  letter-spacing:.11em;
+  text-transform:uppercase;
 }
-.owner-image-modal.open{display:flex}
-.owner-image-modal img{
-  display:block;
-  max-width:100vw;
-  max-height:100dvh;
-  width:auto;
-  height:auto;
-  object-fit:contain;
-}
-.owner-close{
-  position:fixed;
-  z-index:30001;
-  top:max(10px,env(safe-area-inset-top));
-  right:10px;
-  width:42px;
-  height:42px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.18);
-  background:rgba(10,12,14,.82);
-  color:#fff;
-  font-size:23px;
-  display:grid;
-  place-items:center;
-  cursor:pointer;
+.pro-footer .dot{
+  width:4px;height:4px;border-radius:50%;background:#b31318;
 }
 
+/* JPG exacto a pantalla completa */
+.pro-jpg-modal{
+  position:fixed;inset:0;z-index:40000;
+  background:#050607;
+  align-items:center;justify-content:center;
+}
+.pro-jpg-modal.open{display:flex}
+.pro-jpg-modal img{
+  display:block;
+  width:auto;height:auto;
+  max-width:100vw;max-height:100dvh;
+  object-fit:contain;
+}
+.pro-close{
+  position:fixed;z-index:40001;
+  top:max(10px,env(safe-area-inset-top));right:10px;
+  width:40px;height:40px;border-radius:13px;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(8,10,12,.80);color:#fff;
+  display:grid;place-items:center;font-size:22px;
+}
+
+/* Tarjeta pública sin CV */
 body.public-no-cv .btn.cv{display:none !important}
 body.public-no-cv .actions{grid-template-columns:1fr !important}
 
+@media(max-height:730px){
+  body.pro-owner .pro-panel{gap:7px;padding-top:9px;padding-bottom:7px}
+  .pro-top{min-height:46px}
+  .pro-avatar{width:42px;height:42px}
+  .pro-actions{gap:6px}
+  .pro-primary,.pro-row-two,.pro-cv-row{gap:6px}
+  .pro-main-card{padding:9px}
+  .pro-main-icon{width:45px;height:45px}
+  .pro-small-card,.pro-cv-general{padding:7px 8px}
+  .pro-icon{width:38px;height:38px}
+  .pro-cv-icon{width:30px;height:30px}
+  .pro-cv-mini{gap:3px}
+}
 </style>
 </head>
 <body>
 
-<section class="owner-shell" aria-label="Panel personal de networking">
-  <div class="owner-head">
-    <img class="owner-avatar" src="icon-192.png" alt="">
-    <div class="owner-title">
-      <strong>Gustavo J. Gutiérrez</strong>
-      <span>Panel personal · Networking</span>
+
+<section class="pro-panel" id="proPanel" aria-label="Panel profesional de Gustavo J. Gutiérrez">
+  <div class="pro-tech-lines"></div>
+
+  <div class="pro-top">
+    <div class="pro-id">
+      <img class="pro-avatar" src="icon-192.png" alt="">
+      <div class="pro-name">
+        <strong>Gustavo J. Gutiérrez</strong>
+        <span>Networking personal</span>
+      </div>
     </div>
+    <div class="pro-badge">Panel privado · V6</div>
   </div>
 
-  <div class="owner-grid">
-    <button class="owner-action primary" type="button" id="shareCardSimple">
-      <span class="owner-ico"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-3.9M8.7 13.3l6.6 3.9"/></svg></span>
-      <b>Compartir<br>tarjeta</b>
-    </button>
+  <div class="pro-actions">
 
-    <button class="owner-action primary" type="button" id="shareCardFull">
-      <span class="owner-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="10" r="2"/><path d="M5.5 16c.8-2 4.2-2 5 0M14 9h4M14 13h4"/></svg></span>
-      <b>Compartir tarjeta<br>completa</b>
-    </button>
+    <div class="pro-primary">
+      <button class="pro-card pro-main-card red" type="button" id="shareCardSimple">
+        <span class="pro-main-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="5" width="13" height="14" rx="2"/>
+            <circle cx="8" cy="10" r="2"/>
+            <path d="M5.5 16c.7-2.2 4.3-2.2 5 0M19 7v8M16 12h6"/>
+          </svg>
+          <span class="pro-main-badge">
+            <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.4 10.8 7.2-4.3M8.4 13.2l7.2 4.3"/></svg>
+          </span>
+        </span>
+        <span class="pro-main-copy">
+          <b>Compartir tarjeta</b>
+          <span>Contacto · sin CV</span>
+        </span>
+      </button>
 
-    <button class="owner-action" type="button" id="shareJpg">
-      <span class="owner-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m5 17 4.5-4.5 3 3 2-2 4.5 3.5"/></svg></span>
-      <b>Compartir<br>JPG</b>
-    </button>
+      <button class="pro-card pro-main-card" type="button" id="shareCardFull">
+        <span class="pro-main-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="5" width="12" height="14" rx="2"/>
+            <circle cx="7.5" cy="10" r="1.8"/>
+            <path d="M5.2 15.5c.7-2 3.9-2 4.6 0M17 4h4v16h-7v-3"/>
+            <path d="M16.5 9h3M16.5 12h3"/>
+          </svg>
+          <span class="pro-main-badge">
+            <svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5"/></svg>
+          </span>
+        </span>
+        <span class="pro-main-copy">
+          <b>Tarjeta completa</b>
+          <span>Contacto · con CV General</span>
+        </span>
+      </button>
+    </div>
 
-    <button class="owner-action" type="button" id="showJpg">
-      <span class="owner-ico"><svg viewBox="0 0 24 24"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/></svg></span>
-      <b>Mostrar JPG<br>para escanear</b>
-    </button>
+    <div class="pro-row-two">
+      <button class="pro-card pro-small-card" type="button" id="shareJpg">
+        <span class="pro-icon red">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="15" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/><path d="m5 17 4-4 3 3 2-2 3 3M19 8v8M16 13l3 3 3-3"/></svg>
+        </span>
+        <b>Compartir<br>JPG</b>
+        <span class="pro-arrow">›</span>
+      </button>
 
-    <button class="owner-action" type="button" id="shareCv">
-      <span class="owner-ico"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v5h5M9.5 13h5M9.5 16h5"/></svg></span>
-      <b>Compartir<br>CV</b>
-    </button>
+      <button class="pro-card pro-small-card" type="button" id="showJpg">
+        <span class="pro-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="15" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/><path d="m5 17 4-4 3 3 2-2 3 3"/><path d="M15.5 12s1.8-3 5-3 5 3 5 3-1.8 3-5 3-5-3-5-3Z" transform="translate(-2 4) scale(.85)"/></svg>
+        </span>
+        <b>Mostrar JPG<br>para escanear</b>
+        <span class="pro-arrow">›</span>
+      </button>
+    </div>
 
-    <button class="owner-action" type="button" id="copyPublicLink">
-      <span class="owner-ico"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="11" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg></span>
-      <b>Copiar<br>enlace</b>
-    </button>
+    <div class="pro-row-two">
+      <button class="pro-card pro-cv-general" type="button" id="shareCvGeneral">
+        <span class="pro-icon">
+          <svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 16h6"/></svg>
+        </span>
+        <span>
+          <b>Compartir CV General</b>
+          <span class="sub">Perfil multipropósito</span>
+        </span>
+        <span class="pro-arrow">›</span>
+      </button>
+
+      <button class="pro-card pro-small-card" type="button" id="copyPublicLink">
+        <span class="pro-icon">
+          <svg viewBox="0 0 24 24"><path d="M9.5 14.5 7 17a4 4 0 0 1-5.7-5.7l4-4A4 4 0 0 1 11 7"/><path d="m14.5 9.5 2.5-2.5a4 4 0 1 1 5.7 5.7l-4 4A4 4 0 0 1 13 17"/><path d="m8 16 8-8"/></svg>
+        </span>
+        <b>Copiar<br>enlace</b>
+        <span class="pro-arrow">›</span>
+      </button>
+    </div>
+
+    <div class="pro-cv-row">
+      <button class="pro-card pro-cv-mini" type="button" id="shareCvCoord">
+        <span class="pro-cv-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 5v3M12 16v3M5 12h3M16 12h3M9 9l6 6M15 9l-6 6"/></svg>
+        </span>
+        <b>CV Coordinación</b>
+        <small>Operativa</small>
+      </button>
+
+      <button class="pro-card pro-cv-mini" type="button" id="shareCvAdmin">
+        <span class="pro-cv-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 7h16v13H4z"/><path d="M8 7V4h8v3M8 11h8M8 15h5"/></svg>
+        </span>
+        <b>CV Administración</b>
+        <small>Gestión</small>
+      </button>
+
+      <button class="pro-card pro-cv-mini" type="button" id="shareCvSalud">
+        <span class="pro-cv-icon">
+          <svg viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg>
+        </span>
+        <b>CV Clínicas</b>
+        <small>Salud</small>
+      </button>
+    </div>
+
   </div>
 
-  <div class="owner-foot">gustavojgutierrez.github.io</div>
+  <div class="pro-footer"><span>GJG</span><span class="dot"></span><span>Professional Networking Toolkit</span></div>
 </section>
 
-<div class="owner-image-modal" id="ownerImageModal" aria-hidden="true">
-  <button class="owner-close" type="button" id="ownerCloseImage" aria-label="Cerrar">×</button>
+<div class="pro-jpg-modal" id="proJpgModal" aria-hidden="true">
+  <button class="pro-close" type="button" id="proCloseJpg" aria-label="Cerrar">×</button>
   <img src="tarjeta-jpg.jpg" alt="Tarjeta profesional JPG con QR">
 </div>
 
@@ -518,7 +812,7 @@ body.public-no-cv .actions{grid-template-columns:1fr !important}
     <a class="btn save" href="gustavo-gutierrez.vcf" download>
       <span class="mini">＋</span><span>Guardar contacto</span>
     </a>
-    <a class="btn cv" href="CV_Gustavo_Gutierrez.pdf" target="_blank" rel="noopener">
+    <a class="btn cv" href="Gustavo_Gutierrez_CV_General.pdf" target="_blank" rel="noopener">
       <span class="mini">CV</span><span>Ver / Descargar CV</span>
     </a>
   </section>
@@ -530,10 +824,11 @@ body.public-no-cv .actions{grid-template-columns:1fr !important}
 <script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./service-worker.js");
+    navigator.serviceWorker.register("./service-worker.js").then(reg => reg.update());
   });
 }
 </script>
+
 
 <script>
 (() => {
@@ -541,15 +836,26 @@ if ("serviceWorker" in navigator) {
   const SIMPLE_URL = BASE_URL + "?vista=contacto";
   const FULL_URL = BASE_URL + "?vista=completa";
   const JPG_URL = "./tarjeta-jpg.jpg";
-  const CV_URL = "./CV_Gustavo_Gutierrez.pdf";
+
+  const CV_GENERAL = "./Gustavo_Gutierrez_CV_General.pdf";
+  const CV_COORD = "./Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf";
+  const CV_ADMIN = "./Gustavo_Gutierrez_CV_Administracion.pdf";
+  const CV_SALUD = "./Gustavo_Gutierrez_CV_Clinicas_Salud.pdf";
 
   const params = new URLSearchParams(location.search);
   const publicView = params.get("vista");
-  const isStandalone = window.matchMedia("(display-mode: standalone)").matches ||
-                       window.navigator.standalone === true;
+  const isStandalone =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true;
 
-  if (isStandalone && !publicView) document.body.classList.add("owner-mode");
-  if (publicView === "contacto") document.body.classList.add("public-no-cv");
+  /* PWA instalada = panel privado.
+     Cualquier enlace con ?vista=... = tarjeta pública. */
+  if (isStandalone && !publicView) {
+    document.body.classList.add("pro-owner");
+  }
+  if (publicView === "contacto") {
+    document.body.classList.add("public-no-cv");
+  }
 
   async function copyText(text, message){
     try{
@@ -590,58 +896,90 @@ if ("serviceWorker" in navigator) {
         return true;
       }
     }catch(e){}
+    window.open(url, "_blank");
     return false;
   }
 
   document.getElementById("shareCardSimple")?.addEventListener("click", () => {
-    shareUrl(SIMPLE_URL, "Gustavo J. Gutiérrez · Tarjeta profesional",
-             "Contacto profesional de Gustavo J. Gutiérrez");
+    shareUrl(
+      SIMPLE_URL,
+      "Gustavo J. Gutiérrez · Tarjeta profesional",
+      "Contacto profesional de Gustavo J. Gutiérrez"
+    );
   });
 
   document.getElementById("shareCardFull")?.addEventListener("click", () => {
-    shareUrl(FULL_URL, "Gustavo J. Gutiérrez · Tarjeta profesional completa",
-             "Tarjeta profesional de Gustavo J. Gutiérrez con CV");
+    shareUrl(
+      FULL_URL,
+      "Gustavo J. Gutiérrez · Tarjeta profesional completa",
+      "Tarjeta profesional de Gustavo J. Gutiérrez con CV"
+    );
   });
 
-  document.getElementById("shareJpg")?.addEventListener("click", async () => {
-    const ok = await shareFile(
+  document.getElementById("shareJpg")?.addEventListener("click", () => {
+    shareFile(
       JPG_URL,
       "Tarjeta_Profesional_Gustavo_Gutierrez.jpg",
       "image/jpeg",
       "Tarjeta profesional · Gustavo J. Gutiérrez",
       "Tarjeta profesional con QR"
     );
-    if(!ok) window.open(JPG_URL, "_blank");
   });
 
-  const modal = document.getElementById("ownerImageModal");
-
+  const jpgModal = document.getElementById("proJpgModal");
   document.getElementById("showJpg")?.addEventListener("click", () => {
-    modal?.classList.add("open");
-    modal?.setAttribute("aria-hidden","false");
+    jpgModal?.classList.add("open");
+    jpgModal?.setAttribute("aria-hidden","false");
   });
-
-  document.getElementById("ownerCloseImage")?.addEventListener("click", () => {
-    modal?.classList.remove("open");
-    modal?.setAttribute("aria-hidden","true");
+  document.getElementById("proCloseJpg")?.addEventListener("click", () => {
+    jpgModal?.classList.remove("open");
+    jpgModal?.setAttribute("aria-hidden","true");
   });
-
-  modal?.addEventListener("click", e => {
-    if(e.target === modal){
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden","true");
+  jpgModal?.addEventListener("click", e => {
+    if(e.target === jpgModal){
+      jpgModal.classList.remove("open");
+      jpgModal.setAttribute("aria-hidden","true");
     }
   });
 
-  document.getElementById("shareCv")?.addEventListener("click", async () => {
-    const ok = await shareFile(
-      CV_URL,
-      "CV_Gustavo_Gutierrez.pdf",
+  document.getElementById("shareCvGeneral")?.addEventListener("click", () => {
+    shareFile(
+      CV_GENERAL,
+      "Gustavo_Gutierrez_CV_General.pdf",
       "application/pdf",
-      "CV · Gustavo J. Gutiérrez",
+      "CV General · Gustavo J. Gutiérrez",
       "Currículum Vitae de Gustavo J. Gutiérrez"
     );
-    if(!ok) window.open(CV_URL, "_blank");
+  });
+
+  document.getElementById("shareCvCoord")?.addEventListener("click", () => {
+    shareFile(
+      CV_COORD,
+      "Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",
+      "application/pdf",
+      "CV Coordinación Operativa · Gustavo J. Gutiérrez",
+      "Currículum Vitae · Coordinación Operativa"
+    );
+  });
+
+  document.getElementById("shareCvAdmin")?.addEventListener("click", () => {
+    shareFile(
+      CV_ADMIN,
+      "Gustavo_Gutierrez_CV_Administracion.pdf",
+      "application/pdf",
+      "CV Administración · Gustavo J. Gutiérrez",
+      "Currículum Vitae · Administración"
+    );
+  });
+
+  document.getElementById("shareCvSalud")?.addEventListener("click", () => {
+    shareFile(
+      CV_SALUD,
+      "Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",
+      "application/pdf",
+      "CV Clínicas y Salud · Gustavo J. Gutiérrez",
+      "Currículum Vitae · Clínicas y Salud"
+    );
   });
 
   document.getElementById("copyPublicLink")?.addEventListener("click", () => {
@@ -649,6 +987,7 @@ if ("serviceWorker" in navigator) {
   });
 })();
 </script>
+
 
 </body>
 </html>

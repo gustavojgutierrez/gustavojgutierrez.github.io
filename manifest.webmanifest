@@ -1,13 +1,13 @@
 {
-  "name": "Gustavo J. Gutiérrez · Tarjeta Profesional",
+  "name": "Gustavo J. Gutiérrez · Panel Profesional",
   "short_name": "Gustavo Gutiérrez",
-  "description": "Tarjeta profesional digital de Gustavo J. Gutiérrez",
+  "description": "Panel privado para compartir tarjeta profesional, JPG y CV por perfil.",
   "id": "./",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#14171a",
-  "theme_color": "#14171a",
+  "background_color": "#090c0f",
+  "theme_color": "#090c0f",
   "icons": [
     {
       "src": "icon-192.png",
