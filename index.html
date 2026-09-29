@@ -294,13 +294,13 @@ body.b78-owner .b78-shell{
   background:#050607;
 }
 
-/* Se preserva estrictamente el aspecto de la pieza.
-   No hay estiramiento vertical ni fondo difuminado. */
+/* B7.9: ocupa TODO el área útil entre la barra superior y la navegación inferior.
+   Se mantiene la proporción original: no se estira.
+   object-fit:cover elimina las franjas negras y recorta mínimamente los laterales si hace falta. */
 .b78-stage{
   position:relative;
-  width:min(100vw, calc(100dvh * 941 / 1672));
-  aspect-ratio:941 / 1672;
-  flex:0 0 auto;
+  width:100vw;
+  height:100dvh;
   overflow:hidden;
   background:#050607;
 }
@@ -310,10 +310,32 @@ body.b78-owner .b78-shell{
   inset:0;
   width:100%;
   height:100%;
-  object-fit:contain;
+  object-fit:cover;
+  object-position:center center;
   display:block;
   user-select:none;
   -webkit-user-drag:none;
+  pointer-events:none;
+}
+
+/* Reemplazo visual limpio del texto de versión sobre el badge existente. */
+.b79-version{
+  position:absolute;
+  z-index:4;
+  left:67.7%;
+  top:7.1%;
+  width:21.4%;
+  height:4.9%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  background:linear-gradient(145deg,rgba(32,7,9,.98),rgba(11,12,14,.98));
+  border:1px solid rgba(255,36,44,.72);
+  box-shadow:inset 0 0 12px rgba(255,30,38,.10),0 0 14px rgba(255,30,38,.24);
+  color:#fff;
+  font:800 clamp(11px,1.8vh,18px)/1 Inter,"Segoe UI",Arial,sans-serif;
+  letter-spacing:.02em;
   pointer-events:none;
 }
 
@@ -475,7 +497,8 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
 
 <section class="b78-shell" id="b78Shell" aria-label="Panel privado de networking">
   <div class="b78-stage">
-    <img class="b78-ui" src="panel-ui-approved.png?v=b78" alt="Panel privado de networking de Gustavo J. Gutiérrez">
+    <img class="b78-ui" src="panel-ui-approved.png?v=b79" alt="Panel privado de networking de Gustavo J. Gutiérrez">
+    <div class="b79-version">PRO · B7.9</div>
 
     <button class="b78-hit" id="b78ShareCard" type="button" aria-label="Compartir tarjeta sin CV"></button>
     <button class="b78-hit" id="b78ShareFull" type="button" aria-label="Compartir tarjeta completa eligiendo CV"></button>
