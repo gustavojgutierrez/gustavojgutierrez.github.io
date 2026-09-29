@@ -1,13 +1,13 @@
 {
-  "name": "Gustavo J. Gutiérrez · Panel Profesional B7.1",
-  "short_name": "Gustavo B7.1",
-  "description": "Panel privado de networking profesional · B7.1",
+  "name": "Gustavo J. Gutiérrez · Panel Profesional B7.2",
+  "short_name": "Gustavo B7.2",
+  "description": "Panel privado de networking profesional · B7.2",
   "id": "./",
-  "start_url": "./?app=B7.1",
+  "start_url": "./?app=B7.2",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#050708",
-  "theme_color": "#050708",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "icons": [
     {
       "src": "icon-192.png",

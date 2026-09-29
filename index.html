@@ -258,476 +258,119 @@ body{
   .surname{font-size:33px;font-weight:800;letter-spacing:-.4px}
 }
 
-/* ============================================================
-   PANEL PRIVADO PRO · B7.1
-   Réplica funcional del diseño aprobado.
-   La tarjeta pública original no se toca.
-   ============================================================ */
-.b71-panel,.b71-modal{display:none}
+/* =========================================================
+   PANEL PRIVADO · PRO B7.2
+   La gráfica visible es la maqueta aprobada exacta.
+   Los botones funcionales se superponen sin alterar el diseño.
+   ========================================================= */
 
-body.b71-owner{
+.b72-shell,.b72-modal{display:none}
+
+body.b72-owner{
   margin:0!important;
   padding:0!important;
   min-height:100dvh;
   overflow:hidden!important;
-  background:#050708!important;
+  background:#000!important;
 }
-body.b71-owner>main.card{display:none!important}
+body.b72-owner>main.card{display:none!important}
 
-body.b71-owner .b71-panel{
-  position:relative;
-  isolation:isolate;
-  box-sizing:border-box;
-  width:100%;
-  height:100dvh;
-  padding:max(10px,env(safe-area-inset-top)) 12px max(7px,env(safe-area-inset-bottom));
-  display:grid;
-  grid-template-rows:
-    66px
-    minmax(0,1.34fr)
-    minmax(0,.93fr)
-    18px
-    minmax(0,1.02fr)
-    70px
-    12px;
-  gap:8px;
-  overflow:hidden;
-  color:#f4f6f7;
-  font-family:Inter,"Segoe UI",Arial,sans-serif;
-}
-
-/* Fondo del panel: negro grafito, topografía, líneas técnicas y puntos */
-.b71-bg{
-  position:absolute;
+body.b72-owner .b72-shell{
+  position:fixed;
   inset:0;
-  z-index:-10;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 11% 3%,rgba(188,14,22,.22),transparent 23%),
-    radial-gradient(circle at 88% 52%,rgba(154,11,18,.09),transparent 30%),
-    linear-gradient(155deg,#060809 0%,#12171b 48%,#07090b 100%);
-}
-.b71-bg::before{
-  content:"";
-  position:absolute;
-  inset:-2%;
-  opacity:.24;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='620' height='440' viewBox='0 0 620 440'%3E%3Cg fill='none' stroke='%23d7dde1' stroke-width='1'%3E%3Cpath d='M-45 60C50 8 117 128 222 71s174-7 255 31 124-2 188-38'/%3E%3Cpath d='M-33 88C62 38 127 153 233 98s169-5 250 32 120 0 182-35'/%3E%3Cpath d='M-20 118C75 70 140 180 246 127s165-3 245 33 115 2 176-32'/%3E%3Cpath d='M-6 150C89 104 154 208 261 158s159 0 239 34 110 4 170-29'/%3E%3Cpath d='M12 184C106 140 171 238 278 190s155 2 232 35 105 5 163-26'/%3E%3Cpath d='M34 220C126 178 191 269 299 223s149 4 224 36 100 7 156-22'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat:repeat-y;
-  background-size:118% auto;
-  background-position:center top;
-}
-.b71-bg::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  opacity:.70;
-  background:
-    linear-gradient(128deg,transparent 0 14%,rgba(224,20,28,.46) 14.08%,transparent 14.25%),
-    linear-gradient(34deg,transparent 0 78%,rgba(224,20,28,.27) 78.08%,transparent 78.24%),
-    radial-gradient(circle at 3% 14%,#e21b22 0 1px,transparent 2px),
-    radial-gradient(circle at 4% 15.2%,#e21b22 0 1px,transparent 2px),
-    radial-gradient(circle at 96% 38%,#d4dade 0 1px,transparent 2px),
-    radial-gradient(circle at 95% 39.2%,#d4dade 0 1px,transparent 2px);
-}
-
-/* Cabezal */
-.b71-header{
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  padding:7px 10px;
-  min-width:0;
-  border:1px solid rgba(202,209,214,.28);
-  border-radius:18px;
-  background:linear-gradient(145deg,rgba(17,22,26,.96),rgba(6,9,11,.94));
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.04),
-    0 12px 26px rgba(0,0,0,.22);
-}
-.b71-header::before{
-  content:"";
-  position:absolute;
-  left:106px;
-  bottom:0;
-  width:54px;
-  height:2px;
-  background:#df1a21;
-  box-shadow:0 0 12px rgba(223,26,33,.75);
-}
-.b71-id{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  min-width:0;
-}
-.b71-photo{
-  width:48px;
-  height:48px;
-  flex:0 0 48px;
-  object-fit:cover;
-  border-radius:15px;
-  border:1px solid #df1a21;
-  box-shadow:0 0 0 2px rgba(223,26,33,.18),0 0 18px rgba(223,26,33,.25);
-}
-.b71-name{min-width:0}
-.b71-name strong{
-  display:block;
-  font-size:15px;
-  line-height:1.04;
-  font-weight:850;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-.b71-name span{
-  display:block;
-  margin-top:4px;
-  color:#aab2ba;
-  font-size:7.6px;
-  letter-spacing:.13em;
-  text-transform:uppercase;
-}
-.b71-badge{
-  flex:0 0 auto;
-  min-width:78px;
-  padding:8px 10px;
-  border:1px solid #e11d24;
-  border-radius:16px;
-  background:linear-gradient(145deg,rgba(102,8,14,.80),rgba(9,11,13,.97));
-  color:#fff;
-  text-align:center;
-  font-size:8.2px;
-  font-weight:900;
-  letter-spacing:.08em;
-  box-shadow:inset 0 0 13px rgba(225,29,36,.12),0 0 19px rgba(225,29,36,.18);
-}
-
-/* Cards */
-.b71-grid2{
-  min-height:0;
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:8px;
-}
-.b71-card{
-  position:relative;
-  overflow:hidden;
-  appearance:none;
-  min-width:0;
-  border:1px solid rgba(211,217,221,.38);
-  border-radius:18px;
-  color:#f7f9fa;
-  background:linear-gradient(145deg,rgba(24,30,35,.97),rgba(7,10,12,.97));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 8px 24px rgba(0,0,0,.18);
-  font-family:inherit;
-  cursor:pointer;
-}
-.b71-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  opacity:.34;
-  background:
-    repeating-radial-gradient(
-      ellipse at 88% 9%,
-      transparent 0 10px,
-      rgba(188,197,203,.18) 11px,
-      transparent 12px 21px
-    );
-}
-.b71-card::after{
-  content:"";
-  position:absolute;
-  right:-20%;
-  bottom:-30%;
-  width:80%;
-  height:58%;
-  transform:rotate(-22deg);
-  border-top:1px solid rgba(225,24,31,.65);
-  background:linear-gradient(180deg,rgba(225,24,31,.09),transparent);
-  pointer-events:none;
-}
-.b71-card.red{
-  border-color:#ee2028;
-  background:linear-gradient(145deg,rgba(174,8,14,.98),rgba(62,4,8,.99));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 22px rgba(223,20,27,.18);
-}
-.b71-card:active{transform:scale(.985)}
-
-/* Botones principales */
-.b71-main{
-  padding:11px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  align-items:flex-start;
-  text-align:left;
-}
-.b71-icon-big{
-  position:relative;
-  z-index:2;
-  width:58px;
-  height:58px;
-  border-radius:16px;
-  display:grid;
-  place-items:center;
-  color:#f6f7f8;
-  background:linear-gradient(145deg,#30363b,#090c0e);
-  border:1px solid rgba(255,255,255,.26);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 18px rgba(225,24,31,.24);
-}
-.b71-icon-big svg{
-  width:34px;
-  height:34px;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.7;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-.b71-bubble{
-  position:absolute;
-  right:-8px;
-  bottom:-8px;
-  width:27px;
-  height:27px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:#d91820;
-  border:2px solid #111518;
-  color:#fff;
-  box-shadow:0 0 10px rgba(217,24,32,.42);
-}
-.b71-bubble svg{
-  width:13px;
-  height:13px;
-}
-.b71-copy{
-  position:relative;
-  z-index:2;
-}
-.b71-copy b{
-  display:block;
-  font-size:13px;
-  line-height:1.07;
-  font-weight:900;
-}
-.b71-copy span{
-  display:block;
-  margin-top:4px;
-  color:#abb4bc;
-  font-size:8px;
-}
-.b71-card.red .b71-copy span{
-  color:rgba(255,255,255,.75);
-}
-
-/* JPG row */
-.b71-small{
-  padding:9px 10px;
-  display:grid;
-  grid-template-columns:50px 1fr 25px;
-  gap:9px;
-  align-items:center;
-}
-.b71-icon{
-  position:relative;
-  z-index:2;
-  width:47px;
-  height:47px;
-  border-radius:14px;
-  display:grid;
-  place-items:center;
-  color:#f5f6f7;
-  background:linear-gradient(145deg,#30363b,#0b0e10);
-  border:1px solid rgba(255,255,255,.24);
-  box-shadow:0 0 15px rgba(224,22,29,.20);
-}
-.b71-icon svg{
-  width:27px;
-  height:27px;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:1.75;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-.b71-icon .chip{
-  position:absolute;
-  right:-8px;
-  bottom:-5px;
-  min-width:27px;
-  height:19px;
-  padding:0 4px;
-  border-radius:6px;
-  display:grid;
-  place-items:center;
-  background:#df1b22;
-  color:#fff;
-  font-size:7px;
-  font-weight:900;
-}
-.b71-small-text{
-  position:relative;
-  z-index:2;
-  text-align:left;
-}
-.b71-small-text b{
-  display:block;
-  font-size:10.5px;
-  line-height:1.06;
-  font-weight:900;
-}
-.b71-small-text span{
-  display:block;
-  margin-top:3px;
-  color:#8f99a3;
-  font-size:7px;
-}
-.b71-go{
-  position:relative;
-  z-index:2;
-  width:24px;
-  height:24px;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  border:1px solid #df1b22;
-  color:#fff;
-  background:rgba(7,9,11,.58);
-  font-size:17px;
-}
-
-/* Separador */
-.b71-section{
-  min-width:0;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  color:#b2bac1;
-  font-size:7.8px;
-  font-weight:900;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-}
-.b71-section .accent{
-  width:4px;
-  height:15px;
-  border-radius:2px;
-  background:#e11c23;
-  box-shadow:0 0 8px rgba(225,28,35,.6);
-}
-.b71-section::after{
-  content:"";
-  flex:1;
-  height:1px;
-  background:linear-gradient(90deg,rgba(197,204,210,.60),transparent);
-}
-
-/* CV cards */
-.b71-cv{
-  padding:7px 8px;
-  display:grid;
-  grid-template-columns:39px 1fr 24px;
-  gap:8px;
-  align-items:center;
-  text-align:left;
-}
-.b71-file{
-  position:relative;
-  z-index:2;
-  width:38px;
-  height:44px;
-  border-radius:10px;
-  display:grid;
-  place-items:center;
-  color:#fff;
-  background:linear-gradient(145deg,#30363b,#090c0e);
-  border:1px solid rgba(255,255,255,.22);
-  box-shadow:0 0 13px rgba(222,24,31,.18);
-}
-.b71-file::after{
-  content:"";
-  position:absolute;
-  right:-1px;
-  top:-1px;
-  width:11px;
-  height:11px;
-  background:linear-gradient(225deg,transparent 48%,rgba(255,255,255,.84) 50% 58%,transparent 60%);
-}
-.b71-file svg{
-  width:22px;
-  height:22px;
-  fill:none;
-  stroke:#e11c23;
-  stroke-width:2;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-.b71-cv-text{
-  position:relative;
-  z-index:2;
-  min-width:0;
-}
-.b71-cv-text strong{
-  display:block;
-  font-size:9.7px;
-  line-height:1.02;
-  font-weight:900;
-}
-.b71-cv-text span{
-  display:block;
-  margin-top:3px;
-  color:#abb3bb;
-  font-size:7px;
-  line-height:1.02;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-/* Copiar enlace */
-.b71-link{
-  padding:0 13px;
-  display:grid;
-  grid-template-columns:46px 1fr 26px;
-  gap:10px;
-  align-items:center;
-  text-align:left;
-}
-.b71-link b{
-  position:relative;
-  z-index:2;
-  font-size:12.5px;
-  font-weight:900;
-}
-
-/* Footer */
-.b71-footer{
+  z-index:20000;
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:6px;
-  color:#6b7680;
-  font-size:6.6px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-}
-.b71-footer .dot{
-  width:4px;
-  height:4px;
-  border-radius:50%;
-  background:#df1b22;
+  overflow:hidden;
+  background:#000;
+  padding:0;
 }
 
-/* Modal JPG */
-.b71-modal{
+.b72-stage{
+  position:relative;
+  height:100dvh;
+  width:auto;
+  max-width:100vw;
+  aspect-ratio:852 / 1846;
+  flex:0 0 auto;
+  overflow:hidden;
+  background:#050708;
+}
+
+.b72-ui{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  user-select:none;
+  -webkit-user-drag:none;
+  pointer-events:none;
+}
+
+/* Cubre únicamente el badge viejo "PRO V7" y muestra B7.2.
+   No se toca el resto de la gráfica aprobada. */
+.b72-version{
+  position:absolute;
+  left:70.2%;
+  top:6.25%;
+  width:17.4%;
+  height:4.25%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-sizing:border-box;
+  border:1px solid #ef2028;
+  border-radius:999px;
+  background:
+    radial-gradient(circle at 50% 15%,rgba(216,28,35,.28),transparent 60%),
+    linear-gradient(145deg,#401014,#080a0c 64%);
+  box-shadow:
+    inset 0 0 9px rgba(239,32,40,.20),
+    0 0 11px rgba(239,32,40,.42);
+  color:#fff;
+  font:800 clamp(7px,1.55vh,15px)/1 "Segoe UI",Arial,sans-serif;
+  letter-spacing:.035em;
+  text-shadow:0 0 6px rgba(255,255,255,.20);
+  pointer-events:none;
+}
+
+/* Hotspots funcionales sobre los botones ya dibujados */
+.b72-hit{
+  position:absolute;
+  z-index:3;
+  appearance:none;
+  border:0;
+  padding:0;
+  margin:0;
+  background:transparent;
+  cursor:pointer;
+  border-radius:5%;
+  -webkit-tap-highlight-color:transparent;
+}
+.b72-hit:active{
+  background:rgba(255,255,255,.045);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+}
+
+/* Coordenadas relativas a la maqueta 852×1846 */
+#b72ShareCard {left:5.1%; top:13.95%; width:42.6%; height:18.85%}
+#b72ShareFull {left:50.0%; top:13.95%; width:42.9%; height:18.85%}
+
+#b72ShareJpg  {left:5.2%; top:34.35%; width:42.5%; height:14.60%}
+#b72ShowJpg   {left:50.0%; top:34.35%; width:42.8%; height:14.60%}
+
+#b72CvGeneral {left:5.2%; top:53.70%; width:42.5%; height:9.20%}
+#b72CvCoord   {left:50.0%; top:53.70%; width:42.8%; height:9.20%}
+#b72CvAdmin   {left:5.2%; top:64.15%; width:42.5%; height:9.25%}
+#b72CvSalud   {left:50.0%; top:64.15%; width:42.8%; height:9.25%}
+
+#b72CopyLink  {left:5.2%; top:74.85%; width:87.6%; height:9.30%}
+
+/* JPG diseñado a pantalla completa */
+.b72-modal{
   position:fixed;
   inset:0;
   z-index:50000;
@@ -735,155 +378,75 @@ body.b71-owner .b71-panel{
   align-items:center;
   justify-content:center;
 }
-.b71-modal.open{display:flex}
-.b71-modal img{
-  display:block;
+.b72-modal.open{display:flex}
+.b72-modal img{
   width:auto;
   height:auto;
   max-width:100vw;
   max-height:100dvh;
   object-fit:contain;
 }
-.b71-close{
+.b72-close{
   position:fixed;
   z-index:50001;
   top:max(10px,env(safe-area-inset-top));
   right:10px;
-  width:40px;
-  height:40px;
+  width:42px;
+  height:42px;
   border-radius:13px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(7,9,11,.85);
+  color:#fff;
   display:grid;
   place-items:center;
-  border:1px solid rgba(255,255,255,.18);
-  background:rgba(7,9,11,.84);
-  color:#fff;
-  font-size:22px;
+  font-size:23px;
 }
 
-/* Vista pública sin CV */
+/* Tarjeta pública compartida sin CV */
 body.public-no-cv .btn.cv{display:none!important}
 body.public-no-cv .actions{grid-template-columns:1fr!important}
 
-/* S23 y similares: todo entra sin scroll */
-@media(max-height:760px){
-  body.b71-owner .b71-panel{
-    grid-template-rows:56px minmax(0,1.22fr) minmax(0,.86fr) 17px minmax(0,.96fr) 60px 10px;
-    gap:6px;
-    padding-top:max(8px,env(safe-area-inset-top));
-    padding-bottom:max(6px,env(safe-area-inset-bottom));
+/* Si el viewport resulta más ancho que la relación del S23,
+   se mantiene la maqueta íntegra con márgenes negros laterales. */
+@media (min-aspect-ratio: 852/1846){
+  .b72-stage{
+    height:100dvh;
+    width:auto;
   }
-  .b71-header{padding:5px 8px}
-  .b71-photo{width:42px;height:42px;flex-basis:42px}
-  .b71-main{padding:8px}
-  .b71-icon-big{width:48px;height:48px}
-  .b71-icon-big svg{width:28px;height:28px}
-  .b71-small{padding:7px 8px;grid-template-columns:42px 1fr 22px}
-  .b71-icon{width:40px;height:40px}
-  .b71-cv{padding:5px 6px;grid-template-columns:35px 1fr 22px}
-  .b71-file{width:34px;height:38px}
-  .b71-link{grid-template-columns:39px 1fr 23px}
+}
+@media (max-aspect-ratio: 852/1846){
+  .b72-stage{
+    width:100vw;
+    height:auto;
+  }
 }
 
 </style>
 </head>
 <body>
 
-<section class="b71-panel" aria-label="Panel privado de networking">
-  <div class="b71-bg"></div>
+<section class="b72-shell" id="b72Shell" aria-label="Panel privado de networking">
+  <div class="b72-stage">
+    <img class="b72-ui" src="panel-ui-approved.png" alt="Panel privado de networking de Gustavo J. Gutiérrez">
+    <div class="b72-version">PRO · B7.2</div>
 
-  <header class="b71-header">
-    <div class="b71-id">
-      <img class="b71-photo" src="portrait-panel.png" alt="">
-      <div class="b71-name">
-        <strong>Gustavo J. Gutiérrez</strong>
-        <span>Panel privado de networking</span>
-      </div>
-    </div>
-    <div class="b71-badge">PRO · B7.1</div>
-  </header>
+    <button class="b72-hit" id="b72ShareCard" type="button" aria-label="Compartir tarjeta sin CV"></button>
+    <button class="b72-hit" id="b72ShareFull" type="button" aria-label="Compartir tarjeta completa con CV General"></button>
 
-  <div class="b71-grid2">
-    <button class="b71-card b71-main red" type="button" id="b71ShareCard">
-      <span class="b71-icon-big">
-        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="15" height="14" rx="2"/><circle cx="8" cy="10" r="2"/><path d="M5.4 16c.8-2.4 4.4-2.4 5.2 0M13.5 9h2.5M13.5 12h2.5"/></svg>
-        <span class="b71-bubble">
-          <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.3 10.8 7.4-4.5M8.3 13.2l7.4 4.5"/></svg>
-        </span>
-      </span>
-      <span class="b71-copy"><b>Compartir tarjeta</b><span>Sin CV</span></span>
-    </button>
+    <button class="b72-hit" id="b72ShareJpg" type="button" aria-label="Compartir JPG"></button>
+    <button class="b72-hit" id="b72ShowJpg" type="button" aria-label="Mostrar JPG"></button>
 
-    <button class="b71-card b71-main" type="button" id="b71ShareFull">
-      <span class="b71-icon-big">
-        <svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5M9 12h6M9 15h6"/></svg>
-        <span class="b71-bubble">
-          <svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M8 9h8M8 13h8"/></svg>
-        </span>
-      </span>
-      <span class="b71-copy"><b>Tarjeta completa</b><span>+ CV General</span></span>
-    </button>
+    <button class="b72-hit" id="b72CvGeneral" type="button" aria-label="Compartir CV General"></button>
+    <button class="b72-hit" id="b72CvCoord" type="button" aria-label="Compartir CV Coordinación"></button>
+    <button class="b72-hit" id="b72CvAdmin" type="button" aria-label="Compartir CV Administración"></button>
+    <button class="b72-hit" id="b72CvSalud" type="button" aria-label="Compartir CV Clínicas y Salud"></button>
+
+    <button class="b72-hit" id="b72CopyLink" type="button" aria-label="Copiar enlace de tarjeta"></button>
   </div>
-
-  <div class="b71-grid2">
-    <button class="b71-card b71-small" type="button" id="b71ShareJpg">
-      <span class="b71-icon">
-        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m5 17 4.3-4.4 3.2 3.1 2-2 4.5 3.3"/></svg>
-        <span class="chip">JPG</span>
-      </span>
-      <span class="b71-small-text"><b>Compartir JPG</b><span>Enviar imagen</span></span>
-      <span class="b71-go">›</span>
-    </button>
-
-    <button class="b71-card b71-small" type="button" id="b71ShowJpg">
-      <span class="b71-icon">
-        <svg viewBox="0 0 24 24"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.6"/></svg>
-      </span>
-      <span class="b71-small-text"><b>Mostrar JPG</b><span>Para escanear QR</span></span>
-      <span class="b71-go">›</span>
-    </button>
-  </div>
-
-  <div class="b71-section"><span class="accent"></span><span>Currículum Vitae</span></div>
-
-  <div class="b71-grid2">
-    <button class="b71-card b71-cv" type="button" id="b71CvGeneral">
-      <span class="b71-file"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6.5 19c.8-4 10.2-4 11 0"/></svg></span>
-      <span class="b71-cv-text"><strong>CV</strong><span>General</span></span>
-      <span class="b71-go">›</span>
-    </button>
-
-    <button class="b71-card b71-cv" type="button" id="b71CvCoord">
-      <span class="b71-file"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg></span>
-      <span class="b71-cv-text"><strong>CV</strong><span>Coordinación</span></span>
-      <span class="b71-go">›</span>
-    </button>
-
-    <button class="b71-card b71-cv" type="button" id="b71CvAdmin">
-      <span class="b71-file"><svg viewBox="0 0 24 24"><path d="M5 20V10M10 20V5M15 20v-7M20 20V8"/></svg></span>
-      <span class="b71-cv-text"><strong>CV</strong><span>Administración</span></span>
-      <span class="b71-go">›</span>
-    </button>
-
-    <button class="b71-card b71-cv" type="button" id="b71CvSalud">
-      <span class="b71-file"><svg viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg></span>
-      <span class="b71-cv-text"><strong>CV</strong><span>Clínicas / Salud</span></span>
-      <span class="b71-go">›</span>
-    </button>
-  </div>
-
-  <button class="b71-card b71-link" type="button" id="b71CopyLink">
-    <span class="b71-icon">
-      <svg viewBox="0 0 24 24"><path d="M9.5 14.5 7 17a4 4 0 0 1-5.7-5.7l4-4A4 4 0 0 1 11 7"/><path d="m14.5 9.5 2.5-2.5a4 4 0 1 1 5.7 5.7l-4 4A4 4 0 0 1 13 17"/><path d="m8 16 8-8"/></svg>
-    </span>
-    <b>Copiar enlace</b>
-    <span class="b71-go">›</span>
-  </button>
-
-  <footer class="b71-footer"><span>GJG</span><span class="dot"></span><span>Professional Networking Toolkit</span></footer>
 </section>
 
-<div class="b71-modal" id="b71Modal" aria-hidden="true">
-  <button class="b71-close" type="button" id="b71Close" aria-label="Cerrar">×</button>
+<div class="b72-modal" id="b72Modal" aria-hidden="true">
+  <button class="b72-close" id="b72Close" type="button" aria-label="Cerrar">×</button>
   <img src="tarjeta-jpg.jpg" alt="Tarjeta profesional JPG con QR">
 </div>
 
@@ -952,11 +515,11 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
 
 <script>
 (() => {
-  const VERSION="B7.1";
   const BASE="https://gustavojgutierrez.github.io/";
   const SIMPLE=BASE+"?vista=contacto";
   const FULL=BASE+"?vista=completa";
   const JPG="./tarjeta-jpg.jpg";
+
   const CV_GENERAL="./Gustavo_Gutierrez_CV_General.pdf";
   const CV_COORD="./Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf";
   const CV_ADMIN="./Gustavo_Gutierrez_CV_Administracion.pdf";
@@ -968,23 +531,40 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
     window.matchMedia("(display-mode: standalone)").matches ||
     window.navigator.standalone===true;
 
-  if(standalone && !vista) document.body.classList.add("b71-owner");
-  if(vista==="contacto") document.body.classList.add("public-no-cv");
+  /* Solo la PWA instalada muestra el panel privado.
+     Los links compartidos siguen mostrando la tarjeta pública. */
+  if(standalone && !vista){
+    document.body.classList.add("b72-owner");
+  }
+  if(vista==="contacto"){
+    document.body.classList.add("public-no-cv");
+  }
 
   async function copyText(text,msg){
-    try{await navigator.clipboard.writeText(text);alert(msg);}
-    catch(e){
+    try{
+      await navigator.clipboard.writeText(text);
+      alert(msg);
+    }catch(e){
       const t=document.createElement("textarea");
-      t.value=text;t.style.position="fixed";t.style.opacity="0";
-      document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();
+      t.value=text;
+      t.style.position="fixed";
+      t.style.opacity="0";
+      document.body.appendChild(t);
+      t.select();
+      document.execCommand("copy");
+      t.remove();
       alert(msg);
     }
   }
 
   async function shareUrl(url,title,text){
     if(navigator.share){
-      try{await navigator.share({title,text,url});return;}
-      catch(e){if(e&&e.name==="AbortError")return;}
+      try{
+        await navigator.share({title,text,url});
+        return;
+      }catch(e){
+        if(e && e.name==="AbortError") return;
+      }
     }
     await copyText(url,"Enlace copiado");
   }
@@ -995,7 +575,8 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
       if(!r.ok) throw new Error("fetch");
       const blob=await r.blob();
       const file=new File([blob],filename,{type:mime});
-      if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
+
+      if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
         await navigator.share({title,text,files:[file]});
         return;
       }
@@ -1003,47 +584,80 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
     window.open(url,"_blank");
   }
 
-  document.getElementById("b71ShareCard")?.addEventListener("click",()=>shareUrl(
-    SIMPLE,"Gustavo J. Gutiérrez · Tarjeta profesional","Contacto profesional de Gustavo J. Gutiérrez"
-  ));
-  document.getElementById("b71ShareFull")?.addEventListener("click",()=>shareUrl(
-    FULL,"Gustavo J. Gutiérrez · Tarjeta profesional completa","Tarjeta profesional de Gustavo J. Gutiérrez con CV General"
-  ));
-  document.getElementById("b71ShareJpg")?.addEventListener("click",()=>shareFile(
-    JPG,"Tarjeta_Profesional_Gustavo_Gutierrez.jpg","image/jpeg",
-    "Tarjeta profesional · Gustavo J. Gutiérrez","Tarjeta profesional con QR"
+  document.getElementById("b72ShareCard")?.addEventListener("click",()=>shareUrl(
+    SIMPLE,
+    "Gustavo J. Gutiérrez · Tarjeta profesional",
+    "Contacto profesional de Gustavo J. Gutiérrez"
   ));
 
-  const modal=document.getElementById("b71Modal");
-  document.getElementById("b71ShowJpg")?.addEventListener("click",()=>{
-    modal?.classList.add("open");modal?.setAttribute("aria-hidden","false");
+  document.getElementById("b72ShareFull")?.addEventListener("click",()=>shareUrl(
+    FULL,
+    "Gustavo J. Gutiérrez · Tarjeta profesional completa",
+    "Tarjeta profesional de Gustavo J. Gutiérrez con CV General"
+  ));
+
+  document.getElementById("b72ShareJpg")?.addEventListener("click",()=>shareFile(
+    JPG,
+    "Tarjeta_Profesional_Gustavo_Gutierrez.jpg",
+    "image/jpeg",
+    "Tarjeta profesional · Gustavo J. Gutiérrez",
+    "Tarjeta profesional con QR"
+  ));
+
+  const modal=document.getElementById("b72Modal");
+
+  document.getElementById("b72ShowJpg")?.addEventListener("click",()=>{
+    modal?.classList.add("open");
+    modal?.setAttribute("aria-hidden","false");
   });
-  document.getElementById("b71Close")?.addEventListener("click",()=>{
-    modal?.classList.remove("open");modal?.setAttribute("aria-hidden","true");
+
+  document.getElementById("b72Close")?.addEventListener("click",()=>{
+    modal?.classList.remove("open");
+    modal?.setAttribute("aria-hidden","true");
   });
+
   modal?.addEventListener("click",e=>{
-    if(e.target===modal){modal.classList.remove("open");modal.setAttribute("aria-hidden","true");}
+    if(e.target===modal){
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden","true");
+    }
   });
 
-  document.getElementById("b71CvGeneral")?.addEventListener("click",()=>shareFile(
-    CV_GENERAL,"Gustavo_Gutierrez_CV_General.pdf","application/pdf",
-    "CV General · Gustavo J. Gutiérrez","Currículum Vitae general de Gustavo J. Gutiérrez"
-  ));
-  document.getElementById("b71CvCoord")?.addEventListener("click",()=>shareFile(
-    CV_COORD,"Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf","application/pdf",
-    "CV Coordinación Operativa · Gustavo J. Gutiérrez","Currículum Vitae · Coordinación Operativa"
-  ));
-  document.getElementById("b71CvAdmin")?.addEventListener("click",()=>shareFile(
-    CV_ADMIN,"Gustavo_Gutierrez_CV_Administracion.pdf","application/pdf",
-    "CV Administración · Gustavo J. Gutiérrez","Currículum Vitae · Administración"
-  ));
-  document.getElementById("b71CvSalud")?.addEventListener("click",()=>shareFile(
-    CV_SALUD,"Gustavo_Gutierrez_CV_Clinicas_Salud.pdf","application/pdf",
-    "CV Clínicas y Salud · Gustavo J. Gutiérrez","Currículum Vitae · Clínicas y Salud"
+  document.getElementById("b72CvGeneral")?.addEventListener("click",()=>shareFile(
+    CV_GENERAL,
+    "Gustavo_Gutierrez_CV_General.pdf",
+    "application/pdf",
+    "CV General · Gustavo J. Gutiérrez",
+    "Currículum Vitae general de Gustavo J. Gutiérrez"
   ));
 
-  document.getElementById("b71CopyLink")?.addEventListener("click",()=>copyText(
-    FULL,"Enlace de la tarjeta copiado"
+  document.getElementById("b72CvCoord")?.addEventListener("click",()=>shareFile(
+    CV_COORD,
+    "Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",
+    "application/pdf",
+    "CV Coordinación Operativa · Gustavo J. Gutiérrez",
+    "Currículum Vitae · Coordinación Operativa"
+  ));
+
+  document.getElementById("b72CvAdmin")?.addEventListener("click",()=>shareFile(
+    CV_ADMIN,
+    "Gustavo_Gutierrez_CV_Administracion.pdf",
+    "application/pdf",
+    "CV Administración · Gustavo J. Gutiérrez",
+    "Currículum Vitae · Administración"
+  ));
+
+  document.getElementById("b72CvSalud")?.addEventListener("click",()=>shareFile(
+    CV_SALUD,
+    "Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",
+    "application/pdf",
+    "CV Clínicas y Salud · Gustavo J. Gutiérrez",
+    "Currículum Vitae · Clínicas y Salud"
+  ));
+
+  document.getElementById("b72CopyLink")?.addEventListener("click",()=>copyText(
+    FULL,
+    "Enlace de la tarjeta copiado"
   ));
 })();
 </script>
