@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#14171a">
 <link rel="manifest" href="manifest.webmanifest">
@@ -256,341 +258,632 @@ body{
   .surname{font-size:33px;font-weight:800;letter-spacing:-.4px}
 }
 
-/* ===== PANEL PRIVADO PRO · V7 ===== */
-.pro-v7,.pro-v7-jpg-modal{display:none}
+/* ============================================================
+   PANEL PRIVADO PRO · B7.1
+   Réplica funcional del diseño aprobado.
+   La tarjeta pública original no se toca.
+   ============================================================ */
+.b71-panel,.b71-modal{display:none}
 
-body.pro-v7-owner{
-  margin:0!important;padding:0!important;width:100%;min-height:100dvh;
-  overflow:hidden!important;background:#07090b!important;
+body.b71-owner{
+  margin:0!important;
+  padding:0!important;
+  min-height:100dvh;
+  overflow:hidden!important;
+  background:#050708!important;
 }
-body.pro-v7-owner>main.card{display:none!important}
+body.b71-owner>main.card{display:none!important}
 
-body.pro-v7-owner .pro-v7{
-  position:relative;isolation:isolate;box-sizing:border-box;width:100%;height:100dvh;
-  padding:max(12px,env(safe-area-inset-top)) 12px max(9px,env(safe-area-inset-bottom));
+body.b71-owner .b71-panel{
+  position:relative;
+  isolation:isolate;
+  box-sizing:border-box;
+  width:100%;
+  height:100dvh;
+  padding:max(10px,env(safe-area-inset-top)) 12px max(7px,env(safe-area-inset-bottom));
   display:grid;
-  grid-template-rows:62px minmax(0,1.30fr) minmax(0,.92fr) 19px minmax(0,1.02fr) 67px 12px;
-  gap:8px;color:#f5f7f8;overflow:hidden;font-family:Inter,"Segoe UI",Arial,sans-serif;
+  grid-template-rows:
+    66px
+    minmax(0,1.34fr)
+    minmax(0,.93fr)
+    18px
+    minmax(0,1.02fr)
+    70px
+    12px;
+  gap:8px;
+  overflow:hidden;
+  color:#f4f6f7;
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
 }
-.pro-v7-bg{
-  position:absolute;inset:0;z-index:-5;overflow:hidden;
+
+/* Fondo del panel: negro grafito, topografía, líneas técnicas y puntos */
+.b71-bg{
+  position:absolute;
+  inset:0;
+  z-index:-10;
+  overflow:hidden;
   background:
-    radial-gradient(circle at 8% 4%,rgba(185,18,25,.20),transparent 24%),
-    radial-gradient(circle at 88% 52%,rgba(160,13,20,.08),transparent 29%),
-    linear-gradient(155deg,#07090b 0%,#12171b 48%,#080a0c 100%);
+    radial-gradient(circle at 11% 3%,rgba(188,14,22,.22),transparent 23%),
+    radial-gradient(circle at 88% 52%,rgba(154,11,18,.09),transparent 30%),
+    linear-gradient(155deg,#060809 0%,#12171b 48%,#07090b 100%);
 }
-.pro-v7-bg:before{
-  content:"";position:absolute;inset:-3%;opacity:.18;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='620' height='430' viewBox='0 0 620 430'%3E%3Cg fill='none' stroke='%23c8ced3' stroke-width='1'%3E%3Cpath d='M-60 74C38 11 111 142 220 78s181-13 267 33 128 3 190-45'/%3E%3Cpath d='M-48 99C49 38 120 166 229 104s178-11 263 34 125 4 186-40'/%3E%3Cpath d='M-36 126C60 67 133 190 242 131s173-8 257 35 120 5 181-37'/%3E%3Cpath d='M-22 155C73 99 147 215 255 159s169-5 251 36 117 6 176-34'/%3E%3Cpath d='M-6 186C89 131 161 240 270 188s164-2 244 37 112 7 170-31'/%3E%3Cpath d='M15 219C107 167 177 267 287 218s159 1 237 38 108 8 164-28'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat:repeat-y;background-size:115% auto;background-position:center top;
+.b71-bg::before{
+  content:"";
+  position:absolute;
+  inset:-2%;
+  opacity:.24;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='620' height='440' viewBox='0 0 620 440'%3E%3Cg fill='none' stroke='%23d7dde1' stroke-width='1'%3E%3Cpath d='M-45 60C50 8 117 128 222 71s174-7 255 31 124-2 188-38'/%3E%3Cpath d='M-33 88C62 38 127 153 233 98s169-5 250 32 120 0 182-35'/%3E%3Cpath d='M-20 118C75 70 140 180 246 127s165-3 245 33 115 2 176-32'/%3E%3Cpath d='M-6 150C89 104 154 208 261 158s159 0 239 34 110 4 170-29'/%3E%3Cpath d='M12 184C106 140 171 238 278 190s155 2 232 35 105 5 163-26'/%3E%3Cpath d='M34 220C126 178 191 269 299 223s149 4 224 36 100 7 156-22'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat:repeat-y;
+  background-size:118% auto;
+  background-position:center top;
 }
-.pro-v7-bg:after{
-  content:"";position:absolute;inset:0;opacity:.56;
+.b71-bg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.70;
   background:
-    linear-gradient(132deg,transparent 0 17%,rgba(223,25,32,.34) 17.08%,transparent 17.28%),
-    linear-gradient(42deg,transparent 0 79%,rgba(223,25,32,.22) 79.08%,transparent 79.25%);
+    linear-gradient(128deg,transparent 0 14%,rgba(224,20,28,.46) 14.08%,transparent 14.25%),
+    linear-gradient(34deg,transparent 0 78%,rgba(224,20,28,.27) 78.08%,transparent 78.24%),
+    radial-gradient(circle at 3% 14%,#e21b22 0 1px,transparent 2px),
+    radial-gradient(circle at 4% 15.2%,#e21b22 0 1px,transparent 2px),
+    radial-gradient(circle at 96% 38%,#d4dade 0 1px,transparent 2px),
+    radial-gradient(circle at 95% 39.2%,#d4dade 0 1px,transparent 2px);
 }
 
-/* Header */
-.pro-v7-header{
-  position:relative;display:flex;align-items:center;justify-content:space-between;min-width:0;
-  padding:7px 10px;border:1px solid rgba(196,204,210,.26);border-radius:18px;
-  background:linear-gradient(145deg,rgba(19,24,28,.93),rgba(8,11,13,.88));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 9px 28px rgba(0,0,0,.18);
+/* Cabezal */
+.b71-header{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:7px 10px;
+  min-width:0;
+  border:1px solid rgba(202,209,214,.28);
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(17,22,26,.96),rgba(6,9,11,.94));
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 12px 26px rgba(0,0,0,.22);
 }
-.pro-v7-header:after{
-  content:"";position:absolute;left:108px;bottom:0;width:44px;height:2px;background:#d31920;
-  box-shadow:0 0 11px rgba(211,25,32,.7);
+.b71-header::before{
+  content:"";
+  position:absolute;
+  left:106px;
+  bottom:0;
+  width:54px;
+  height:2px;
+  background:#df1a21;
+  box-shadow:0 0 12px rgba(223,26,33,.75);
 }
-.pro-v7-identity{display:flex;align-items:center;gap:10px;min-width:0}
-.pro-v7-photo{
-  width:46px;height:46px;flex:0 0 46px;object-fit:cover;border-radius:14px;
-  border:1px solid rgba(232,32,39,.92);
-  box-shadow:0 0 0 2px rgba(153,11,17,.25),0 0 18px rgba(211,25,32,.22);
+.b71-id{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
 }
-.pro-v7-title{min-width:0}
-.pro-v7-title strong{
-  display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-  font-size:15px;line-height:1.05;font-weight:800;letter-spacing:-.2px;
+.b71-photo{
+  width:48px;
+  height:48px;
+  flex:0 0 48px;
+  object-fit:cover;
+  border-radius:15px;
+  border:1px solid #df1a21;
+  box-shadow:0 0 0 2px rgba(223,26,33,.18),0 0 18px rgba(223,26,33,.25);
 }
-.pro-v7-title span{
-  display:block;margin-top:3px;color:#a9b2ba;font-size:7.5px;line-height:1;
-  letter-spacing:.13em;text-transform:uppercase;
+.b71-name{min-width:0}
+.b71-name strong{
+  display:block;
+  font-size:15px;
+  line-height:1.04;
+  font-weight:850;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
-.pro-v7-badge{
-  flex:0 0 auto;min-width:72px;padding:8px 10px;border-radius:14px;
-  border:1px solid rgba(238,30,38,.82);
-  background:linear-gradient(145deg,rgba(102,11,16,.72),rgba(10,12,14,.92));
-  box-shadow:inset 0 0 13px rgba(255,30,38,.11),0 0 17px rgba(213,24,31,.16);
-  text-align:center;font-size:8.5px;font-weight:900;letter-spacing:.08em;
+.b71-name span{
+  display:block;
+  margin-top:4px;
+  color:#aab2ba;
+  font-size:7.6px;
+  letter-spacing:.13em;
+  text-transform:uppercase;
 }
-
-/* Grids */
-.pro-v7-primary,.pro-v7-jpg-row,.pro-v7-cv-grid{
-  min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;
-}
-.pro-v7-card{
-  position:relative;overflow:hidden;appearance:none;min-width:0;
-  border:1px solid rgba(202,209,214,.34);border-radius:18px;color:#f8fafb;
-  font-family:inherit;cursor:pointer;text-align:left;
-  background:linear-gradient(145deg,rgba(23,29,34,.96),rgba(8,11,13,.96));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 8px 25px rgba(0,0,0,.17);
-}
-.pro-v7-card:before{
-  content:"";position:absolute;inset:0;pointer-events:none;opacity:.24;
-  background:repeating-radial-gradient(ellipse at 84% 18%,transparent 0 11px,rgba(190,198,205,.19) 12px,transparent 13px 22px);
-}
-.pro-v7-card:after{
-  content:"";position:absolute;right:-19%;bottom:-28%;width:78%;height:50%;transform:rotate(-22deg);
-  border-top:1px solid rgba(226,24,31,.55);
-  background:linear-gradient(180deg,rgba(215,22,29,.08),transparent);pointer-events:none;
-}
-.pro-v7-card.red{
-  border-color:rgba(245,35,42,.80);
-  background:linear-gradient(145deg,rgba(169,8,14,.96),rgba(74,5,9,.98));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 20px rgba(210,20,27,.13),0 8px 25px rgba(0,0,0,.17);
-}
-.pro-v7-card:active{transform:scale(.986)}
-
-/* Principales */
-.pro-v7-main{
-  padding:10px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;text-align:left;
-}
-.pro-v7-main-icon{
-  position:relative;width:55px;height:55px;border-radius:15px;display:grid;place-items:center;color:#f4f6f7;
-  background:linear-gradient(145deg,#31373c,#0d1012);border:1px solid rgba(255,255,255,.24);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 0 18px rgba(221,26,33,.22);
-}
-.pro-v7-main-icon svg{
-  width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;
-}
-.pro-v7-tag{
-  position:absolute;right:-7px;bottom:-7px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
-  background:#c9141b;border:2px solid #111518;color:#fff;box-shadow:0 0 10px rgba(217,22,29,.38);
-}
-.pro-v7-tag svg{width:13px;height:13px}
-.pro-v7-main-copy{position:relative;z-index:2}
-.pro-v7-main-copy b{display:block;font-size:13px;line-height:1.08;font-weight:850}
-.pro-v7-main-copy span{display:block;margin-top:4px;color:#aeb7bf;font-size:8px}
-.pro-v7-card.red .pro-v7-main-copy span{color:rgba(255,255,255,.72)}
-
-.pro-v7-chevron,.pro-v7-round{
-  position:relative;z-index:2;border-radius:50%;display:grid;place-items:center;
-  border:1px solid rgba(238,27,34,.95);color:#fff;background:rgba(5,7,9,.48);
-}
-.pro-v7-chevron{
-  position:absolute;right:10px;bottom:10px;width:28px;height:28px;font-size:20px;
-}
-.pro-v7-round{width:23px;height:23px;font-size:16px}
-
-/* JPG */
-.pro-v7-small{
-  padding:9px 10px;display:grid;grid-template-columns:48px 1fr 24px;gap:9px;align-items:center;
-}
-.pro-v7-icon{
-  position:relative;z-index:2;width:46px;height:46px;border-radius:13px;display:grid;place-items:center;color:#f4f6f7;
-  background:linear-gradient(145deg,#30363b,#0b0e10);border:1px solid rgba(255,255,255,.24);
-  box-shadow:0 0 15px rgba(213,24,31,.18);
-}
-.pro-v7-icon svg{
-  width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;
-}
-.pro-v7-icon .label{
-  position:absolute;right:-8px;bottom:-5px;min-width:25px;height:18px;padding:0 4px;border-radius:6px;
-  display:grid;place-items:center;background:#d71820;color:#fff;font-size:7px;font-weight:900;
-}
-.pro-v7-small-copy{position:relative;z-index:2}
-.pro-v7-small-copy b{display:block;font-size:10.5px;line-height:1.08;font-weight:850}
-.pro-v7-small-copy span{display:block;margin-top:3px;color:#8f9aa4;font-size:7px}
-
-/* Separador CV */
-.pro-v7-section{
-  min-width:0;display:flex;align-items:center;gap:8px;color:#aeb7bf;
-  font-size:7.5px;font-weight:850;letter-spacing:.15em;text-transform:uppercase;
-}
-.pro-v7-section .bar{
-  width:4px;height:15px;flex:0 0 4px;border-radius:2px;background:#df1920;box-shadow:0 0 8px rgba(223,25,32,.55);
-}
-.pro-v7-section:after{
-  content:"";height:1px;flex:1;background:linear-gradient(90deg,rgba(183,191,197,.58),transparent);
+.b71-badge{
+  flex:0 0 auto;
+  min-width:78px;
+  padding:8px 10px;
+  border:1px solid #e11d24;
+  border-radius:16px;
+  background:linear-gradient(145deg,rgba(102,8,14,.80),rgba(9,11,13,.97));
+  color:#fff;
+  text-align:center;
+  font-size:8.2px;
+  font-weight:900;
+  letter-spacing:.08em;
+  box-shadow:inset 0 0 13px rgba(225,29,36,.12),0 0 19px rgba(225,29,36,.18);
 }
 
-/* CV */
-.pro-v7-cv{
-  padding:7px 8px;display:grid;grid-template-columns:38px 1fr 23px;gap:8px;align-items:center;
+/* Cards */
+.b71-grid2{
+  min-height:0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
 }
-.pro-v7-cv-icon{
-  position:relative;z-index:2;width:37px;height:43px;border-radius:10px;display:grid;place-items:center;color:#f4f6f7;
-  background:linear-gradient(145deg,#2d3338,#0a0d0f);border:1px solid rgba(255,255,255,.22);
-  box-shadow:0 0 12px rgba(209,23,30,.17);
+.b71-card{
+  position:relative;
+  overflow:hidden;
+  appearance:none;
+  min-width:0;
+  border:1px solid rgba(211,217,221,.38);
+  border-radius:18px;
+  color:#f7f9fa;
+  background:linear-gradient(145deg,rgba(24,30,35,.97),rgba(7,10,12,.97));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 8px 24px rgba(0,0,0,.18);
+  font-family:inherit;
+  cursor:pointer;
 }
-.pro-v7-cv-icon:after{
-  content:"";position:absolute;right:-1px;top:-1px;width:11px;height:11px;
-  background:linear-gradient(225deg,transparent 48%,rgba(255,255,255,.85) 50% 57%,transparent 59%);
+.b71-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.34;
+  background:
+    repeating-radial-gradient(
+      ellipse at 88% 9%,
+      transparent 0 10px,
+      rgba(188,197,203,.18) 11px,
+      transparent 12px 21px
+    );
 }
-.pro-v7-cv-icon svg{
-  width:21px;height:21px;fill:none;stroke:#e01a21;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+.b71-card::after{
+  content:"";
+  position:absolute;
+  right:-20%;
+  bottom:-30%;
+  width:80%;
+  height:58%;
+  transform:rotate(-22deg);
+  border-top:1px solid rgba(225,24,31,.65);
+  background:linear-gradient(180deg,rgba(225,24,31,.09),transparent);
+  pointer-events:none;
 }
-.pro-v7-cv-copy{position:relative;z-index:2;min-width:0}
-.pro-v7-cv-copy strong{display:block;font-size:9.6px;line-height:1.05;font-weight:900}
-.pro-v7-cv-copy span{
-  display:block;margin-top:3px;color:#a7b0b8;font-size:7px;line-height:1.05;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+.b71-card.red{
+  border-color:#ee2028;
+  background:linear-gradient(145deg,rgba(174,8,14,.98),rgba(62,4,8,.99));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 0 22px rgba(223,20,27,.18);
+}
+.b71-card:active{transform:scale(.985)}
+
+/* Botones principales */
+.b71-main{
+  padding:11px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:flex-start;
+  text-align:left;
+}
+.b71-icon-big{
+  position:relative;
+  z-index:2;
+  width:58px;
+  height:58px;
+  border-radius:16px;
+  display:grid;
+  place-items:center;
+  color:#f6f7f8;
+  background:linear-gradient(145deg,#30363b,#090c0e);
+  border:1px solid rgba(255,255,255,.26);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 0 18px rgba(225,24,31,.24);
+}
+.b71-icon-big svg{
+  width:34px;
+  height:34px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.b71-bubble{
+  position:absolute;
+  right:-8px;
+  bottom:-8px;
+  width:27px;
+  height:27px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:#d91820;
+  border:2px solid #111518;
+  color:#fff;
+  box-shadow:0 0 10px rgba(217,24,32,.42);
+}
+.b71-bubble svg{
+  width:13px;
+  height:13px;
+}
+.b71-copy{
+  position:relative;
+  z-index:2;
+}
+.b71-copy b{
+  display:block;
+  font-size:13px;
+  line-height:1.07;
+  font-weight:900;
+}
+.b71-copy span{
+  display:block;
+  margin-top:4px;
+  color:#abb4bc;
+  font-size:8px;
+}
+.b71-card.red .b71-copy span{
+  color:rgba(255,255,255,.75);
 }
 
-/* Copiar link */
-.pro-v7-copy{
-  padding:0 13px;display:grid;grid-template-columns:45px 1fr 28px;gap:10px;align-items:center;
+/* JPG row */
+.b71-small{
+  padding:9px 10px;
+  display:grid;
+  grid-template-columns:50px 1fr 25px;
+  gap:9px;
+  align-items:center;
 }
-.pro-v7-copy .pro-v7-icon{width:43px;height:43px}
-.pro-v7-copy b{position:relative;z-index:2;font-size:12px;font-weight:850}
+.b71-icon{
+  position:relative;
+  z-index:2;
+  width:47px;
+  height:47px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  color:#f5f6f7;
+  background:linear-gradient(145deg,#30363b,#0b0e10);
+  border:1px solid rgba(255,255,255,.24);
+  box-shadow:0 0 15px rgba(224,22,29,.20);
+}
+.b71-icon svg{
+  width:27px;
+  height:27px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.75;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.b71-icon .chip{
+  position:absolute;
+  right:-8px;
+  bottom:-5px;
+  min-width:27px;
+  height:19px;
+  padding:0 4px;
+  border-radius:6px;
+  display:grid;
+  place-items:center;
+  background:#df1b22;
+  color:#fff;
+  font-size:7px;
+  font-weight:900;
+}
+.b71-small-text{
+  position:relative;
+  z-index:2;
+  text-align:left;
+}
+.b71-small-text b{
+  display:block;
+  font-size:10.5px;
+  line-height:1.06;
+  font-weight:900;
+}
+.b71-small-text span{
+  display:block;
+  margin-top:3px;
+  color:#8f99a3;
+  font-size:7px;
+}
+.b71-go{
+  position:relative;
+  z-index:2;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  border:1px solid #df1b22;
+  color:#fff;
+  background:rgba(7,9,11,.58);
+  font-size:17px;
+}
 
-/* footer */
-.pro-v7-footer{
-  display:flex;align-items:center;justify-content:center;gap:6px;color:#68747e;
-  font-size:6.6px;letter-spacing:.12em;text-transform:uppercase;
+/* Separador */
+.b71-section{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#b2bac1;
+  font-size:7.8px;
+  font-weight:900;
+  letter-spacing:.15em;
+  text-transform:uppercase;
 }
-.pro-v7-footer .dot{width:4px;height:4px;border-radius:50%;background:#d51a21}
+.b71-section .accent{
+  width:4px;
+  height:15px;
+  border-radius:2px;
+  background:#e11c23;
+  box-shadow:0 0 8px rgba(225,28,35,.6);
+}
+.b71-section::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg,rgba(197,204,210,.60),transparent);
+}
 
-/* JPG full */
-.pro-v7-jpg-modal{
-  position:fixed;inset:0;z-index:50000;background:#030405;align-items:center;justify-content:center;
+/* CV cards */
+.b71-cv{
+  padding:7px 8px;
+  display:grid;
+  grid-template-columns:39px 1fr 24px;
+  gap:8px;
+  align-items:center;
+  text-align:left;
 }
-.pro-v7-jpg-modal.open{display:flex}
-.pro-v7-jpg-modal img{
-  display:block;max-width:100vw;max-height:100dvh;width:auto;height:auto;object-fit:contain;
+.b71-file{
+  position:relative;
+  z-index:2;
+  width:38px;
+  height:44px;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  color:#fff;
+  background:linear-gradient(145deg,#30363b,#090c0e);
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 0 13px rgba(222,24,31,.18);
 }
-.pro-v7-close{
-  position:fixed;z-index:50001;top:max(10px,env(safe-area-inset-top));right:10px;
-  width:40px;height:40px;border-radius:13px;display:grid;place-items:center;
-  border:1px solid rgba(255,255,255,.18);background:rgba(7,9,11,.84);color:#fff;font-size:22px;
+.b71-file::after{
+  content:"";
+  position:absolute;
+  right:-1px;
+  top:-1px;
+  width:11px;
+  height:11px;
+  background:linear-gradient(225deg,transparent 48%,rgba(255,255,255,.84) 50% 58%,transparent 60%);
+}
+.b71-file svg{
+  width:22px;
+  height:22px;
+  fill:none;
+  stroke:#e11c23;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.b71-cv-text{
+  position:relative;
+  z-index:2;
+  min-width:0;
+}
+.b71-cv-text strong{
+  display:block;
+  font-size:9.7px;
+  line-height:1.02;
+  font-weight:900;
+}
+.b71-cv-text span{
+  display:block;
+  margin-top:3px;
+  color:#abb3bb;
+  font-size:7px;
+  line-height:1.02;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
-/* Tarjeta pública sin CV */
+/* Copiar enlace */
+.b71-link{
+  padding:0 13px;
+  display:grid;
+  grid-template-columns:46px 1fr 26px;
+  gap:10px;
+  align-items:center;
+  text-align:left;
+}
+.b71-link b{
+  position:relative;
+  z-index:2;
+  font-size:12.5px;
+  font-weight:900;
+}
+
+/* Footer */
+.b71-footer{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  color:#6b7680;
+  font-size:6.6px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.b71-footer .dot{
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:#df1b22;
+}
+
+/* Modal JPG */
+.b71-modal{
+  position:fixed;
+  inset:0;
+  z-index:50000;
+  background:#030405;
+  align-items:center;
+  justify-content:center;
+}
+.b71-modal.open{display:flex}
+.b71-modal img{
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:100vw;
+  max-height:100dvh;
+  object-fit:contain;
+}
+.b71-close{
+  position:fixed;
+  z-index:50001;
+  top:max(10px,env(safe-area-inset-top));
+  right:10px;
+  width:40px;
+  height:40px;
+  border-radius:13px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(7,9,11,.84);
+  color:#fff;
+  font-size:22px;
+}
+
+/* Vista pública sin CV */
 body.public-no-cv .btn.cv{display:none!important}
 body.public-no-cv .actions{grid-template-columns:1fr!important}
 
-/* Pantallas más bajas */
+/* S23 y similares: todo entra sin scroll */
 @media(max-height:760px){
-  body.pro-v7-owner .pro-v7{
-    grid-template-rows:54px minmax(0,1.20fr) minmax(0,.84fr) 17px minmax(0,.95fr) 59px 10px;
-    gap:6px;padding-top:max(8px,env(safe-area-inset-top));padding-bottom:max(6px,env(safe-area-inset-bottom));
+  body.b71-owner .b71-panel{
+    grid-template-rows:56px minmax(0,1.22fr) minmax(0,.86fr) 17px minmax(0,.96fr) 60px 10px;
+    gap:6px;
+    padding-top:max(8px,env(safe-area-inset-top));
+    padding-bottom:max(6px,env(safe-area-inset-bottom));
   }
-  .pro-v7-header{padding:5px 8px}
-  .pro-v7-photo{width:40px;height:40px;flex-basis:40px}
-  .pro-v7-main{padding:8px}
-  .pro-v7-main-icon{width:46px;height:46px}
-  .pro-v7-main-icon svg{width:27px;height:27px}
-  .pro-v7-small{padding:7px 8px;grid-template-columns:41px 1fr 22px}
-  .pro-v7-icon{width:39px;height:39px}
-  .pro-v7-cv{padding:5px 6px;grid-template-columns:34px 1fr 21px}
-  .pro-v7-cv-icon{width:33px;height:37px}
-  .pro-v7-copy{padding:0 10px;grid-template-columns:38px 1fr 24px}
-  .pro-v7-copy .pro-v7-icon{width:37px;height:37px}
+  .b71-header{padding:5px 8px}
+  .b71-photo{width:42px;height:42px;flex-basis:42px}
+  .b71-main{padding:8px}
+  .b71-icon-big{width:48px;height:48px}
+  .b71-icon-big svg{width:28px;height:28px}
+  .b71-small{padding:7px 8px;grid-template-columns:42px 1fr 22px}
+  .b71-icon{width:40px;height:40px}
+  .b71-cv{padding:5px 6px;grid-template-columns:35px 1fr 22px}
+  .b71-file{width:34px;height:38px}
+  .b71-link{grid-template-columns:39px 1fr 23px}
 }
 
 </style>
 </head>
 <body>
 
-<section class="pro-v7" aria-label="Panel privado de networking">
-  <div class="pro-v7-bg"></div>
+<section class="b71-panel" aria-label="Panel privado de networking">
+  <div class="b71-bg"></div>
 
-  <header class="pro-v7-header">
-    <div class="pro-v7-identity">
-      <img class="pro-v7-photo" src="portrait-panel.png" alt="">
-      <div class="pro-v7-title">
+  <header class="b71-header">
+    <div class="b71-id">
+      <img class="b71-photo" src="portrait-panel.png" alt="">
+      <div class="b71-name">
         <strong>Gustavo J. Gutiérrez</strong>
         <span>Panel privado de networking</span>
       </div>
     </div>
-    <div class="pro-v7-badge">PRO · V7</div>
+    <div class="b71-badge">PRO · B7.1</div>
   </header>
 
-  <div class="pro-v7-primary">
-    <button class="pro-v7-card pro-v7-main red" type="button" id="v7ShareCard">
-      <span class="pro-v7-main-icon">
+  <div class="b71-grid2">
+    <button class="b71-card b71-main red" type="button" id="b71ShareCard">
+      <span class="b71-icon-big">
         <svg viewBox="0 0 24 24"><rect x="3" y="5" width="15" height="14" rx="2"/><circle cx="8" cy="10" r="2"/><path d="M5.4 16c.8-2.4 4.4-2.4 5.2 0M13.5 9h2.5M13.5 12h2.5"/></svg>
-        <span class="pro-v7-tag">
+        <span class="b71-bubble">
           <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.3 10.8 7.4-4.5M8.3 13.2l7.4 4.5"/></svg>
         </span>
       </span>
-      <span class="pro-v7-main-copy"><b>Compartir tarjeta</b><span>Sin CV</span></span>
-      <span class="pro-v7-chevron">›</span>
+      <span class="b71-copy"><b>Compartir tarjeta</b><span>Sin CV</span></span>
     </button>
 
-    <button class="pro-v7-card pro-v7-main" type="button" id="v7ShareFull">
-      <span class="pro-v7-main-icon">
+    <button class="b71-card b71-main" type="button" id="b71ShareFull">
+      <span class="b71-icon-big">
         <svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5M9 12h6M9 15h6"/></svg>
-        <span class="pro-v7-tag">
+        <span class="b71-bubble">
           <svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M8 9h8M8 13h8"/></svg>
         </span>
       </span>
-      <span class="pro-v7-main-copy"><b>Tarjeta completa</b><span>+ CV General</span></span>
-      <span class="pro-v7-chevron">›</span>
+      <span class="b71-copy"><b>Tarjeta completa</b><span>+ CV General</span></span>
     </button>
   </div>
 
-  <div class="pro-v7-jpg-row">
-    <button class="pro-v7-card pro-v7-small" type="button" id="v7ShareJpg">
-      <span class="pro-v7-icon">
+  <div class="b71-grid2">
+    <button class="b71-card b71-small" type="button" id="b71ShareJpg">
+      <span class="b71-icon">
         <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m5 17 4.3-4.4 3.2 3.1 2-2 4.5 3.3"/></svg>
-        <span class="label">JPG</span>
+        <span class="chip">JPG</span>
       </span>
-      <span class="pro-v7-small-copy"><b>Compartir JPG</b><span>Enviar imagen</span></span>
-      <span class="pro-v7-round">›</span>
+      <span class="b71-small-text"><b>Compartir JPG</b><span>Enviar imagen</span></span>
+      <span class="b71-go">›</span>
     </button>
 
-    <button class="pro-v7-card pro-v7-small" type="button" id="v7ShowJpg">
-      <span class="pro-v7-icon">
+    <button class="b71-card b71-small" type="button" id="b71ShowJpg">
+      <span class="b71-icon">
         <svg viewBox="0 0 24 24"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.6"/></svg>
       </span>
-      <span class="pro-v7-small-copy"><b>Mostrar JPG</b><span>Para escanear QR</span></span>
-      <span class="pro-v7-round">›</span>
+      <span class="b71-small-text"><b>Mostrar JPG</b><span>Para escanear QR</span></span>
+      <span class="b71-go">›</span>
     </button>
   </div>
 
-  <div class="pro-v7-section"><span class="bar"></span><span>Currículum Vitae</span></div>
+  <div class="b71-section"><span class="accent"></span><span>Currículum Vitae</span></div>
 
-  <div class="pro-v7-cv-grid">
-    <button class="pro-v7-card pro-v7-cv" type="button" id="v7CvGeneral">
-      <span class="pro-v7-cv-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6.5 19c.8-4 10.2-4 11 0"/></svg></span>
-      <span class="pro-v7-cv-copy"><strong>CV</strong><span>General</span></span>
-      <span class="pro-v7-round">›</span>
+  <div class="b71-grid2">
+    <button class="b71-card b71-cv" type="button" id="b71CvGeneral">
+      <span class="b71-file"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6.5 19c.8-4 10.2-4 11 0"/></svg></span>
+      <span class="b71-cv-text"><strong>CV</strong><span>General</span></span>
+      <span class="b71-go">›</span>
     </button>
 
-    <button class="pro-v7-card pro-v7-cv" type="button" id="v7CvCoord">
-      <span class="pro-v7-cv-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg></span>
-      <span class="pro-v7-cv-copy"><strong>CV</strong><span>Coordinación</span></span>
-      <span class="pro-v7-round">›</span>
+    <button class="b71-card b71-cv" type="button" id="b71CvCoord">
+      <span class="b71-file"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg></span>
+      <span class="b71-cv-text"><strong>CV</strong><span>Coordinación</span></span>
+      <span class="b71-go">›</span>
     </button>
 
-    <button class="pro-v7-card pro-v7-cv" type="button" id="v7CvAdmin">
-      <span class="pro-v7-cv-icon"><svg viewBox="0 0 24 24"><path d="M5 20V10M10 20V5M15 20v-7M20 20V8"/></svg></span>
-      <span class="pro-v7-cv-copy"><strong>CV</strong><span>Administración</span></span>
-      <span class="pro-v7-round">›</span>
+    <button class="b71-card b71-cv" type="button" id="b71CvAdmin">
+      <span class="b71-file"><svg viewBox="0 0 24 24"><path d="M5 20V10M10 20V5M15 20v-7M20 20V8"/></svg></span>
+      <span class="b71-cv-text"><strong>CV</strong><span>Administración</span></span>
+      <span class="b71-go">›</span>
     </button>
 
-    <button class="pro-v7-card pro-v7-cv" type="button" id="v7CvSalud">
-      <span class="pro-v7-cv-icon"><svg viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg></span>
-      <span class="pro-v7-cv-copy"><strong>CV</strong><span>Clínicas / Salud</span></span>
-      <span class="pro-v7-round">›</span>
+    <button class="b71-card b71-cv" type="button" id="b71CvSalud">
+      <span class="b71-file"><svg viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg></span>
+      <span class="b71-cv-text"><strong>CV</strong><span>Clínicas / Salud</span></span>
+      <span class="b71-go">›</span>
     </button>
   </div>
 
-  <button class="pro-v7-card pro-v7-copy" type="button" id="v7CopyLink">
-    <span class="pro-v7-icon">
+  <button class="b71-card b71-link" type="button" id="b71CopyLink">
+    <span class="b71-icon">
       <svg viewBox="0 0 24 24"><path d="M9.5 14.5 7 17a4 4 0 0 1-5.7-5.7l4-4A4 4 0 0 1 11 7"/><path d="m14.5 9.5 2.5-2.5a4 4 0 1 1 5.7 5.7l-4 4A4 4 0 0 1 13 17"/><path d="m8 16 8-8"/></svg>
     </span>
     <b>Copiar enlace</b>
-    <span class="pro-v7-round">›</span>
+    <span class="b71-go">›</span>
   </button>
 
-  <footer class="pro-v7-footer"><span>GJG</span><span class="dot"></span><span>Professional Networking Toolkit</span></footer>
+  <footer class="b71-footer"><span>GJG</span><span class="dot"></span><span>Professional Networking Toolkit</span></footer>
 </section>
 
-<div class="pro-v7-jpg-modal" id="v7JpgModal" aria-hidden="true">
-  <button class="pro-v7-close" type="button" id="v7CloseJpg" aria-label="Cerrar">×</button>
+<div class="b71-modal" id="b71Modal" aria-hidden="true">
+  <button class="b71-close" type="button" id="b71Close" aria-label="Cerrar">×</button>
   <img src="tarjeta-jpg.jpg" alt="Tarjeta profesional JPG con QR">
 </div>
 
@@ -659,51 +952,50 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
 
 <script>
 (() => {
-  const BASE_URL = "https://gustavojgutierrez.github.io/";
-  const SIMPLE_URL = BASE_URL + "?vista=contacto";
-  const FULL_URL = BASE_URL + "?vista=completa";
-  const JPG_URL = "./tarjeta-jpg.jpg";
-  const CV_GENERAL = "./Gustavo_Gutierrez_CV_General.pdf";
-  const CV_COORD = "./Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf";
-  const CV_ADMIN = "./Gustavo_Gutierrez_CV_Administracion.pdf";
-  const CV_SALUD = "./Gustavo_Gutierrez_CV_Clinicas_Salud.pdf";
+  const VERSION="B7.1";
+  const BASE="https://gustavojgutierrez.github.io/";
+  const SIMPLE=BASE+"?vista=contacto";
+  const FULL=BASE+"?vista=completa";
+  const JPG="./tarjeta-jpg.jpg";
+  const CV_GENERAL="./Gustavo_Gutierrez_CV_General.pdf";
+  const CV_COORD="./Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf";
+  const CV_ADMIN="./Gustavo_Gutierrez_CV_Administracion.pdf";
+  const CV_SALUD="./Gustavo_Gutierrez_CV_Clinicas_Salud.pdf";
 
-  const params = new URLSearchParams(location.search);
-  const vista = params.get("vista");
-  const standalone =
+  const params=new URLSearchParams(location.search);
+  const vista=params.get("vista");
+  const standalone=
     window.matchMedia("(display-mode: standalone)").matches ||
-    window.navigator.standalone === true;
+    window.navigator.standalone===true;
 
-  if (standalone && !vista) document.body.classList.add("pro-v7-owner");
-  if (vista === "contacto") document.body.classList.add("public-no-cv");
+  if(standalone && !vista) document.body.classList.add("b71-owner");
+  if(vista==="contacto") document.body.classList.add("public-no-cv");
 
-  async function copyText(text, message){
-    try{
-      await navigator.clipboard.writeText(text);
-      alert(message);
-    }catch(e){
-      const el=document.createElement("textarea");
-      el.value=text;el.style.position="fixed";el.style.opacity="0";
-      document.body.appendChild(el);el.select();document.execCommand("copy");el.remove();
-      alert(message);
+  async function copyText(text,msg){
+    try{await navigator.clipboard.writeText(text);alert(msg);}
+    catch(e){
+      const t=document.createElement("textarea");
+      t.value=text;t.style.position="fixed";t.style.opacity="0";
+      document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();
+      alert(msg);
     }
   }
 
   async function shareUrl(url,title,text){
     if(navigator.share){
       try{await navigator.share({title,text,url});return;}
-      catch(e){if(e && e.name==="AbortError") return;}
+      catch(e){if(e&&e.name==="AbortError")return;}
     }
     await copyText(url,"Enlace copiado");
   }
 
   async function shareFile(url,filename,mime,title,text){
     try{
-      const res=await fetch(url,{cache:"no-store"});
-      if(!res.ok) throw new Error("file");
-      const blob=await res.blob();
+      const r=await fetch(url,{cache:"no-store"});
+      if(!r.ok) throw new Error("fetch");
+      const blob=await r.blob();
       const file=new File([blob],filename,{type:mime});
-      if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
+      if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
         await navigator.share({title,text,files:[file]});
         return;
       }
@@ -711,51 +1003,47 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
     window.open(url,"_blank");
   }
 
-  document.getElementById("v7ShareCard")?.addEventListener("click",()=>shareUrl(
-    SIMPLE_URL,"Gustavo J. Gutiérrez · Tarjeta profesional",
-    "Contacto profesional de Gustavo J. Gutiérrez"
+  document.getElementById("b71ShareCard")?.addEventListener("click",()=>shareUrl(
+    SIMPLE,"Gustavo J. Gutiérrez · Tarjeta profesional","Contacto profesional de Gustavo J. Gutiérrez"
   ));
-
-  document.getElementById("v7ShareFull")?.addEventListener("click",()=>shareUrl(
-    FULL_URL,"Gustavo J. Gutiérrez · Tarjeta profesional completa",
-    "Tarjeta profesional de Gustavo J. Gutiérrez con CV General"
+  document.getElementById("b71ShareFull")?.addEventListener("click",()=>shareUrl(
+    FULL,"Gustavo J. Gutiérrez · Tarjeta profesional completa","Tarjeta profesional de Gustavo J. Gutiérrez con CV General"
   ));
-
-  document.getElementById("v7ShareJpg")?.addEventListener("click",()=>shareFile(
-    JPG_URL,"Tarjeta_Profesional_Gustavo_Gutierrez.jpg","image/jpeg",
+  document.getElementById("b71ShareJpg")?.addEventListener("click",()=>shareFile(
+    JPG,"Tarjeta_Profesional_Gustavo_Gutierrez.jpg","image/jpeg",
     "Tarjeta profesional · Gustavo J. Gutiérrez","Tarjeta profesional con QR"
   ));
 
-  const modal=document.getElementById("v7JpgModal");
-  document.getElementById("v7ShowJpg")?.addEventListener("click",()=>{
+  const modal=document.getElementById("b71Modal");
+  document.getElementById("b71ShowJpg")?.addEventListener("click",()=>{
     modal?.classList.add("open");modal?.setAttribute("aria-hidden","false");
   });
-  document.getElementById("v7CloseJpg")?.addEventListener("click",()=>{
+  document.getElementById("b71Close")?.addEventListener("click",()=>{
     modal?.classList.remove("open");modal?.setAttribute("aria-hidden","true");
   });
   modal?.addEventListener("click",e=>{
     if(e.target===modal){modal.classList.remove("open");modal.setAttribute("aria-hidden","true");}
   });
 
-  document.getElementById("v7CvGeneral")?.addEventListener("click",()=>shareFile(
+  document.getElementById("b71CvGeneral")?.addEventListener("click",()=>shareFile(
     CV_GENERAL,"Gustavo_Gutierrez_CV_General.pdf","application/pdf",
     "CV General · Gustavo J. Gutiérrez","Currículum Vitae general de Gustavo J. Gutiérrez"
   ));
-  document.getElementById("v7CvCoord")?.addEventListener("click",()=>shareFile(
+  document.getElementById("b71CvCoord")?.addEventListener("click",()=>shareFile(
     CV_COORD,"Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf","application/pdf",
     "CV Coordinación Operativa · Gustavo J. Gutiérrez","Currículum Vitae · Coordinación Operativa"
   ));
-  document.getElementById("v7CvAdmin")?.addEventListener("click",()=>shareFile(
+  document.getElementById("b71CvAdmin")?.addEventListener("click",()=>shareFile(
     CV_ADMIN,"Gustavo_Gutierrez_CV_Administracion.pdf","application/pdf",
     "CV Administración · Gustavo J. Gutiérrez","Currículum Vitae · Administración"
   ));
-  document.getElementById("v7CvSalud")?.addEventListener("click",()=>shareFile(
+  document.getElementById("b71CvSalud")?.addEventListener("click",()=>shareFile(
     CV_SALUD,"Gustavo_Gutierrez_CV_Clinicas_Salud.pdf","application/pdf",
     "CV Clínicas y Salud · Gustavo J. Gutiérrez","Currículum Vitae · Clínicas y Salud"
   ));
 
-  document.getElementById("v7CopyLink")?.addEventListener("click",()=>copyText(
-    FULL_URL,"Enlace de la tarjeta copiado"
+  document.getElementById("b71CopyLink")?.addEventListener("click",()=>copyText(
+    FULL,"Enlace de la tarjeta copiado"
   ));
 })();
 </script>
@@ -763,15 +1051,7 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
 <script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./service-worker.js").then(reg => {
-      reg.update();
-    });
-    navigator.serviceWorker.addEventListener("controllerchange", () => {
-      if (!sessionStorage.getItem("sw-v7-reloaded")) {
-        sessionStorage.setItem("sw-v7-reloaded","1");
-        location.reload();
-      }
-    });
+    navigator.serviceWorker.register("./service-worker.js").then(reg => reg.update());
   });
 }
 </script>
