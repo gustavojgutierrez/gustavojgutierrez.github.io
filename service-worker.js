@@ -1,4 +1,4 @@
-const CACHE="gustavo-panel-pro-b7-4";
+const CACHE="gustavo-panel-pro-b7-8";
 const ASSETS=[
   "./manifest.webmanifest",
   "./icon-192.png",

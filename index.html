@@ -14,6 +14,13 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Gustavo J. Gutiérrez · Tarjeta digital</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gustavo J. Gutiérrez · Tarjeta profesional">
+<meta property="og:description" content="Coordinación Operativa · Supervisión · Gestión de Proyectos · Capacitación Técnica">
+<meta property="og:url" content="https://gustavojgutierrez.github.io/">
+<meta property="og:image" content="https://gustavojgutierrez.github.io/tarjeta-jpg.jpg">
+<meta property="og:image:alt" content="Tarjeta profesional digital de Gustavo J. Gutiérrez">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -259,23 +266,24 @@ body{
 }
 
 
+
 /* =========================================================
-   PANEL PRIVADO · PRO B7.4
-   Gráfica aprobada reencuadrada al S23 + selector de CV.
+   PANEL PRIVADO · PRO B7.8
+   Visual aprobado en HD. Sin estirar ni deformar.
    ========================================================= */
 
-.b74-shell,.b74-modal,.b74-cv-modal{display:none}
+.b78-shell,.b78-modal,.b78-cv-modal{display:none}
 
-body.b74-owner{
+body.b78-owner{
   margin:0!important;
   padding:0!important;
   min-height:100dvh;
   overflow:hidden!important;
-  background:#000!important;
+  background:#050607!important;
 }
-body.b74-owner>main.card{display:none!important}
+body.b78-owner>main.card{display:none!important}
 
-body.b74-owner .b74-shell{
+body.b78-owner .b78-shell{
   position:fixed;
   inset:0;
   z-index:20000;
@@ -283,20 +291,21 @@ body.b74-owner .b74-shell{
   align-items:center;
   justify-content:center;
   overflow:hidden;
-  background:#000;
+  background:#050607;
 }
 
-.b74-stage{
+/* Se preserva estrictamente el aspecto de la pieza.
+   No hay estiramiento vertical ni fondo difuminado. */
+.b78-stage{
   position:relative;
-  height:100dvh;
-  width:auto;
-  max-width:100vw;
-  aspect-ratio:852/1846;
+  width:min(100vw, calc(100dvh * 941 / 1672));
+  aspect-ratio:941 / 1672;
+  flex:0 0 auto;
   overflow:hidden;
-  background:#050708;
+  background:#050607;
 }
 
-.b74-ui{
+.b78-ui{
   position:absolute;
   inset:0;
   width:100%;
@@ -308,7 +317,7 @@ body.b74-owner .b74-shell{
   pointer-events:none;
 }
 
-.b74-hit{
+.b78-hit{
   position:absolute;
   z-index:3;
   appearance:none;
@@ -320,27 +329,27 @@ body.b74-owner .b74-shell{
   border-radius:5%;
   -webkit-tap-highlight-color:transparent;
 }
-.b74-hit:active{
+.b78-hit:active{
   background:rgba(255,255,255,.035);
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
 }
 
-/* Zonas interactivas sobre la nueva composición. */
-#b74ShareCard{left:3.3%;top:20.60%;width:44.95%;height:17.13%}
-#b74ShareFull{left:50.74%;top:20.60%;width:44.61%;height:17.13%}
+/* Hotspots exactos sobre la gráfica B7.8 */
+#b78ShareCard{left:5.2%;top:16.3%;width:43.1%;height:19.9%}
+#b78ShareFull{left:50.3%;top:16.3%;width:43.1%;height:19.9%}
 
-#b74ShareJpg{left:3.3%;top:39.20%;width:44.95%;height:13.20%}
-#b74ShowJpg{left:50.74%;top:39.20%;width:44.61%;height:13.20%}
+#b78ShareJpg{left:5.2%;top:37.7%;width:43.1%;height:15.8%}
+#b78ShowJpg{left:50.3%;top:37.7%;width:43.1%;height:15.8%}
 
-#b74CvGeneral{left:3.3%;top:56.64%;width:44.95%;height:8.22%}
-#b74CvCoord{left:50.74%;top:56.64%;width:44.61%;height:8.22%}
-#b74CvAdmin{left:3.3%;top:65.86%;width:44.95%;height:8.33%}
-#b74CvSalud{left:50.74%;top:65.86%;width:44.61%;height:8.33%}
+#b78CvGeneral{left:5.2%;top:58.8%;width:43.1%;height:9.5%}
+#b78CvCoord{left:50.3%;top:58.8%;width:43.1%;height:9.5%}
+#b78CvAdmin{left:5.2%;top:69.5%;width:43.1%;height:9.7%}
+#b78CvSalud{left:50.3%;top:69.5%;width:43.1%;height:9.7%}
 
-#b74CopyLink{left:3.3%;top:75.56%;width:92.05%;height:7.07%}
+#b78CopyLink{left:5.2%;top:81.1%;width:88.2%;height:7.3%}
 
 /* JPG a pantalla completa */
-.b74-modal{
+.b78-modal{
   position:fixed;
   inset:0;
   z-index:50000;
@@ -348,15 +357,15 @@ body.b74-owner .b74-shell{
   align-items:center;
   justify-content:center;
 }
-.b74-modal.open{display:flex}
-.b74-modal img{
+.b78-modal.open{display:flex}
+.b78-modal img{
   max-width:100vw;
   max-height:100dvh;
   width:auto;
   height:auto;
   object-fit:contain;
 }
-.b74-close{
+.b78-close{
   position:fixed;
   z-index:50001;
   top:max(10px,env(safe-area-inset-top));
@@ -372,8 +381,8 @@ body.b74-owner .b74-shell{
   font-size:23px;
 }
 
-/* Selector de CV */
-.b74-cv-modal{
+/* Selector de CV para "Tarjeta completa + CV" */
+.b78-cv-modal{
   position:fixed;
   inset:0;
   z-index:51000;
@@ -383,8 +392,8 @@ body.b74-owner .b74-shell{
   justify-content:center;
   padding:20px;
 }
-.b74-cv-modal.open{display:flex}
-.b74-cv-box{
+.b78-cv-modal.open{display:flex}
+.b78-cv-box{
   width:min(390px,94vw);
   border-radius:24px;
   border:1px solid rgba(255,255,255,.14);
@@ -394,27 +403,27 @@ body.b74-owner .b74-shell{
   box-shadow:0 24px 70px rgba(0,0,0,.55);
   overflow:hidden;
 }
-.b74-cv-head{
+.b78-cv-head{
   padding:18px 18px 14px;
   border-bottom:1px solid rgba(255,255,255,.08);
 }
-.b74-cv-head strong{
+.b78-cv-head strong{
   display:block;
   color:#fff;
   font-size:18px;
 }
-.b74-cv-head span{
+.b78-cv-head span{
   display:block;
   margin-top:4px;
   color:#9ca7b1;
   font-size:12px;
 }
-.b74-cv-options{
+.b78-cv-options{
   padding:12px;
   display:grid;
   gap:9px;
 }
-.b74-cv-option{
+.b78-cv-option{
   min-height:58px;
   border-radius:16px;
   border:1px solid rgba(255,255,255,.10);
@@ -427,7 +436,7 @@ body.b74-owner .b74-shell{
   font:700 13px/1.2 Inter,"Segoe UI",Arial,sans-serif;
   text-align:left;
 }
-.b74-cv-option .ico{
+.b78-cv-option .ico{
   width:38px;
   height:38px;
   flex:0 0 38px;
@@ -439,13 +448,13 @@ body.b74-owner .b74-shell{
   color:#e01a21;
   font-weight:900;
 }
-.b74-cv-option small{
+.b78-cv-option small{
   display:block;
   margin-top:3px;
   color:#8e99a3;
   font-weight:500;
 }
-.b74-cv-cancel{
+.b78-cv-cancel{
   width:100%;
   min-height:48px;
   border:0;
@@ -458,67 +467,61 @@ body.b74-owner .b74-shell{
 /* Tarjeta pública */
 body.public-no-cv .btn.cv{display:none!important}
 body.public-no-cv .actions{grid-template-columns:1fr!important}
-
-@media(min-aspect-ratio:852/1846){
-  .b74-stage{height:100dvh;width:auto}
-}
-@media(max-aspect-ratio:852/1846){
-  .b74-stage{width:100vw;height:auto}
-}
 </style>
 </head>
 <body>
 
 
-<section class="b74-shell" id="b74Shell" aria-label="Panel privado de networking">
-  <div class="b74-stage">
-    <img class="b74-ui" src="panel-ui-approved.png?v=b74" alt="Panel privado de networking de Gustavo J. Gutiérrez">
 
-    <button class="b74-hit" id="b74ShareCard" type="button" aria-label="Compartir tarjeta sin CV"></button>
-    <button class="b74-hit" id="b74ShareFull" type="button" aria-label="Compartir tarjeta completa eligiendo CV"></button>
+<section class="b78-shell" id="b78Shell" aria-label="Panel privado de networking">
+  <div class="b78-stage">
+    <img class="b78-ui" src="panel-ui-approved.png?v=b78" alt="Panel privado de networking de Gustavo J. Gutiérrez">
 
-    <button class="b74-hit" id="b74ShareJpg" type="button" aria-label="Compartir JPG"></button>
-    <button class="b74-hit" id="b74ShowJpg" type="button" aria-label="Mostrar JPG"></button>
+    <button class="b78-hit" id="b78ShareCard" type="button" aria-label="Compartir tarjeta sin CV"></button>
+    <button class="b78-hit" id="b78ShareFull" type="button" aria-label="Compartir tarjeta completa eligiendo CV"></button>
 
-    <button class="b74-hit" id="b74CvGeneral" type="button" aria-label="Compartir CV General"></button>
-    <button class="b74-hit" id="b74CvCoord" type="button" aria-label="Compartir CV Coordinación"></button>
-    <button class="b74-hit" id="b74CvAdmin" type="button" aria-label="Compartir CV Administración"></button>
-    <button class="b74-hit" id="b74CvSalud" type="button" aria-label="Compartir CV Clínicas y Salud"></button>
+    <button class="b78-hit" id="b78ShareJpg" type="button" aria-label="Compartir JPG"></button>
+    <button class="b78-hit" id="b78ShowJpg" type="button" aria-label="Mostrar JPG"></button>
 
-    <button class="b74-hit" id="b74CopyLink" type="button" aria-label="Copiar enlace de tarjeta"></button>
+    <button class="b78-hit" id="b78CvGeneral" type="button" aria-label="Compartir CV General"></button>
+    <button class="b78-hit" id="b78CvCoord" type="button" aria-label="Compartir CV Coordinación"></button>
+    <button class="b78-hit" id="b78CvAdmin" type="button" aria-label="Compartir CV Administración"></button>
+    <button class="b78-hit" id="b78CvSalud" type="button" aria-label="Compartir CV Clínicas y Salud"></button>
+
+    <button class="b78-hit" id="b78CopyLink" type="button" aria-label="Copiar enlace de tarjeta"></button>
   </div>
 </section>
 
-<div class="b74-modal" id="b74Modal" aria-hidden="true">
-  <button class="b74-close" id="b74Close" type="button" aria-label="Cerrar">×</button>
+<div class="b78-modal" id="b78Modal" aria-hidden="true">
+  <button class="b78-close" id="b78Close" type="button" aria-label="Cerrar">×</button>
   <img src="tarjeta-jpg.jpg" alt="Tarjeta profesional JPG con QR">
 </div>
 
-<div class="b74-cv-modal" id="b74CvModal" aria-hidden="true">
-  <div class="b74-cv-box">
-    <div class="b74-cv-head">
+<div class="b78-cv-modal" id="b78CvModal" aria-hidden="true">
+  <div class="b78-cv-box">
+    <div class="b78-cv-head">
       <strong>Tarjeta completa + CV</strong>
-      <span>Elegí qué CV querés adjuntar a esta tarjeta.</span>
+      <span>Elegí qué CV querés incluir.</span>
     </div>
-    <div class="b74-cv-options">
-      <button class="b74-cv-option" type="button" data-cv="general">
+    <div class="b78-cv-options">
+      <button class="b78-cv-option" type="button" data-cv="general">
         <span class="ico">CV</span>
         <span>General<small>Perfil multipropósito</small></span>
       </button>
-      <button class="b74-cv-option" type="button" data-cv="coordinacion">
+      <button class="b78-cv-option" type="button" data-cv="coordinacion">
         <span class="ico">⚙</span>
         <span>Coordinación Operativa<small>Operaciones · supervisión</small></span>
       </button>
-      <button class="b74-cv-option" type="button" data-cv="administracion">
+      <button class="b78-cv-option" type="button" data-cv="administracion">
         <span class="ico">▥</span>
         <span>Administración<small>Gestión · control documental</small></span>
       </button>
-      <button class="b74-cv-option" type="button" data-cv="salud">
+      <button class="b78-cv-option" type="button" data-cv="salud">
         <span class="ico">✚</span>
         <span>Clínicas / Salud<small>Administración sanitaria</small></span>
       </button>
     </div>
-    <button class="b74-cv-cancel" id="b74CvCancel" type="button">Cancelar</button>
+    <button class="b78-cv-cancel" id="b78CvCancel" type="button">Cancelar</button>
   </div>
 </div>
 
@@ -586,6 +589,7 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
 </main>
 
 
+
 <script>
 (() => {
   const BASE="https://gustavojgutierrez.github.io/";
@@ -595,22 +599,22 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
     general:{
       file:"./Gustavo_Gutierrez_CV_General.pdf",
       public:"Gustavo_Gutierrez_CV_General.pdf",
-      title:"CV General · Gustavo J. Gutiérrez"
+      title:"CV General"
     },
     coordinacion:{
       file:"./Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",
       public:"Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",
-      title:"CV Coordinación Operativa · Gustavo J. Gutiérrez"
+      title:"CV Coordinación Operativa"
     },
     administracion:{
       file:"./Gustavo_Gutierrez_CV_Administracion.pdf",
       public:"Gustavo_Gutierrez_CV_Administracion.pdf",
-      title:"CV Administración · Gustavo J. Gutiérrez"
+      title:"CV Administración"
     },
     salud:{
       file:"./Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",
       public:"Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",
-      title:"CV Clínicas y Salud · Gustavo J. Gutiérrez"
+      title:"CV Clínicas / Salud"
     }
   };
 
@@ -623,14 +627,13 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
     window.navigator.standalone===true;
 
   if(standalone && !vista){
-    document.body.classList.add("b74-owner");
+    document.body.classList.add("b78-owner");
   }
 
   if(vista==="contacto"){
     document.body.classList.add("public-no-cv");
   }
 
-  /* Si la tarjeta pública llega con un CV elegido, el botón apunta a ese PDF. */
   const publicCvButton=document.querySelector(".btn.cv");
   if(vista==="completa" && publicCvButton){
     const chosen=CV_MAP[cvKey] || CV_MAP.general;
@@ -681,20 +684,20 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
     window.open(url,"_blank");
   }
 
-  document.getElementById("b74ShareCard")?.addEventListener("click",()=>shareUrl(
+  document.getElementById("b78ShareCard")?.addEventListener("click",()=>shareUrl(
     SIMPLE,
     "Gustavo J. Gutiérrez · Tarjeta profesional",
-    "Contacto profesional de Gustavo J. Gutiérrez"
+    "Gustavo J. Gutiérrez — Tarjeta profesional digital"
   ));
 
-  const cvModal=document.getElementById("b74CvModal");
+  const cvModal=document.getElementById("b78CvModal");
 
-  document.getElementById("b74ShareFull")?.addEventListener("click",()=>{
+  document.getElementById("b78ShareFull")?.addEventListener("click",()=>{
     cvModal?.classList.add("open");
     cvModal?.setAttribute("aria-hidden","false");
   });
 
-  document.getElementById("b74CvCancel")?.addEventListener("click",()=>{
+  document.getElementById("b78CvCancel")?.addEventListener("click",()=>{
     cvModal?.classList.remove("open");
     cvModal?.setAttribute("aria-hidden","true");
   });
@@ -716,12 +719,12 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
       shareUrl(
         url,
         "Gustavo J. Gutiérrez · Tarjeta profesional completa",
-        "Tarjeta profesional de Gustavo J. Gutiérrez con "+chosen.title.replace(" · Gustavo J. Gutiérrez","")
+        "Gustavo J. Gutiérrez — Tarjeta profesional + "+chosen.title
       );
     });
   });
 
-  document.getElementById("b74ShareJpg")?.addEventListener("click",()=>shareFile(
+  document.getElementById("b78ShareJpg")?.addEventListener("click",()=>shareFile(
     JPG,
     "Tarjeta_Profesional_Gustavo_Gutierrez.jpg",
     "image/jpeg",
@@ -729,14 +732,14 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
     "Tarjeta profesional con QR"
   ));
 
-  const modal=document.getElementById("b74Modal");
+  const modal=document.getElementById("b78Modal");
 
-  document.getElementById("b74ShowJpg")?.addEventListener("click",()=>{
+  document.getElementById("b78ShowJpg")?.addEventListener("click",()=>{
     modal?.classList.add("open");
     modal?.setAttribute("aria-hidden","false");
   });
 
-  document.getElementById("b74Close")?.addEventListener("click",()=>{
+  document.getElementById("b78Close")?.addEventListener("click",()=>{
     modal?.classList.remove("open");
     modal?.setAttribute("aria-hidden","true");
   });
@@ -748,44 +751,45 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
     }
   });
 
-  document.getElementById("b74CvGeneral")?.addEventListener("click",()=>shareFile(
+  document.getElementById("b78CvGeneral")?.addEventListener("click",()=>shareFile(
     CV_MAP.general.file,
     "Gustavo_Gutierrez_CV_General.pdf",
     "application/pdf",
-    CV_MAP.general.title,
+    "CV General · Gustavo J. Gutiérrez",
     "Currículum Vitae general de Gustavo J. Gutiérrez"
   ));
 
-  document.getElementById("b74CvCoord")?.addEventListener("click",()=>shareFile(
+  document.getElementById("b78CvCoord")?.addEventListener("click",()=>shareFile(
     CV_MAP.coordinacion.file,
     "Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",
     "application/pdf",
-    CV_MAP.coordinacion.title,
+    "CV Coordinación Operativa · Gustavo J. Gutiérrez",
     "Currículum Vitae · Coordinación Operativa"
   ));
 
-  document.getElementById("b74CvAdmin")?.addEventListener("click",()=>shareFile(
+  document.getElementById("b78CvAdmin")?.addEventListener("click",()=>shareFile(
     CV_MAP.administracion.file,
     "Gustavo_Gutierrez_CV_Administracion.pdf",
     "application/pdf",
-    CV_MAP.administracion.title,
+    "CV Administración · Gustavo J. Gutiérrez",
     "Currículum Vitae · Administración"
   ));
 
-  document.getElementById("b74CvSalud")?.addEventListener("click",()=>shareFile(
+  document.getElementById("b78CvSalud")?.addEventListener("click",()=>shareFile(
     CV_MAP.salud.file,
     "Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",
     "application/pdf",
-    CV_MAP.salud.title,
+    "CV Clínicas y Salud · Gustavo J. Gutiérrez",
     "Currículum Vitae · Clínicas y Salud"
   ));
 
-  document.getElementById("b74CopyLink")?.addEventListener("click",()=>copyText(
+  document.getElementById("b78CopyLink")?.addEventListener("click",()=>copyText(
     BASE,
     "Enlace de la tarjeta copiado"
   ));
 })();
 </script>
+
 
 
 <script>
