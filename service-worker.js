@@ -1,6 +1,7 @@
-const CACHE="gustavo-panel-pro-v8-audit-launchsplit-05";
+const CACHE="gustavo-panel-pro-v8-split-public-private-01";
 const ASSETS=[
   "./index.html",
+  "./panel.html",
   "./manifest.webmanifest",
   "./icon-192.png",
   "./icon-512.png",
@@ -16,9 +17,7 @@ const ASSETS=[
 ];
 
 self.addEventListener("install",e=>{
-  e.waitUntil(
-    caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())
-  );
+  e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()));
 });
 
 self.addEventListener("activate",e=>{
@@ -38,11 +37,16 @@ self.addEventListener("fetch",e=>{
         .then(r=>{
           if(r&&r.ok){
             const copy=r.clone();
-            caches.open(CACHE).then(c=>c.put("./index.html",copy));
+            caches.open(CACHE).then(c=>c.put(e.request,copy));
           }
           return r;
         })
-        .catch(()=>caches.match("./index.html"))
+        .catch(async()=>{
+          const exact=await caches.match(e.request);
+          if(exact) return exact;
+          const u=new URL(e.request.url);
+          return caches.match(u.pathname.endsWith("/panel.html")?"./panel.html":"./index.html");
+        })
     );
     return;
   }
