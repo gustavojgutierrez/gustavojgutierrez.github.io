@@ -1,4 +1,4 @@
-const CACHE="gustavo-panel-pro-v8-prueba-app-02";
+const CACHE="gustavo-panel-pro-v8-qr-estatico-final-03";
 const ASSETS=[
   "./index.html",
   "./manifest.webmanifest",
