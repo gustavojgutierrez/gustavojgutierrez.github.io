@@ -1,4 +1,4 @@
-const CACHE="gustavo-panel-pro-v8-owner-public-root-fix-04";
+const CACHE="gustavo-panel-pro-v8-audit-launchsplit-05";
 const ASSETS=[
   "./index.html",
   "./manifest.webmanifest",

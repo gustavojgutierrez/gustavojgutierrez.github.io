@@ -672,12 +672,12 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
   const params=new URLSearchParams(location.search);
   const vista=params.get("vista");
   const cvKey=params.get("cv");
-  const standalone=
-    window.matchMedia("(display-mode: standalone)").matches ||
-    window.navigator.standalone===true;
-
+  // Separación permanente de destinos:
+  // - La PWA se inicia con ?panel=1 desde manifest.webmanifest.
+  // - La URL raíz/QR nunca abre el panel privado, incluso si Android
+  //   decide abrir ese enlace dentro de la PWA instalada.
   const panelTest=params.get("panel")==="1";
-  if((standalone || panelTest) && !vista){
+  if(panelTest && !vista){
     document.body.classList.add("b78-owner");
   }
 
