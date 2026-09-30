@@ -20,8 +20,6 @@
 <meta property="og:url" content="https://gustavojgutierrez.github.io/">
 <meta property="og:image" content="https://gustavojgutierrez.github.io/tarjeta-jpg.jpg">
 <meta property="og:image:alt" content="Tarjeta profesional digital de Gustavo J. Gutiérrez">
-<meta property="og:image:width" content="1080">
-<meta property="og:image:height" content="2340">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -269,411 +267,298 @@ body{
 
 
 
-
 /* =========================================================
-   PANEL PRIVADO · PRO B7.12 · NATIVE UI
-   Sin JPG de fondo, sin contain/cover, sin duplicar fondos.
-   Todo el panel escala como interfaz HTML/CSS dentro del S23.
+   PANEL PRIVADO · PRO V8 · PRUEBA APP REAL
+   UI construida en HTML/CSS. Sin imagen de fondo ni hotspots.
    ========================================================= */
-.b712-shell,.b712-modal,.b712-cv-modal{display:none}
 
-body.b712-owner{
+.b78-shell,.b78-modal,.b78-cv-modal{display:none}
+
+body.b78-owner{
   margin:0!important;
   padding:0!important;
-  width:100%;
   min-height:100dvh;
   overflow:hidden!important;
-  background:#05070a!important;
+  background:#050607!important;
 }
-body.b712-owner>main.card{display:none!important}
-
-body.b712-owner .b712-shell{
+body.b78-owner>main.card{display:none!important}
+body.b78-owner .b78-shell{
   position:fixed;
   inset:0;
   z-index:20000;
-  display:grid;
-  grid-template-rows:72px minmax(0,1.35fr) minmax(0,1fr) 28px minmax(0,1.02fr) 64px 24px;
-  gap:clamp(9px,1.25dvh,14px);
-  padding:max(10px,env(safe-area-inset-top)) clamp(18px,5vw,24px) max(7px,env(safe-area-inset-bottom));
+  display:flex;
+  align-items:stretch;
+  justify-content:center;
   overflow:hidden;
-  color:#f6f7f8;
-  font-family:'Inter','Segoe UI',Arial,sans-serif;
+  color:#fff;
+  background:#040607;
+}
+
+.p8-app{
+  --red:#ff171d;
+  --red2:#b9070c;
+  --line:rgba(255,255,255,.72);
+  --muted:#9fb0bf;
+  --panel:#0a0d10;
+  position:relative;
+  width:min(100vw,430px);
+  height:100dvh;
+  min-height:100dvh;
+  overflow:hidden;
+  padding:max(10px,env(safe-area-inset-top)) 14px max(7px,env(safe-area-inset-bottom));
+  display:grid;
+  grid-template-rows:auto minmax(0,1fr) auto;
+  gap:7px;
   background:
-    radial-gradient(circle at 8% 4%,rgba(221,22,29,.17),transparent 24%),
-    radial-gradient(circle at 93% 86%,rgba(221,22,29,.11),transparent 20%),
-    linear-gradient(155deg,#05070a 0%,#0e1317 52%,#05070a 100%);
+    radial-gradient(circle at 80% 8%,rgba(255,21,28,.13),transparent 28%),
+    radial-gradient(circle at 10% 88%,rgba(255,21,28,.10),transparent 25%),
+    linear-gradient(160deg,#050708,#0b0f12 50%,#040506);
+  font-family:'Inter','Segoe UI',Arial,sans-serif;
   isolation:isolate;
 }
-body.b712-owner .b712-shell::before{
+.p8-app::before{
   content:"";
-  position:absolute;
-  inset:0;
-  z-index:-2;
-  opacity:.19;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='720' height='520' viewBox='0 0 720 520'%3E%3Cg fill='none' stroke='%23d3d9de' stroke-width='1'%3E%3Cpath d='M-40 72C78 8 150 144 278 79s205-4 302 39 151-5 205-48'/%3E%3Cpath d='M-30 103C88 42 160 174 288 109s201-1 298 42 146-2 200-44'/%3E%3Cpath d='M-15 137C101 79 173 203 301 142s196 3 292 44 141 1 194-39'/%3E%3Cpath d='M4 174C118 119 190 233 317 176s191 7 286 47 136 5 188-33'/%3E%3Cpath d='M28 215C139 162 211 266 338 211s185 10 279 50 130 10 181-27'/%3E%3Cpath d='M56 258C165 208 237 300 363 248s180 13 272 52 124 15 174-21'/%3E%3C/g%3E%3C/svg%3E");
-  background-size:120% auto;
-  background-position:center top;
-  background-repeat:repeat-y;
+  position:absolute; inset:0; z-index:-2; pointer-events:none; opacity:.23;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='440' height='600' viewBox='0 0 440 600'%3E%3Cg fill='none' stroke='%238b98a2' stroke-width='.7'%3E%3Cpath d='M-40 50C40 0 90 100 170 60s140-10 210 20 100 0 140-35'/%3E%3Cpath d='M-30 74C50 24 100 124 180 84s140-10 210 20 100 0 140-35'/%3E%3Cpath d='M-20 98C60 48 110 148 190 108s140-10 210 20 100 0 140-35'/%3E%3Cpath d='M-50 390C40 340 100 450 190 405s145-8 215 25 95 0 135-35'/%3E%3Cpath d='M-40 414C50 364 110 474 200 429s145-8 215 25 95 0 135-35'/%3E%3Cpath d='M-30 438C60 388 120 498 210 453s145-8 215 25 95 0 135-35'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:100% auto;
 }
-body.b712-owner .b712-shell::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:-1;
-  pointer-events:none;
+.p8-app::after{
+  content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
   background:
-    linear-gradient(130deg,transparent 0 7%,rgba(234,25,32,.55) 7.10%,transparent 7.35%),
-    linear-gradient(318deg,transparent 0 8%,rgba(234,25,32,.40) 8.08%,transparent 8.34%);
-  opacity:.75;
+    linear-gradient(135deg,transparent 0 7%,rgba(255,20,27,.7) 7.1% 7.4%,transparent 7.5% 100%),
+    linear-gradient(315deg,transparent 0 8%,rgba(255,20,27,.55) 8.1% 8.35%,transparent 8.45% 100%);
 }
 
-/* Shared card styling */
-.b712-panel-card{
-  position:relative;
-  min-width:0;
-  min-height:0;
-  border:1px solid rgba(230,235,239,.56);
+.p8-top{
+  display:grid;
+  grid-template-columns:58px 1fr auto;
+  align-items:center;
+  gap:10px;
+  min-height:88px;
+  padding:9px 10px 8px;
+  border:1px solid rgba(255,255,255,.22);
   border-radius:18px;
+  background:linear-gradient(145deg,rgba(17,21,25,.96),rgba(6,8,10,.92));
+  box-shadow:0 8px 24px rgba(0,0,0,.28), inset 0 0 28px rgba(255,18,25,.03);
   overflow:hidden;
-  color:#fff;
-  background:linear-gradient(145deg,rgba(23,29,34,.97),rgba(7,10,12,.98));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 8px 22px rgba(0,0,0,.18);
+  position:relative;
 }
-.b712-panel-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  opacity:.17;
-  background:repeating-radial-gradient(ellipse at 86% 13%,transparent 0 10px,rgba(201,208,214,.22) 11px,transparent 12px 21px);
+.p8-top::after{
+  content:""; position:absolute; right:-15px; top:-7px; width:140px; height:54px; opacity:.32;
+  background:linear-gradient(155deg,transparent 0 46%,rgba(255,20,27,.8) 47% 49%,transparent 50%),
+             linear-gradient(8deg,transparent 0 55%,rgba(255,255,255,.16) 56% 57%,transparent 58%);
 }
-.b712-panel-card::after{
-  content:"";
-  position:absolute;
-  right:-20%;bottom:-30%;width:78%;height:58%;
-  transform:rotate(-22deg);
-  border-top:1px solid rgba(229,24,31,.60);
-  background:linear-gradient(180deg,rgba(225,24,31,.07),transparent);
-  pointer-events:none;
+.p8-avatar{
+  width:54px;height:54px;border-radius:14px;padding:2px;
+  background:linear-gradient(145deg,#ff2028,#6d070b 55%,#1c2227);
+  box-shadow:0 0 14px rgba(255,20,27,.32);
+  position:relative; z-index:2;
 }
-.b712-panel-card.red{
-  border-color:rgba(255,42,49,.92);
-  background:linear-gradient(145deg,rgba(166,8,14,.98),rgba(62,4,8,.99));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.055),0 0 22px rgba(226,18,26,.18),0 8px 22px rgba(0,0,0,.18);
+.p8-avatar img{
+  width:100%;height:100%;display:block;border-radius:12px;object-fit:cover;
+  object-position:50% 35%;
 }
-button.b712-panel-card{
-  appearance:none;
-  font-family:inherit;
-  cursor:pointer;
-  text-align:left;
-  padding:0;
+.p8-title{min-width:0;position:relative;z-index:2}
+.p8-title strong{display:block;font-size:18px;line-height:1.03;letter-spacing:.01em;font-weight:800;color:#fff}
+.p8-title strong span{color:var(--red)}
+.p8-title small{display:block;margin-top:5px;font-size:10.7px;line-height:1.1;color:#aebdca;font-weight:500;white-space:nowrap}
+.p8-version{
+  position:relative;z-index:2;align-self:start;margin-top:4px;
+  padding:5px 9px;border:1px solid rgba(255,28,34,.82);border-radius:999px;
+  color:#fff;font-size:10px;font-weight:800;letter-spacing:.05em;
+  background:rgba(27,6,8,.75);box-shadow:0 0 13px rgba(255,18,25,.16);
+}
+
+.p8-body{
+  min-height:0;
+  display:grid;
+  grid-template-rows:minmax(0,1.05fr) minmax(0,1.05fr) minmax(0,.83fr) auto minmax(0,.86fr) minmax(0,.86fr) auto;
+  gap:clamp(7px,1.15vh,11px);
+  padding-top:1px;
+}
+.p8-row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;min-height:0}
+.p8-card{
+  position:relative;
+  appearance:none;border:1px solid rgba(255,255,255,.5);margin:0;
+  color:#fff;background:
+    linear-gradient(135deg,rgba(255,255,255,.035),transparent 34%),
+    linear-gradient(145deg,#10151a,#07090c 58%,#190609);
+  border-radius:16px;
+  display:grid;grid-template-columns:52px 1fr 29px;align-items:center;gap:9px;
+  min-width:0;padding:8px 10px;
+  text-align:left;cursor:pointer;
+  box-shadow:inset 0 0 25px rgba(255,0,8,.035),0 5px 12px rgba(0,0,0,.24);
+  overflow:hidden;
   -webkit-tap-highlight-color:transparent;
 }
-button.b712-panel-card:active{transform:scale(.988)}
+.p8-card::before{content:"";position:absolute;left:0;bottom:0;width:42%;height:2px;background:linear-gradient(90deg,var(--red),transparent)}
+.p8-card::after{content:"";position:absolute;right:-22px;bottom:-30px;width:92px;height:64px;transform:rotate(-38deg);background:linear-gradient(90deg,transparent,rgba(255,15,22,.22),rgba(255,15,22,.7),transparent)}
+.p8-card.primary{grid-template-columns:64px 1fr 34px;padding:9px 12px;border-color:rgba(255,255,255,.54)}
+.p8-card.primary .p8-icon{width:56px;height:56px}
+.p8-card.compact{grid-template-columns:42px 1fr 27px;padding:7px 9px;border-radius:15px}
+.p8-card.cv{grid-template-columns:43px 1fr 27px;padding:7px 9px}
+.p8-card.link{grid-template-columns:35px 1fr 26px;min-height:44px;padding:5px 12px;border-radius:14px}
+.p8-card:active{transform:translateY(1px);filter:brightness(1.12)}
+.p8-icon{
+  width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+  border:1px solid rgba(255,255,255,.42);background:linear-gradient(145deg,#20262b,#080b0e);
+  box-shadow:0 0 14px rgba(255,18,25,.16);color:#fff;position:relative;z-index:2;
+}
+.p8-icon svg{width:28px;height:28px;stroke:#fff;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.p8-icon .red{stroke:var(--red);fill:var(--red)}
+.p8-icon .fill-red{fill:var(--red);stroke:var(--red)}
+.p8-copy{min-width:0;position:relative;z-index:2}
+.p8-copy b{display:block;font-size:clamp(13px,3.65vw,17px);line-height:1.08;font-weight:800;color:#fff}
+.p8-copy small{display:block;margin-top:4px;font-size:clamp(10px,2.8vw,12.5px);line-height:1.05;color:#a8bac8;font-weight:500}
+.p8-card.compact .p8-copy b,.p8-card.cv .p8-copy b{font-size:clamp(11.5px,3.1vw,14px)}
+.p8-card.cv .p8-copy small{font-size:clamp(9.3px,2.55vw,11.5px)}
+.p8-card.link .p8-copy b{font-size:clamp(12px,3.2vw,14.5px)}
+.p8-arrow{width:27px;height:27px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,25,32,.92);color:#fff;font-size:22px;line-height:1;box-shadow:0 0 12px rgba(255,18,25,.24);position:relative;z-index:2}
+.p8-section{
+  display:grid;grid-template-columns:auto 1fr;align-items:center;gap:10px;
+  color:#cbd6df;font-size:10.5px;letter-spacing:.22em;font-weight:600;text-transform:uppercase;
+  padding:2px 3px 0;
+}
+.p8-section span{white-space:nowrap}
+.p8-section i{height:1px;background:linear-gradient(90deg,rgba(255,255,255,.75),rgba(255,255,255,.3) 74%,var(--red) 75% 100%)}
 
-/* Header */
-.b712-header{
+.p8-footer{
+  min-height:47px;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:7px;
+  padding:3px 5px 1px;
   position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  padding:7px 10px;
-  border:1px solid rgba(219,225,230,.38);
-  border-radius:18px;
-  background:linear-gradient(145deg,rgba(18,23,27,.98),rgba(6,9,11,.98));
-  box-shadow:0 8px 25px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.04);
 }
-.b712-header::after{
-  content:"";
-  position:absolute;
-  left:132px;
-  bottom:0;
-  width:44px;
-  height:3px;
-  border-radius:2px;
-  background:#e01c23;
-  box-shadow:0 0 10px rgba(224,28,35,.62);
+.p8-footer::before{
+  content:"";position:absolute;left:0;right:0;bottom:17px;height:24px;opacity:.52;
+  clip-path:polygon(0 90%,7% 63%,15% 78%,25% 38%,37% 68%,48% 29%,58% 72%,69% 45%,82% 78%,92% 57%,100% 84%,100% 100%,0 100%);
+  background:linear-gradient(180deg,#5b6267,#161a1d 72%,#050607);
+  border-bottom:1px solid rgba(255,22,28,.5);
 }
-.b712-id{display:flex;align-items:center;gap:10px;min-width:0}
-.b712-photo{
-  width:56px;height:56px;flex:0 0 56px;
-  border-radius:15px;
-  object-fit:cover;
-  object-position:50% 39%;
-  border:1px solid #ee2028;
-  box-shadow:0 0 0 2px rgba(238,32,40,.17),0 0 17px rgba(232,24,32,.20);
+.p8-footer::after{
+  content:"";position:absolute;left:9%;bottom:20px;width:30%;height:14px;opacity:.7;
+  background:radial-gradient(circle at 14% 70%,#ff621a 0 1px,transparent 2px),radial-gradient(circle at 30% 78%,#ff5e19 0 1px,transparent 2px),radial-gradient(circle at 52% 63%,#ff651e 0 1px,transparent 2px),radial-gradient(circle at 78% 80%,#ff5b12 0 1px,transparent 2px);
 }
-.b712-name{min-width:0}
-.b712-name strong{
-  display:block;
-  font-size:clamp(16px,4.3vw,20px);
-  line-height:1.04;
-  font-weight:800;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-.b712-name span{
-  display:block;
-  margin-top:4px;
-  color:#aeb8c2;
-  font-size:clamp(8px,2.4vw,11px);
-  line-height:1.05;
-}
-.b712-headright{display:flex;align-items:center;gap:8px;flex:0 0 auto}
-.b712-badge{
-  min-width:92px;
-  padding:8px 11px;
-  border-radius:999px;
-  border:1px solid #ed2027;
-  background:linear-gradient(145deg,rgba(95,9,14,.82),rgba(8,10,12,.97));
-  color:#fff;
-  text-align:center;
-  font-size:clamp(9px,2.7vw,12px);
-  font-weight:800;
-  letter-spacing:.03em;
-  box-shadow:inset 0 0 12px rgba(235,25,32,.10),0 0 16px rgba(235,25,32,.18);
-}
-.b712-dots{font-size:22px;line-height:1;color:#e5e8ea;letter-spacing:2px;transform:rotate(90deg)}
+.p8-footer em{width:36px;height:3px;border-radius:5px;background:var(--red);box-shadow:0 0 8px rgba(255,20,27,.5);z-index:2;justify-self:center;align-self:end;margin-bottom:5px}
+.p8-footer small{grid-column:1/-1;z-index:2;text-align:center;color:#b9c4cc;font-size:7.4px;letter-spacing:.18em;white-space:nowrap;padding-bottom:0}
 
-/* Grids */
-.b712-grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;min-height:0}
+/* Modales funcionales */
+.b78-modal{position:fixed;inset:0;z-index:50000;background:#030405;align-items:center;justify-content:center}
+.b78-modal.open{display:flex}
+.b78-modal img{max-width:100vw;max-height:100dvh;width:auto;height:auto;object-fit:contain}
+.b78-close{position:fixed;z-index:50001;top:max(10px,env(safe-area-inset-top));right:10px;width:42px;height:42px;border-radius:13px;border:1px solid rgba(255,255,255,.18);background:rgba(7,9,11,.85);color:#fff;display:grid;place-items:center;font-size:23px}
+.b78-cv-modal{position:fixed;inset:0;z-index:51000;background:rgba(0,0,0,.80);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px}
+.b78-cv-modal.open{display:flex}
+.b78-cv-box{width:min(390px,94vw);border-radius:22px;border:1px solid rgba(255,255,255,.14);background:radial-gradient(circle at 20% 0%,rgba(215,22,29,.16),transparent 30%),linear-gradient(160deg,#151a1f,#080b0e);box-shadow:0 24px 70px rgba(0,0,0,.55);overflow:hidden}
+.b78-cv-head{padding:18px 18px 14px;border-bottom:1px solid rgba(255,255,255,.08)}
+.b78-cv-head strong{display:block;color:#fff;font-size:18px}.b78-cv-head span{display:block;margin-top:4px;color:#9ca7b1;font-size:12px}
+.b78-cv-options{padding:12px;display:grid;gap:9px}.b78-cv-option{min-height:58px;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));color:#fff;display:flex;align-items:center;gap:12px;padding:10px 12px;font:700 13px/1.2 Inter,"Segoe UI",Arial,sans-serif;text-align:left}.b78-cv-option .ico{width:38px;height:38px;flex:0 0 38px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(145deg,#2a3035,#0b0e10);border:1px solid rgba(255,255,255,.15);color:#e01a21;font-weight:900}.b78-cv-option small{display:block;margin-top:3px;color:#8e99a3;font-weight:500}.b78-cv-cancel{width:100%;min-height:48px;border:0;border-top:1px solid rgba(255,255,255,.08);background:#090c0f;color:#aeb7bf;font:700 12px Inter,"Segoe UI",Arial,sans-serif}
 
-/* Main pair */
-.b712-main{
-  padding:13px 12px 12px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  align-items:flex-start;
+@media (max-height:700px){
+  .p8-app{padding-top:5px;gap:4px}.p8-top{min-height:76px;padding:6px 8px}.p8-avatar{width:49px;height:49px}.p8-title strong{font-size:16px}.p8-title small{font-size:9.6px}.p8-body{gap:5px}.p8-footer{min-height:36px}.p8-footer::before{height:18px;bottom:13px}.p8-footer small{font-size:6.6px}
 }
-.b712-main-icon{
-  position:relative;z-index:2;
-  width:clamp(58px,17vw,72px);
-  height:clamp(58px,17vw,72px);
-  border-radius:15px;
-  display:grid;place-items:center;
-  color:#fff;
-  background:linear-gradient(145deg,#30363b,#090c0e);
-  border:1px solid rgba(255,255,255,.27);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 0 18px rgba(224,24,31,.24);
-}
-.b712-main-icon svg{width:65%;height:65%;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
-.b712-main-icon .chip{
-  position:absolute;right:-8px;bottom:-7px;min-width:27px;height:23px;padding:0 5px;border-radius:7px;
-  display:grid;place-items:center;background:#df1b22;color:#fff;font-size:8px;font-weight:900;
-}
-.b712-main-copy{position:relative;z-index:2}
-.b712-main-copy b{display:block;font-size:clamp(17px,5vw,22px);line-height:1.05;font-weight:800;letter-spacing:-.02em}
-.b712-main-copy span{display:block;margin-top:4px;color:#aeb8c2;font-size:clamp(11px,3.4vw,15px)}
-.b712-arrow{
-  position:absolute;z-index:3;right:12px;bottom:12px;width:34px;height:34px;border-radius:50%;
-  display:grid;place-items:center;border:1px solid #e51d24;background:rgba(7,9,11,.58);color:#fff;font-size:24px;
-  box-shadow:0 0 10px rgba(229,29,36,.20);
-}
-
-/* JPG row */
-.b712-small{
-  padding:12px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  align-items:flex-start;
-}
-.b712-small-icon{
-  position:relative;z-index:2;
-  width:clamp(50px,15vw,62px);height:clamp(50px,15vw,62px);
-  border-radius:14px;display:grid;place-items:center;color:#fff;
-  background:linear-gradient(145deg,#2c3237,#0a0d0f);border:1px solid rgba(255,255,255,.23);
-  box-shadow:0 0 15px rgba(224,22,29,.18);
-}
-.b712-small-icon svg{width:64%;height:64%;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.b712-small-icon .chip{position:absolute;right:-8px;bottom:-5px;min-width:34px;height:23px;padding:0 6px;border-radius:7px;display:grid;place-items:center;background:#e01b22;color:#fff;font-size:9px;font-weight:900}
-.b712-small-copy{position:relative;z-index:2}
-.b712-small-copy b{display:block;font-size:clamp(15px,4.7vw,20px);line-height:1.05;font-weight:800}
-
-/* CV divider */
-.b712-section{display:flex;align-items:center;gap:10px;color:#b6c0ca;font-size:clamp(9px,2.7vw,11px);font-weight:800;letter-spacing:.18em;text-transform:uppercase;min-width:0}
-.b712-section .mark{width:4px;height:18px;border-radius:2px;background:#e51e25;box-shadow:0 0 8px rgba(229,30,37,.52)}
-.b712-section::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,rgba(205,212,217,.67),transparent)}
-
-/* CV grid */
-.b712-cv{
-  padding:8px 9px;
-  display:grid;
-  grid-template-columns:48px 1fr 30px;
-  gap:9px;
-  align-items:center;
-}
-.b712-file{
-  position:relative;z-index:2;
-  width:46px;height:52px;border-radius:10px;display:grid;place-items:center;color:#fff;
-  background:linear-gradient(145deg,#2f353a,#090c0e);border:1px solid rgba(255,255,255,.22);
-  box-shadow:0 0 12px rgba(224,24,31,.17);
-}
-.b712-file::after{content:"";position:absolute;right:-1px;top:-1px;width:12px;height:12px;background:linear-gradient(225deg,transparent 48%,rgba(255,255,255,.85) 50% 58%,transparent 60%)}
-.b712-file svg{width:25px;height:25px;fill:none;stroke:#e41c23;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.b712-cv-copy{position:relative;z-index:2;min-width:0}
-.b712-cv-copy strong{display:block;font-size:clamp(13px,3.9vw,16px);line-height:1.02;font-weight:800}
-.b712-cv-copy span{display:block;margin-top:4px;color:#c0c8d0;font-size:clamp(9px,2.8vw,12px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.b712-mini-arrow{position:relative;z-index:2;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;border:1px solid #e51d24;color:#fff;font-size:19px;background:rgba(7,9,11,.58)}
-
-/* Copy link */
-.b712-copy{
-  padding:0 13px;
-  display:grid;
-  grid-template-columns:48px 1fr 32px;
-  gap:12px;
-  align-items:center;
-}
-.b712-copy-icon{position:relative;z-index:2;width:46px;height:46px;display:grid;place-items:center;color:#fff}
-.b712-copy-icon svg{width:40px;height:40px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px rgba(229,26,33,.55))}
-.b712-copy b{position:relative;z-index:2;font-size:clamp(15px,4.6vw,19px);font-weight:800}
-
-/* Footer */
-.b712-footer{display:flex;align-items:end;justify-content:center;gap:7px;color:#7e8a95;font-size:clamp(7px,2.1vw,9px);letter-spacing:.16em;text-transform:uppercase;padding-bottom:1px}
-.b712-footer .dot{width:4px;height:4px;border-radius:50%;background:#e31c23;margin-bottom:2px}
-
-/* Modals */
-.b712-modal{position:fixed;inset:0;z-index:50000;background:#030405;align-items:center;justify-content:center}
-.b712-modal.open{display:flex}
-.b712-modal img{max-width:100vw;max-height:100dvh;width:auto;height:auto;object-fit:contain}
-.b712-close{position:fixed;z-index:50001;top:max(10px,env(safe-area-inset-top));right:10px;width:42px;height:42px;border-radius:13px;border:1px solid rgba(255,255,255,.18);background:rgba(7,9,11,.85);color:#fff;display:grid;place-items:center;font-size:23px}
-
-.b712-cv-modal{position:fixed;inset:0;z-index:51000;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px}
-.b712-cv-modal.open{display:flex}
-.b712-cv-box{width:min(390px,94vw);border-radius:24px;border:1px solid rgba(255,255,255,.14);background:radial-gradient(circle at 20% 0%,rgba(215,22,29,.16),transparent 30%),linear-gradient(160deg,#151a1f,#080b0e);box-shadow:0 24px 70px rgba(0,0,0,.55);overflow:hidden}
-.b712-cv-head{padding:18px 18px 14px;border-bottom:1px solid rgba(255,255,255,.08)}
-.b712-cv-head strong{display:block;color:#fff;font-size:18px}
-.b712-cv-head span{display:block;margin-top:4px;color:#9ca7b1;font-size:12px}
-.b712-cv-options{padding:12px;display:grid;gap:9px}
-.b712-cv-option{min-height:58px;border-radius:16px;border:1px solid rgba(255,255,255,.10);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));color:#fff;display:flex;align-items:center;gap:12px;padding:10px 12px;font:700 13px/1.2 Inter,'Segoe UI',Arial,sans-serif;text-align:left}
-.b712-cv-option .ico{width:38px;height:38px;flex:0 0 38px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(145deg,#2a3035,#0b0e10);border:1px solid rgba(255,255,255,.15);color:#e01a21;font-weight:900}
-.b712-cv-option small{display:block;margin-top:3px;color:#8e99a3;font-weight:500}
-.b712-cv-cancel{width:100%;min-height:48px;border:0;border-top:1px solid rgba(255,255,255,.08);background:#090c0f;color:#aeb7bf;font:700 12px Inter,'Segoe UI',Arial,sans-serif}
-
+/* Tarjeta pública */
 body.public-no-cv .btn.cv{display:none!important}
 body.public-no-cv .actions{grid-template-columns:1fr!important}
-
-@media(max-height:700px){
-  body.b712-owner .b712-shell{
-    grid-template-rows:64px minmax(0,1.28fr) minmax(0,.94fr) 25px minmax(0,.97fr) 58px 20px;
-    gap:8px;
-    padding-top:max(7px,env(safe-area-inset-top));
-    padding-bottom:max(5px,env(safe-area-inset-bottom));
-  }
-  .b712-photo{width:50px;height:50px;flex-basis:50px}
-  .b712-header{padding:5px 8px}
-  .b712-main{padding:9px}
-  .b712-cv{padding:6px 7px;grid-template-columns:43px 1fr 27px}
-  .b712-file{width:41px;height:46px}
-}
-
 </style>
 </head>
 <body>
 
 
 
+<section class="b78-shell" id="b78Shell" aria-label="Panel privado de networking">
+  <div class="p8-app">
+    <header class="p8-top">
+      <div class="p8-avatar"><img src="foto-gustavo-original.jpg" alt="Gustavo J. Gutiérrez"></div>
+      <div class="p8-title"><strong>GUSTAVO J. <span>GUTIÉRREZ</span></strong><small>Panel privado de networking</small></div>
+      <div class="p8-version">PRO · V8</div>
+    </header>
 
-<section class="b712-shell" id="b712Shell" aria-label="Panel privado de networking">
-  <header class="b712-header">
-    <div class="b712-id">
-      <img class="b712-photo" src="portrait-original.jpg" alt="">
-      <div class="b712-name">
-        <strong>Gustavo J. Gutiérrez</strong>
-        <span>Panel privado de networking</span>
+    <div class="p8-body">
+      <button class="p8-card primary" id="b78ShareCard" type="button" aria-label="Compartir tarjeta sin CV">
+        <span class="p8-icon"><svg viewBox="0 0 32 32"><circle cx="10" cy="10" r="4"/><path d="M4 24c0-5 3-8 6-8s6 3 6 8"/><path d="M20 10h8M20 16h8M20 22h6"/></svg></span>
+        <span class="p8-copy"><b>Compartir tarjeta</b><small>Sin CV</small></span><span class="p8-arrow">›</span>
+      </button>
+
+      <button class="p8-card primary" id="b78ShareFull" type="button" aria-label="Compartir tarjeta completa eligiendo CV">
+        <span class="p8-icon"><svg viewBox="0 0 32 32"><path d="M8 4h11l5 5v19H8z"/><path d="M19 4v6h6"/><path class="red" d="M11 15h10M11 20h10M11 25h7"/></svg></span>
+        <span class="p8-copy"><b>Tarjeta completa</b><small>Con CV</small></span><span class="p8-arrow">›</span>
+      </button>
+
+      <div class="p8-row2">
+        <button class="p8-card compact" id="b78ShareJpg" type="button" aria-label="Compartir JPG">
+          <span class="p8-icon"><svg viewBox="0 0 32 32"><rect x="5" y="6" width="22" height="20" rx="2"/><circle cx="22" cy="11" r="2"/><path d="m7 23 7-8 5 5 3-3 4 6"/></svg></span>
+          <span class="p8-copy"><b>Compartir JPG</b></span><span class="p8-arrow">›</span>
+        </button>
+        <button class="p8-card compact" id="b78ShowJpg" type="button" aria-label="Mostrar JPG">
+          <span class="p8-icon"><svg viewBox="0 0 32 32"><path d="M3 16s5-8 13-8 13 8 13 8-5 8-13 8S3 16 3 16z"/><circle cx="16" cy="16" r="4"/></svg></span>
+          <span class="p8-copy"><b>Mostrar JPG</b></span><span class="p8-arrow">›</span>
+        </button>
       </div>
+
+      <div class="p8-section"><span>CURRÍCULUM VITAE</span><i></i></div>
+
+      <div class="p8-row2">
+        <button class="p8-card cv" id="b78CvGeneral" type="button" aria-label="Compartir CV General">
+          <span class="p8-icon"><svg viewBox="0 0 32 32"><circle class="fill-red" cx="16" cy="11" r="4"/><path class="red" d="M9 25c0-6 3-9 7-9s7 3 7 9"/></svg></span>
+          <span class="p8-copy"><b>CV</b><small>General</small></span><span class="p8-arrow">›</span>
+        </button>
+        <button class="p8-card cv" id="b78CvCoord" type="button" aria-label="Compartir CV Coordinación">
+          <span class="p8-icon"><svg viewBox="0 0 32 32"><circle class="red" cx="16" cy="16" r="5"/><path class="red" d="M16 5v4M16 23v4M5 16h4M23 16h4M8 8l3 3M21 21l3 3M24 8l-3 3M11 21l-3 3"/></svg></span>
+          <span class="p8-copy"><b>CV</b><small>Coordinación</small></span><span class="p8-arrow">›</span>
+        </button>
+      </div>
+
+      <div class="p8-row2">
+        <button class="p8-card cv" id="b78CvAdmin" type="button" aria-label="Compartir CV Administración">
+          <span class="p8-icon"><svg viewBox="0 0 32 32"><path class="red" d="M7 25V17h4v8M14 25V11h4v14M21 25V6h4v19"/></svg></span>
+          <span class="p8-copy"><b>CV</b><small>Administración</small></span><span class="p8-arrow">›</span>
+        </button>
+        <button class="p8-card cv" id="b78CvSalud" type="button" aria-label="Compartir CV Clínicas y Salud">
+          <span class="p8-icon"><svg viewBox="0 0 32 32"><path class="red" d="M13 6h6v7h7v6h-7v7h-6v-7H6v-6h7z"/></svg></span>
+          <span class="p8-copy"><b>CV</b><small>Clínicas / Salud</small></span><span class="p8-arrow">›</span>
+        </button>
+      </div>
+
+      <button class="p8-card link" id="b78CopyLink" type="button" aria-label="Copiar enlace público de tarjeta">
+        <span class="p8-icon"><svg viewBox="0 0 32 32"><path d="M12 20 9 23a5 5 0 0 1-7-7l5-5a5 5 0 0 1 7 0"/><path d="m20 12 3-3a5 5 0 0 1 7 7l-5 5a5 5 0 0 1-7 0"/><path d="m10 22 12-12"/></svg></span>
+        <span class="p8-copy"><b>Copiar enlace</b></span><span class="p8-arrow">›</span>
+      </button>
     </div>
-    <div class="b712-headright">
-      <div class="b712-badge">PRO · B7.12</div>
-      <span class="b712-dots">•••</span>
-    </div>
-  </header>
 
-  <div class="b712-grid2">
-    <button class="b712-panel-card b712-main red" id="b712ShareCard" type="button">
-      <span class="b712-main-icon">
-        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="15" height="14" rx="2"/><circle cx="8" cy="10" r="2"/><path d="M5.4 16c.8-2.4 4.4-2.4 5.2 0M13.5 9h2.5M13.5 12h2.5"/></svg>
-      </span>
-      <span class="b712-main-copy"><b>Compartir<br>tarjeta</b></span>
-      <span class="b712-arrow">›</span>
-    </button>
-
-    <button class="b712-panel-card b712-main" id="b712ShareFull" type="button">
-      <span class="b712-main-icon">
-        <svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5M9 12h6M9 15h6"/></svg>
-        <span class="chip">CV</span>
-      </span>
-      <span class="b712-main-copy"><b>Tarjeta completa</b><span>+ CV</span></span>
-      <span class="b712-arrow">›</span>
-    </button>
+    <footer class="p8-footer"><em></em><small>GJG · PROFESSIONAL NETWORKING TOOLKIT</small></footer>
   </div>
-
-  <div class="b712-grid2">
-    <button class="b712-panel-card b712-small" id="b712ShareJpg" type="button">
-      <span class="b712-small-icon">
-        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m5 17 4.3-4.4 3.2 3.1 2-2 4.5 3.3"/></svg>
-        <span class="chip">JPG</span>
-      </span>
-      <span class="b712-small-copy"><b>Compartir<br>JPG</b></span>
-      <span class="b712-arrow">›</span>
-    </button>
-
-    <button class="b712-panel-card b712-small" id="b712ShowJpg" type="button">
-      <span class="b712-small-icon">
-        <svg viewBox="0 0 24 24"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.6"/></svg>
-      </span>
-      <span class="b712-small-copy"><b>Mostrar<br>JPG</b></span>
-      <span class="b712-arrow">›</span>
-    </button>
-  </div>
-
-  <div class="b712-section"><span class="mark"></span><span>Currículum Vitae</span></div>
-
-  <div class="b712-grid2">
-    <button class="b712-panel-card b712-cv" id="b712CvGeneral" type="button">
-      <span class="b712-file"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6.5 19c.8-4 10.2-4 11 0"/></svg></span>
-      <span class="b712-cv-copy"><strong>CV</strong><span>General</span></span><span class="b712-mini-arrow">›</span>
-    </button>
-    <button class="b712-panel-card b712-cv" id="b712CvCoord" type="button">
-      <span class="b712-file"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg></span>
-      <span class="b712-cv-copy"><strong>CV</strong><span>Coordinación</span></span><span class="b712-mini-arrow">›</span>
-    </button>
-    <button class="b712-panel-card b712-cv" id="b712CvAdmin" type="button">
-      <span class="b712-file"><svg viewBox="0 0 24 24"><path d="M5 20V10M10 20V5M15 20v-7M20 20V8"/></svg></span>
-      <span class="b712-cv-copy"><strong>CV</strong><span>Administración</span></span><span class="b712-mini-arrow">›</span>
-    </button>
-    <button class="b712-panel-card b712-cv" id="b712CvSalud" type="button">
-      <span class="b712-file"><svg viewBox="0 0 24 24"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg></span>
-      <span class="b712-cv-copy"><strong>CV</strong><span>Clínicas / Salud</span></span><span class="b712-mini-arrow">›</span>
-    </button>
-  </div>
-
-  <button class="b712-panel-card b712-copy" id="b712CopyLink" type="button">
-    <span class="b712-copy-icon"><svg viewBox="0 0 24 24"><path d="M9.5 14.5 7 17a4 4 0 0 1-5.7-5.7l4-4A4 4 0 0 1 11 7"/><path d="m14.5 9.5 2.5-2.5a4 4 0 1 1 5.7 5.7l-4 4A4 4 0 0 1 13 17"/><path d="m8 16 8-8"/></svg></span>
-    <b>Copiar enlace</b><span class="b712-mini-arrow">›</span>
-  </button>
-
-  <footer class="b712-footer"><span>GJG</span><span class="dot"></span><span>Professional Networking Toolkit</span></footer>
 </section>
 
-<div class="b712-modal" id="b712Modal" aria-hidden="true">
-  <button class="b712-close" id="b712Close" type="button">×</button>
+<div class="b78-modal" id="b78Modal" aria-hidden="true">
+  <button class="b78-close" id="b78Close" type="button" aria-label="Cerrar">×</button>
   <img src="tarjeta-jpg.jpg" alt="Tarjeta profesional JPG con QR">
 </div>
 
-<div class="b712-cv-modal" id="b712CvModal" aria-hidden="true">
-  <div class="b712-cv-box">
-    <div class="b712-cv-head"><strong>Tarjeta completa + CV</strong><span>Elegí qué CV querés incluir.</span></div>
-    <div class="b712-cv-options">
-      <button class="b712-cv-option" type="button" data-cv712="general"><span class="ico">CV</span><span>General<small>Perfil multipropósito</small></span></button>
-      <button class="b712-cv-option" type="button" data-cv712="coordinacion"><span class="ico">⚙</span><span>Coordinación Operativa<small>Operaciones · supervisión</small></span></button>
-      <button class="b712-cv-option" type="button" data-cv712="administracion"><span class="ico">▥</span><span>Administración<small>Gestión · control documental</small></span></button>
-      <button class="b712-cv-option" type="button" data-cv712="salud"><span class="ico">✚</span><span>Clínicas / Salud<small>Administración sanitaria</small></span></button>
+<div class="b78-cv-modal" id="b78CvModal" aria-hidden="true">
+  <div class="b78-cv-box">
+    <div class="b78-cv-head">
+      <strong>Tarjeta completa + CV</strong>
+      <span>Elegí qué CV querés incluir.</span>
     </div>
-    <button class="b712-cv-cancel" id="b712CvCancel" type="button">Cancelar</button>
+    <div class="b78-cv-options">
+      <button class="b78-cv-option" type="button" data-cv="general">
+        <span class="ico">CV</span>
+        <span>General<small>Perfil multipropósito</small></span>
+      </button>
+      <button class="b78-cv-option" type="button" data-cv="coordinacion">
+        <span class="ico">⚙</span>
+        <span>Coordinación Operativa<small>Operaciones · supervisión</small></span>
+      </button>
+      <button class="b78-cv-option" type="button" data-cv="administracion">
+        <span class="ico">▥</span>
+        <span>Administración<small>Gestión · control documental</small></span>
+      </button>
+      <button class="b78-cv-option" type="button" data-cv="salud">
+        <span class="ico">✚</span>
+        <span>Clínicas / Salud<small>Administración sanitaria</small></span>
+      </button>
+    </div>
+    <button class="b78-cv-cancel" id="b78CvCancel" type="button">Cancelar</button>
   </div>
 </div>
 
@@ -742,47 +627,83 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
 
 
 
-
-
-
-
-
 <script>
-(()=>{
+(() => {
   const BASE="https://gustavojgutierrez.github.io/";
   const SIMPLE=BASE+"?vista=contacto";
-  const JPG="./tarjeta-jpg.jpg";
-  const CV={
-    general:{file:"./Gustavo_Gutierrez_CV_General.pdf",public:"Gustavo_Gutierrez_CV_General.pdf",title:"CV General"},
-    coordinacion:{file:"./Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",public:"Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",title:"CV Coordinación Operativa"},
-    administracion:{file:"./Gustavo_Gutierrez_CV_Administracion.pdf",public:"Gustavo_Gutierrez_CV_Administracion.pdf",title:"CV Administración"},
-    salud:{file:"./Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",public:"Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",title:"CV Clínicas / Salud"}
+
+  const CV_MAP={
+    general:{
+      file:"./Gustavo_Gutierrez_CV_General.pdf",
+      public:"Gustavo_Gutierrez_CV_General.pdf",
+      title:"CV General"
+    },
+    coordinacion:{
+      file:"./Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",
+      public:"Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",
+      title:"CV Coordinación Operativa"
+    },
+    administracion:{
+      file:"./Gustavo_Gutierrez_CV_Administracion.pdf",
+      public:"Gustavo_Gutierrez_CV_Administracion.pdf",
+      title:"CV Administración"
+    },
+    salud:{
+      file:"./Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",
+      public:"Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",
+      title:"CV Clínicas / Salud"
+    }
   };
 
-  const p=new URLSearchParams(location.search);
-  const vista=p.get("vista");
-  const cvKey=p.get("cv");
-  const standalone=matchMedia("(display-mode: standalone)").matches || navigator.standalone===true;
+  const JPG="./tarjeta-jpg.jpg";
+  const params=new URLSearchParams(location.search);
+  const vista=params.get("vista");
+  const cvKey=params.get("cv");
+  const standalone=
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone===true;
 
-  if(standalone && !vista) document.body.classList.add("b712-owner");
-  if(vista==="contacto") document.body.classList.add("public-no-cv");
+  const panelTest=params.get("panel")==="1";
+  if((standalone || panelTest) && !vista){
+    document.body.classList.add("b78-owner");
+  }
+
+  if(vista==="contacto"){
+    document.body.classList.add("public-no-cv");
+  }
 
   const publicCvButton=document.querySelector(".btn.cv");
   if(vista==="completa" && publicCvButton){
-    const chosen=CV[cvKey]||CV.general;
+    const chosen=CV_MAP[cvKey] || CV_MAP.general;
     publicCvButton.href=chosen.public;
     publicCvButton.style.display="flex";
   }
 
   async function copyText(text,msg){
-    try{await navigator.clipboard.writeText(text);alert(msg)}
-    catch(e){const t=document.createElement("textarea");t.value=text;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();alert(msg)}
+    try{
+      await navigator.clipboard.writeText(text);
+      alert(msg);
+    }catch(e){
+      const t=document.createElement("textarea");
+      t.value=text;
+      t.style.position="fixed";
+      t.style.opacity="0";
+      document.body.appendChild(t);
+      t.select();
+      document.execCommand("copy");
+      t.remove();
+      alert(msg);
+    }
   }
 
   async function shareUrl(url,title,text){
     if(navigator.share){
-      try{await navigator.share({title,text,url});return}
-      catch(e){if(e&&e.name==="AbortError")return}
+      try{
+        await navigator.share({title,text,url});
+        return;
+      }catch(e){
+        if(e && e.name==="AbortError") return;
+      }
     }
     await copyText(url,"Enlace copiado");
   }
@@ -790,49 +711,124 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
   async function shareFile(url,filename,mime,title,text){
     try{
       const r=await fetch(url,{cache:"no-store"});
+      if(!r.ok) throw new Error("fetch");
       const blob=await r.blob();
       const file=new File([blob],filename,{type:mime});
-      if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
-        await navigator.share({title,text,files:[file]});return;
+      if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
+        await navigator.share({title,text,files:[file]});
+        return;
       }
     }catch(e){}
     window.open(url,"_blank");
   }
 
-  document.getElementById("b712ShareCard")?.addEventListener("click",()=>shareUrl(
-    SIMPLE,"Gustavo J. Gutiérrez · Tarjeta profesional","Gustavo J. Gutiérrez — Tarjeta profesional digital"
+  document.getElementById("b78ShareCard")?.addEventListener("click",()=>shareUrl(
+    SIMPLE,
+    "Gustavo J. Gutiérrez · Tarjeta profesional",
+    "Gustavo J. Gutiérrez — Tarjeta profesional digital"
   ));
 
-  const selector=document.getElementById("b712CvModal");
-  document.getElementById("b712ShareFull")?.addEventListener("click",()=>{selector.classList.add("open");selector.setAttribute("aria-hidden","false")});
-  document.getElementById("b712CvCancel")?.addEventListener("click",()=>{selector.classList.remove("open");selector.setAttribute("aria-hidden","true")});
-  selector?.addEventListener("click",e=>{if(e.target===selector){selector.classList.remove("open");selector.setAttribute("aria-hidden","true")}});
+  const cvModal=document.getElementById("b78CvModal");
 
-  document.querySelectorAll("[data-cv712]").forEach(btn=>btn.addEventListener("click",()=>{
-    const key=btn.dataset.cv712;
-    const chosen=CV[key]||CV.general;
-    const url=BASE+"?vista=completa&cv="+encodeURIComponent(key);
-    selector.classList.remove("open");
-    selector.setAttribute("aria-hidden","true");
-    shareUrl(url,"Gustavo J. Gutiérrez · Tarjeta profesional completa","Gustavo J. Gutiérrez — Tarjeta profesional + "+chosen.title);
-  }));
+  document.getElementById("b78ShareFull")?.addEventListener("click",()=>{
+    cvModal?.classList.add("open");
+    cvModal?.setAttribute("aria-hidden","false");
+  });
 
-  document.getElementById("b712ShareJpg")?.addEventListener("click",()=>shareFile(
-    JPG,"Tarjeta_Profesional_Gustavo_Gutierrez.jpg","image/jpeg","Tarjeta profesional · Gustavo J. Gutiérrez","Tarjeta profesional con QR"
+  document.getElementById("b78CvCancel")?.addEventListener("click",()=>{
+    cvModal?.classList.remove("open");
+    cvModal?.setAttribute("aria-hidden","true");
+  });
+
+  cvModal?.addEventListener("click",e=>{
+    if(e.target===cvModal){
+      cvModal.classList.remove("open");
+      cvModal.setAttribute("aria-hidden","true");
+    }
+  });
+
+  document.querySelectorAll("[data-cv]").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const key=btn.dataset.cv;
+      const chosen=CV_MAP[key] || CV_MAP.general;
+      const url=BASE+"?vista=completa&cv="+encodeURIComponent(key);
+      cvModal.classList.remove("open");
+      cvModal.setAttribute("aria-hidden","true");
+      shareUrl(
+        url,
+        "Gustavo J. Gutiérrez · Tarjeta profesional completa",
+        "Gustavo J. Gutiérrez — Tarjeta profesional + "+chosen.title
+      );
+    });
+  });
+
+  document.getElementById("b78ShareJpg")?.addEventListener("click",()=>shareFile(
+    JPG,
+    "Tarjeta_Profesional_Gustavo_Gutierrez.jpg",
+    "image/jpeg",
+    "Tarjeta profesional · Gustavo J. Gutiérrez",
+    "Tarjeta profesional con QR"
   ));
 
-  const modal=document.getElementById("b712Modal");
-  document.getElementById("b712ShowJpg")?.addEventListener("click",()=>{modal.classList.add("open");modal.setAttribute("aria-hidden","false")});
-  document.getElementById("b712Close")?.addEventListener("click",()=>{modal.classList.remove("open");modal.setAttribute("aria-hidden","true")});
-  modal?.addEventListener("click",e=>{if(e.target===modal){modal.classList.remove("open");modal.setAttribute("aria-hidden","true")}});
+  const modal=document.getElementById("b78Modal");
 
-  document.getElementById("b712CvGeneral")?.addEventListener("click",()=>shareFile(CV.general.file,"Gustavo_Gutierrez_CV_General.pdf","application/pdf","CV General · Gustavo J. Gutiérrez","Currículum Vitae general"));
-  document.getElementById("b712CvCoord")?.addEventListener("click",()=>shareFile(CV.coordinacion.file,"Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf","application/pdf","CV Coordinación Operativa · Gustavo J. Gutiérrez","Currículum Vitae · Coordinación Operativa"));
-  document.getElementById("b712CvAdmin")?.addEventListener("click",()=>shareFile(CV.administracion.file,"Gustavo_Gutierrez_CV_Administracion.pdf","application/pdf","CV Administración · Gustavo J. Gutiérrez","Currículum Vitae · Administración"));
-  document.getElementById("b712CvSalud")?.addEventListener("click",()=>shareFile(CV.salud.file,"Gustavo_Gutierrez_CV_Clinicas_Salud.pdf","application/pdf","CV Clínicas y Salud · Gustavo J. Gutiérrez","Currículum Vitae · Clínicas y Salud"));
-  document.getElementById("b712CopyLink")?.addEventListener("click",()=>copyText(BASE,"Enlace de la tarjeta copiado"));
+  document.getElementById("b78ShowJpg")?.addEventListener("click",()=>{
+    modal?.classList.add("open");
+    modal?.setAttribute("aria-hidden","false");
+  });
+
+  document.getElementById("b78Close")?.addEventListener("click",()=>{
+    modal?.classList.remove("open");
+    modal?.setAttribute("aria-hidden","true");
+  });
+
+  modal?.addEventListener("click",e=>{
+    if(e.target===modal){
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden","true");
+    }
+  });
+
+  document.getElementById("b78CvGeneral")?.addEventListener("click",()=>shareFile(
+    CV_MAP.general.file,
+    "Gustavo_Gutierrez_CV_General.pdf",
+    "application/pdf",
+    "CV General · Gustavo J. Gutiérrez",
+    "Currículum Vitae general de Gustavo J. Gutiérrez"
+  ));
+
+  document.getElementById("b78CvCoord")?.addEventListener("click",()=>shareFile(
+    CV_MAP.coordinacion.file,
+    "Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",
+    "application/pdf",
+    "CV Coordinación Operativa · Gustavo J. Gutiérrez",
+    "Currículum Vitae · Coordinación Operativa"
+  ));
+
+  document.getElementById("b78CvAdmin")?.addEventListener("click",()=>shareFile(
+    CV_MAP.administracion.file,
+    "Gustavo_Gutierrez_CV_Administracion.pdf",
+    "application/pdf",
+    "CV Administración · Gustavo J. Gutiérrez",
+    "Currículum Vitae · Administración"
+  ));
+
+  document.getElementById("b78CvSalud")?.addEventListener("click",()=>shareFile(
+    CV_MAP.salud.file,
+    "Gustavo_Gutierrez_CV_Clinicas_Salud.pdf",
+    "application/pdf",
+    "CV Clínicas y Salud · Gustavo J. Gutiérrez",
+    "Currículum Vitae · Clínicas y Salud"
+  ));
+
+  document.getElementById("b78CopyLink")?.addEventListener("click",()=>copyText(
+    SIMPLE,
+    "Enlace de la tarjeta copiado"
+  ));
 })();
 </script>
+
+
 
 <script>
 if ("serviceWorker" in navigator) {

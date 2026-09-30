@@ -1,4 +1,4 @@
-const CACHE="gustavo-panel-pro-b7-12-native";
+const CACHE="gustavo-panel-pro-v8-prueba-app-01";
 const ASSETS=[
   "./manifest.webmanifest",
   "./icon-192.png",
@@ -6,7 +6,7 @@ const ASSETS=[
   "./apple-touch-icon.png",
   "./panel-ui-approved.png",
   "./tarjeta-jpg.jpg",
-  "./portrait-original.jpg",
+  "./foto-gustavo-original.jpg",
   "./gustavo-gutierrez.vcf",
   "./Gustavo_Gutierrez_CV_General.pdf",
   "./Gustavo_Gutierrez_CV_Coordinacion_Operativa.pdf",
