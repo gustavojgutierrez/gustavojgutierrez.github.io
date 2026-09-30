@@ -1,4 +1,4 @@
-const CACHE="gustavo-panel-pro-v8-qr-estatico-final-03";
+const CACHE="gustavo-panel-pro-v8-owner-public-root-fix-04";
 const ASSETS=[
   "./index.html",
   "./manifest.webmanifest",

@@ -676,10 +676,8 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
     window.matchMedia("(display-mode: standalone)").matches ||
     window.navigator.standalone===true;
 
-  // El panel privado usa una URL de inicio dedicada (?panel=1).
-  // La URL base queda pública para que el QR fijo abra siempre la tarjeta con CV General.
   const panelTest=params.get("panel")==="1";
-  if(panelTest && !vista){
+  if((standalone || panelTest) && !vista){
     document.body.classList.add("b78-owner");
   }
 

@@ -3,7 +3,7 @@
   "short_name": "Gustavo Gutiérrez",
   "description": "Tarjeta profesional digital de Gustavo J. Gutiérrez",
   "id": "./",
-  "start_url": "./?panel=1",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#050708",
