@@ -1,5 +1,6 @@
-const CACHE="gustavo-panel-pro-v8-prueba-app-01";
+const CACHE="gustavo-panel-pro-v8-prueba-app-02";
 const ASSETS=[
+  "./index.html",
   "./manifest.webmanifest",
   "./icon-192.png",
   "./icon-512.png",

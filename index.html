@@ -397,7 +397,14 @@ body.b78-owner .b78-shell{
 .p8-card.primary .p8-icon{width:56px;height:56px}
 .p8-card.compact{grid-template-columns:42px 1fr 27px;padding:7px 9px;border-radius:15px}
 .p8-card.cv{grid-template-columns:43px 1fr 27px;padding:7px 9px}
-.p8-card.link{grid-template-columns:35px 1fr 26px;min-height:44px;padding:5px 12px;border-radius:14px}
+.p8-card.link{grid-template-columns:32px minmax(0,1fr) 24px;min-height:44px;padding:5px 9px;border-radius:14px;gap:8px}
+.p8-card.link .p8-icon{width:31px;height:31px;border-radius:9px}
+.p8-card.link .p8-icon svg{width:21px;height:21px}
+.p8-card.link .p8-arrow{width:24px;height:24px;font-size:19px}
+.p8-link-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;min-height:0}
+.p8-link-row .p8-copy{padding-left:3px;padding-right:3px}
+.p8-link-row .p8-copy b{font-size:clamp(10.2px,2.65vw,12px);line-height:1.06}
+.p8-link-row .p8-card.link{min-width:0}
 .p8-card:active{transform:translateY(1px);filter:brightness(1.12)}
 .p8-icon{
   width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
@@ -519,10 +526,16 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
         </button>
       </div>
 
-      <button class="p8-card link" id="b78CopyLink" type="button" aria-label="Copiar enlace público de tarjeta">
-        <span class="p8-icon"><svg viewBox="0 0 32 32"><path d="M12 20 9 23a5 5 0 0 1-7-7l5-5a5 5 0 0 1 7 0"/><path d="m20 12 3-3a5 5 0 0 1 7 7l-5 5a5 5 0 0 1-7 0"/><path d="m10 22 12-12"/></svg></span>
-        <span class="p8-copy"><b>Copiar enlace</b></span><span class="p8-arrow">›</span>
-      </button>
+      <div class="p8-link-row">
+        <button class="p8-card link" id="b78CopyLink" type="button" aria-label="Copiar enlace público de tarjeta sin CV">
+          <span class="p8-icon"><svg viewBox="0 0 32 32"><path d="M12 20 9 23a5 5 0 0 1-7-7l5-5a5 5 0 0 1 7 0"/><path d="m20 12 3-3a5 5 0 0 1 7 7l-5 5a5 5 0 0 1-7 0"/><path d="m10 22 12-12"/></svg></span>
+          <span class="p8-copy"><b>Copiar enlace</b></span><span class="p8-arrow">›</span>
+        </button>
+        <button class="p8-card link" id="b78CopyFullLink" type="button" aria-label="Copiar enlace público de tarjeta con CV">
+          <span class="p8-icon"><svg viewBox="0 0 32 32"><path d="M12 20 9 23a5 5 0 0 1-7-7l5-5a5 5 0 0 1 7 0"/><path d="m20 12 3-3a5 5 0 0 1 7 7l-5 5a5 5 0 0 1-7 0"/><path d="m10 22 12-12"/><path class="red" d="M24 24h6M27 21v6"/></svg></span>
+          <span class="p8-copy"><b>Copiar enlace + CV</b></span><span class="p8-arrow">›</span>
+        </button>
+      </div>
     </div>
 
     <footer class="p8-footer"><em></em><small>GJG · PROFESSIONAL NETWORKING TOOLKIT</small></footer>
@@ -537,8 +550,8 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
 <div class="b78-cv-modal" id="b78CvModal" aria-hidden="true">
   <div class="b78-cv-box">
     <div class="b78-cv-head">
-      <strong>Tarjeta completa + CV</strong>
-      <span>Elegí qué CV querés incluir.</span>
+      <strong id="b78CvModalTitle">Tarjeta completa + CV</strong>
+      <span id="b78CvModalSubtitle">Elegí qué CV querés incluir.</span>
     </div>
     <div class="b78-cv-options">
       <button class="b78-cv-option" type="button" data-cv="general">
@@ -729,11 +742,25 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
   ));
 
   const cvModal=document.getElementById("b78CvModal");
+  const cvModalTitle=document.getElementById("b78CvModalTitle");
+  const cvModalSubtitle=document.getElementById("b78CvModalSubtitle");
+  let cvActionMode="share";
 
-  document.getElementById("b78ShareFull")?.addEventListener("click",()=>{
+  function openCvModal(mode){
+    cvActionMode=mode;
+    if(mode==="copy"){
+      if(cvModalTitle) cvModalTitle.textContent="Copiar enlace + CV";
+      if(cvModalSubtitle) cvModalSubtitle.textContent="Elegí qué CV querés vincular.";
+    }else{
+      if(cvModalTitle) cvModalTitle.textContent="Tarjeta completa + CV";
+      if(cvModalSubtitle) cvModalSubtitle.textContent="Elegí qué CV querés incluir.";
+    }
     cvModal?.classList.add("open");
     cvModal?.setAttribute("aria-hidden","false");
-  });
+  }
+
+  document.getElementById("b78ShareFull")?.addEventListener("click",()=>openCvModal("share"));
+  document.getElementById("b78CopyFullLink")?.addEventListener("click",()=>openCvModal("copy"));
 
   document.getElementById("b78CvCancel")?.addEventListener("click",()=>{
     cvModal?.classList.remove("open");
@@ -754,11 +781,15 @@ body.public-no-cv .actions{grid-template-columns:1fr!important}
       const url=BASE+"?vista=completa&cv="+encodeURIComponent(key);
       cvModal.classList.remove("open");
       cvModal.setAttribute("aria-hidden","true");
-      shareUrl(
-        url,
-        "Gustavo J. Gutiérrez · Tarjeta profesional completa",
-        "Gustavo J. Gutiérrez — Tarjeta profesional + "+chosen.title
-      );
+      if(cvActionMode==="copy"){
+        copyText(url,"Enlace con "+chosen.title+" copiado");
+      }else{
+        shareUrl(
+          url,
+          "Gustavo J. Gutiérrez · Tarjeta profesional completa",
+          "Gustavo J. Gutiérrez — Tarjeta profesional + "+chosen.title
+        );
+      }
     });
   });
 
